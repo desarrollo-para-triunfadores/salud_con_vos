@@ -53,6 +53,7 @@ class UserController extends Controller
              * vinculamos al user
              */
             $file = $request->file('imagen');
+           
             $nombreImagen = 'usuario_' . time() . '.png';
             Storage::disk('usuarios')->put($nombreImagen, \File::get($file));
         }

@@ -113,6 +113,15 @@ $.widget.bridge('uibutton', $.ui.button);
 <!-- acciones para notificaciones -->
 <script src="{{ asset('js/notificaciones.js') }}"></script>
 
+<!-- boostrap-fileinput -->
+<script src="{{ asset('plantillas/AdminLTE/plugins/bootstrap-fileinput/js/plugins/sortable.js') }}" type="text/javascript"></script>
+<script src="{{ asset('plantillas/AdminLTE/plugins/bootstrap-fileinput/js/fileinput.js') }}" type="text/javascript"></script>
+<script src="{{ asset('plantillas/AdminLTE/plugins/bootstrap-fileinput/js/locales/es.js') }}" type="text/javascript"></script>
+<script src="{{ asset('plantillas/AdminLTE/plugins/bootstrap-fileinput/themes/explorer-fa/theme.js') }}" type="text/javascript"></script>
+<script src="{{ asset('plantillas/AdminLTE/plugins/bootstrap-fileinput/themes/fa/theme.js') }}" type="text/javascript"></script>
+
+
+
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANzTkkt93m5CSxz1H5fZy18uN_sEERiu4&callback=initMap"></script>
 
@@ -120,7 +129,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANzTkkt93m5CSxz1H5fZy18uN
 
 <script>
 $(".select2").select2({
-    placeholder: "seleccione una opción"
+    placeholder: "Seleccione una opción"
 });
 
 var msj_validacion_jquery = {

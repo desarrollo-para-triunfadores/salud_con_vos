@@ -26,7 +26,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
      * Rutas genericas a controladores
      */
     Route::resource('usuarios', 'UserController');   
-    Route::resource('categoriasHilos', 'CategoriasHilosController');
+    Route::resource('categorias', 'CategoriasController');
+    Route::resource('blogs', 'BlogsController');
 
 
 

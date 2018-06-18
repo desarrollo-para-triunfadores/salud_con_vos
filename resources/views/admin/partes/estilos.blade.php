@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>
-    @yield('title','Default')Inmobiliaria Nube | Sistema de gestión inmobiliaria
+    @yield('title','Default')Salud Con Vos | Sistema de Blogs y Foros
 </title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -85,6 +85,11 @@
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
 <link type="text/css" rel="stylesheet" href="{{ asset('plantillas/AdminLTE/sacado_KAdmin/main.css') }}">
+
+<!-- bootstrap-fileinput -->
+<link type="text/css" rel="stylesheet" media="all" href="{{ asset('plantillas/AdminLTE/plugins/bootstrap-fileinput/css/fileinput.css') }}  ">
+<link type="text/css" rel="stylesheet" media="all" href="{{ asset('plantillas/AdminLTE/plugins/bootstrap-fileinput/themes/explorer-fa/theme.css') }}  ">
+
 
 
 <!--Estilos propios-->

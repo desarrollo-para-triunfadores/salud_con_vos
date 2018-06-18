@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             'name' => 'Manuel Antonio Kuhn',
             'email' => 'manuelk.sv@gmail.com',
             'password' => bcrypt('123123'),
-            'imagen' => 'usuario_1526737707.png'
+            'imagen' => 'sin_imagen.png'
         ]);
     }
 }
