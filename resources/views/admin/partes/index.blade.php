@@ -5,16 +5,19 @@
     </head>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
+
             <!-- top nav -->
-           
             @include('admin.partes.navtop.main') 
+
             <!-- logo and sidebar -->
-            
             @include('admin.partes.sidebar') 
+
             <!-- page content -->
             @yield('content')
+
             <!-- footer -->
             @include('admin.partes.pie')
+
             <div class="control-sidebar-bg"></div>
         </div>
         <!-- scripts -->

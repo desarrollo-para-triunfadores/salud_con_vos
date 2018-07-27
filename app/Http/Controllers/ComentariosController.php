@@ -2,27 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\ComentarioBlog;
+use App\Comentario;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 Use Session;
 
-class ComentariosBlogsController extends Controller
-{
+class ComentariosController extends Controller {
+
     public function __construct() {
         Carbon::setlocale('es');
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $Comentarios = ComentarioBlog::all();
-
+    public function index() {
+        $comentarios = Comentario::all();
     }
 
     /**
@@ -30,8 +29,7 @@ class ComentariosBlogsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -41,10 +39,21 @@ class ComentariosBlogsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $Comentario = new ComentarioBlog($request->all());
-        $Comentario->save();
+    public function store(Request $request) {
+        $comentario = new Comentario($request->all());
+
+        if (is_null($request->nombre)) {
+            $comentario->nombre = Auth::user()->name;
+            $comentario->correo = Auth::user()->email;
+        }
+
+        $comentario->save();
+
+        if (is_null($request->nombre)) {
+            return redirect()->route('foros.show', [$request->hilo_foro_id]);
+        } else {
+            return redirect()->route('foros.show', [$request->hilo_foro_id]);
+        }
     }
 
     /**
@@ -53,8 +62,7 @@ class ComentariosBlogsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -64,8 +72,7 @@ class ComentariosBlogsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
     }
 
@@ -76,11 +83,15 @@ class ComentariosBlogsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        $ComentarioBlog = ComentarioBlog::find($id);
-        $ComentarioBlog->fill($request->all());
-        $ComentarioBlog->save();
+    public function update(Request $request, $id) {
+//        dd('hola');
+       $comentario = Comentario::find($id);
+       $comentario->fill($request->all());
+       $comentario->save();
+        //Si la respuesta vino por JSON, se debe contestar por JSON
+        if ($request->ajax()) {
+            return response()->json($comentario);
+       }
     }
 
     /**
@@ -89,9 +100,9 @@ class ComentariosBlogsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $ComentarioBlog = ComentarioBlog::find($id);
-        $ComentarioBlog->delete();
+    public function destroy($id) {
+        $comentario = Comentario::find($id);
+        $comentario->delete();
     }
+
 }

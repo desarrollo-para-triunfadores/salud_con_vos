@@ -127,6 +127,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANzTkkt93m5CSxz1H5fZy18uN
 
 
 
+
 <script>
 $(".select2").select2({
     placeholder: "Seleccione una opción"

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use App\Categoria;
-use App\ImagenBlog;
+use App\Imagen;
 use Storage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,7 +25,7 @@ class BlogsController extends Controller {
      */
     public function index() {
         $blogs = Blog::all()->sortByDesc('id');
-        return view('/admin/blogs/main')->with('Blogs', $blogs);
+        return view('/admin/blogs/main')->with('blogs', $blogs);
     }
 
     /**
@@ -55,14 +55,14 @@ class BlogsController extends Controller {
 
         if ($request->hasfile('imagenes')) {
             foreach ($request->file('imagenes') as $clave => $file) {
-                $imagenblog = new ImagenBlog(); //Se instancia un objeto de tipo ImagenBlog
-                $imagenblog->nombre = 'blog_' . $blog->id . '_' . time() . '.' . $clave . '.' . $file->getClientOriginalExtension(); //Se asigna el nombre de la imagen subida al atributo nombre del objeto ImagenBlog
-                $imagenblog->peso = filesize($file);
-                $imagenblog->ancho = getimagesize($file)[0];
-                $imagenblog->alto = getimagesize($file)[1];
-                $imagenblog->blog_id = $blog->id; //Se asigna el id del blog al atributo blog_id del objeto ImagenBlog
-                $imagenblog->save();  //Se guarda el objeto en la base de datos
-                Storage::disk('blogs')->put($imagenblog->nombre, \File::get($file));
+                $imagen = new Imagen(); //Se instancia un objeto de tipo Imagen
+                $imagen->nombre = 'blog_' . $blog->id . '_' . time() . '.' . $clave . '.' . $file->getClientOriginalExtension(); //Se asigna el nombre de la imagen subida al atributo nombre del objeto Imagen
+                $imagen->peso = filesize($file);
+                $imagen->ancho = getimagesize($file)[0];
+                $imagen->alto = getimagesize($file)[1];
+                $imagen->blog_id = $blog->id; //Se asigna el id del blog al atributo blog_id del objeto Imagen
+                $imagen->save();  //Se guarda el objeto en la base de datos
+                Storage::disk('blogs')->put($imagen->nombre, \File::get($file));
             }
         }
 
@@ -132,14 +132,14 @@ class BlogsController extends Controller {
              * Cargamos las imágenes que nos hayan facilitado
              */
             foreach ($request->file('imagenes') as $clave => $file) {
-                $imagenblog = new ImagenBlog(); //Se instancia un objeto de tipo ImagenBlog
-                $imagenblog->nombre = 'blog_' . $blog->id . '_' . time() . '.' . $clave . '.' . $file->getClientOriginalExtension(); //Se asigna el nombre de la imagen subida al atributo nombre del objeto ImagenBlog
-                $imagenblog->peso = filesize($file);
-                $imagenblog->ancho = getimagesize($file)[0];
-                $imagenblog->alto = getimagesize($file)[1];
-                $imagenblog->blog_id = $blog->id; //Se asigna el id del blog al atributo blog_id del objeto ImagenBlog
-                $imagenblog->save();  //Se guarda el objeto en la base de datos
-                Storage::disk('blogs')->put($imagenblog->nombre, \File::get($file));
+                $imagen = new Imagen(); //Se instancia un objeto de tipo Imagen
+                $imagen->nombre = 'blog_' . $blog->id . '_' . time() . '.' . $clave . '.' . $file->getClientOriginalExtension(); //Se asigna el nombre de la imagen subida al atributo nombre del objeto Imagen
+                $imagen->peso = filesize($file);
+                $imagen->ancho = getimagesize($file)[0];
+                $imagen->alto = getimagesize($file)[1];
+                $imagen->blog_id = $blog->id; //Se asigna el id del blog al atributo blog_id del objeto Imagen
+                $imagen->save();  //Se guarda el objeto en la base de datos
+                Storage::disk('blogs')->put($imagen->nombre, \File::get($file));
             }
         }
 
@@ -168,5 +168,4 @@ class BlogsController extends Controller {
         Session::flash('message', '¡El Blog ha sido eliminado!');
         return redirect()->route('blogs.index');
     }
-
 }

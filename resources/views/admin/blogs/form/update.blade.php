@@ -79,7 +79,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="exampleInputFile">Imágenes para carrusel</label>
-                                        <input name="imagenes[]" id="file-es" type="file" multiple>
+                                        <input name="imagenes[]" id="imagenes" type="file" multiple>
                                         <p class="help-block">Formatos permitidos: .JPEG y .JPG</p>
                                     </div>
                                 </div>
@@ -92,14 +92,18 @@
                                     </div>
                                 </div>
 
-                                <!-- Campo seleccion de publicación -->
+
+                                <!--Campo seleccion de estado de publicación -->
                                 <div class="col-md-6"> 
-                                    <label class="radio-inline">
-                                        <h4><input type="radio" name="publicado" value="1" id="publicado"><b style="color:#229954">Publicar ahora</b></h4>
-                                    </label>
-                                    <label class="radio-inline">
-                                        <h4> <input type="radio" name="publicado" value="0" id="nopublicado"><b style="color:#c0392b">No publicar ahora</b></h4>
-                                    </label>
+                                    <div>
+                                        <label>Estado</label>
+                                        <br>
+                                        @if($blog->publicado)
+                                        <input name="publicado-update" type="checkbox" checked data-toggle="toggle" data-width="130" data-onstyle="success" data-offstyle="danger" data-on="Publicado" data-off="No publicado">
+                                        @else
+                                        <input name="publicado-update" type="checkbox" data-toggle="toggle" data-width="130" data-onstyle="success" data-offstyle="danger" data-on="Publicado" data-off="No publicado">
+                                        @endif
+                                    </div>
                                 </div>
 
 
@@ -110,6 +114,7 @@
                         <!-- Footer con boton de registro -->
                     </div> 
                     <div class="box-footer">
+                        <a href="http://localhost:8000/admin/blogs" title="Volver a la pantalla anterior" class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i>Volver</a>
                         <button type="button" class="btn btn-warning pull-right" onclick="$('#boton_submit_update').click()">
                             <i class="fa fa-pencil"></i> &nbsp;Guardar cambios
                         </button>
@@ -127,34 +132,34 @@
 <script src="{{ asset('js/Blogs.js') }}"></script>
 <script>
 
-    //Con esa cosa seteamos el valor del select
-    $('#categoria_id').val('{{$blog->categoria_id}}').trigger("change");
-    $('#sinopsis').val('{{$blog->sinopsis}}');
-    $('#contenido').val('{{$blog->contenido}}');
+                            //Con esa cosa seteamos el valor del select
+                            $('#categoria_id').val('{{$blog->categoria_id}}').trigger("change");
+                            $('#sinopsis').val('{{$blog->sinopsis}}');
+                            $('#contenido').val('{{$blog->contenido}}');
 
-    if ('{{$blog->publicado}}' === '1') {
-        $('#publicado').prop('checked', true);
-    } else {
-        $('#no_publicado').prop('checked', true);
-    }
-    
-    //Imágenes
-    
-    var urls = '{{$urls}}';
-    var datos_imagenes = '{{$datos_imagenes}}';
-    var urls_parseados = JSON.parse(urls.replace(/&quot;/g,'"'));
-    var datos_parseados = JSON.parse(datos_imagenes.replace(/&quot;/g,'"'));
+                            if ('{{$blog->publicado}}' === '1') {
+                                $('#publicado').prop('checked', true);
+                            } else {
+                                $('#no_publicado').prop('checked', true);
+                            }
 
-    $("#imagenes").fileinput({
-        theme: 'fa',
-        language: 'es',
-        showUpload: false,
-        uploadUrl: '#',
-        allowedFileExtensions: ['jpg', 'jpeg'],
-        initialPreview: urls_parseados,
-        initialPreviewAsData: true,
-        initialPreviewConfig: datos_parseados,                        
-        overwriteInitial: false
-    });
+                            //Imágenes
+
+                            var urls = '{{$urls}}';
+                            var datos_imagenes = '{{$datos_imagenes}}';
+                            var urls_parseados = JSON.parse(urls.replace(/&quot;/g, '"'));
+                            var datos_parseados = JSON.parse(datos_imagenes.replace(/&quot;/g, '"'));
+
+                            $("#imagenes").fileinput({
+                                theme: 'fa',
+                                language: 'es',
+                                showUpload: false,
+                                uploadUrl: '#',
+                                allowedFileExtensions: ['jpg', 'jpeg'],
+                                initialPreview: urls_parseados,
+                                initialPreviewAsData: true,
+                                initialPreviewConfig: datos_parseados,
+                                overwriteInitial: false
+                            });
 </script>
 @endsection

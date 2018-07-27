@@ -77,7 +77,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="exampleInputFile">Imágenes para carrusel</label>
-                                        <input name="imagenes[]" class="input_archivo" type="file" multiple>
+                                        <input name="imagenes[]" id="imagenes" type="file" multiple class="input_archivo" >
                                         <p class="help-block">Formatos permitidos: .JPEG y .JPG</p>
                                     </div>
                                 </div>
@@ -90,6 +90,18 @@
                                     </div>
                                 </div>
                             </div>
+
+
+                            <!--Campo seleccion de estado de publicación -->
+                            <div class="col-md-6"> 
+                                <div>
+                                    <label>Estado</label>
+                                    <br>
+                                    <input name="publicado-create" type="checkbox" data-width="130" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Publicado" data-off="No publicado">
+                                </div>
+                            </div>
+
+
 
                             <!-- Campo seleccion de publicación -->
                             <div class="col-md-6"> 

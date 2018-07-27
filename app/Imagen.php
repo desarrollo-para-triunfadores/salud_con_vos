@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ImagenBlog extends Model
+class Imagen extends Model
 {
     
-    protected $table = "imagenesBlog";
+    protected $table = "imagenes";
     protected $fillable = ['blog_id', 'nombre', 'peso', 'ancho', 'alto'];
     
     public function blog()   

@@ -1,24 +1,24 @@
-@extends('admin.partes.index') @section('title') Blogs registrados @endsection 
+@extends('admin.partes.index') @section('title') Foros registrados @endsection 
 
 @section('content')
 
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content-header">
         <h1>
-            Blogs
+            Foros
             <small>Registros almacenados</small>
         </h1>
         <ol class="breadcrumb">
             <li>
                 <a href="#">
-                    <i class="fa fa-users"></i>Blogs</a>
+                    <i class="fa fa-users"></i>Foros</a>
             </li>
-            <li class="active">Blogs</li>
+            <li class="active">Hilos</li>
         </ol>
     </section>
 
 
-    <!-- Inicio Tabla de Blogs -->
+    <!-- Inicio Tabla de Foros -->
     <section class="content">
         <div class="row">
             <div class="col-md-12">
@@ -32,26 +32,26 @@
                                 <tr>                             
                                     <th class="text-center">Titulo</th>
                                     <th class="text-center">Autor</th>
+                                    <th class="text-center">Correo</th>
                                     <th class="text-center">Categoría</th>
+                                    <th class="text-center">Estado</th>
                                     <th class="text-center">Fecha de creación</th>
-                                    <th class="text-center">Cantidad de comentarios</th>
-                                    <th class="text-center">Publicado</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($blogs as $blog)
+                                @foreach($hilos_foros as $hilo_foro)
                                 <tr>                                    
-                                    <td class="text-center">{{$blog->titulo}}</td>
-                                    <td class="text-center">{{$blog->user->name}}</td>
-                                    <td class="text-center">{{$blog->categoria->nombre}}</td>
-                                    <td class="text-center">{{$blog->created_at->format('d/m/Y')}}</td>
-                                    <td class="text-center">{{$blog->comentarios->count()}}</td>
-                                    <td class="text-center">{{$blog->estado_publicado()}}</td>
+                                    <td class="text-center">{{$hilo_foro->titulo}}</td>
+                                    <td class="text-center">{{$hilo_foro->nombre}}</td>
+                                    <td class="text-center">{{$hilo_foro->correo}}</td>
+                                    <td class="text-center">{{$hilo_foro->categoria->nombre}}</td>
+                                    <td class="text-center">{{$hilo_foro->publicado}}</td>
+                                    <td class="text-center">{{$hilo_foro->created_at->format('d/m/Y')}}</td>
                                     <td class="text-center" width="100">
-                                        <a type="button" href="/admin/blogs/{{$blog->id}}" title="Mostrar" class="btn btn-social-icon btn-info btn-sm"><i class="fa fa-eye"></i></a>
-                                        <a type="button" href="/admin/blogs/{{$blog->id}}/edit" title="Editar" class="btn btn-social-icon btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
-                                        <a onclick="abrir_modal_borrar({{$blog->id}})" title="Eliminar este registro" class="btn btn-social-icon btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                        <a type="button" href="/admin/foros/{{$hilo_foro->id}}" title="Mostrar" class="btn btn-social-icon btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                        <a type="button" onclick="completar_campos({{$hilo_foro}})" title="Editar" class="btn btn-social-icon btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
+                                        <a onclick="abrir_modal_borrar({{$hilo_foro->id}})" title="Eliminar este registro" class="btn btn-social-icon btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr> 
                                 @endforeach
@@ -60,18 +60,19 @@
                                 <tr>                                  
                                     <th class="text-center">Titulo</th>
                                     <th class="text-center">Autor</th>
+                                    <th class="text-center">Correo</th>
                                     <th class="text-center">Categoría</th>
+                                    <th class="text-center">Estado</th>
                                     <th class="text-center">Fecha de creación</th>
-                                    <th class="text-center">Cantidad de comentarios</th>
-                                    <th class="text-center">Publicado</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
                             </tfoot>
                         </table>
                     </div> 
+
                     <div class="box-footer">
-                        <a title="Redactar un blog" type="button" href="/admin/blogs/create" class="btn btn-primary pull-right">
-                            <i class="fa fa-plus-circle"></i> &nbsp;Redactar Blog
+                        <a title="Crear un foro" type="button" id="boton-modal-crear"  class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-crear">
+                            <i class="fa fa-plus-circle"></i> &nbsp;Crear foro
                         </a>                          
                     </div>
                 </div>
@@ -81,11 +82,13 @@
 </div>
 
 
-@include('admin.blogs.form.delete')
+@include('admin.foros.form.update')
+@include('admin.foros.form.delete')
+@include('admin.foros.form.create')
 
 @endsection 
 
 @section('script')
-<script src="{{ asset('js/Blogs.js') }}"></script>
+<script src="{{ asset('js/Foros.js') }}"></script>
 
 @endsection

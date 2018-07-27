@@ -21,12 +21,12 @@ class Blog extends Model {
 
      public function comentarios()
     {
-        return $this->hasMany('App\ComentarioBlog');
+        return $this->hasMany('App\Comentario');
     }
     
      public function imagenes()
     {
-        return $this->hasMany('App\ImagenBlog');
+        return $this->hasMany('App\Imagen');
     }
     
      public function estado_publicado()
@@ -60,4 +60,20 @@ class Blog extends Model {
         return $urls;
     }
     
+    public function getPublicadoAttribute($value) {
+        if ($value) {
+            return 'Si';
+        } else {
+            return 'No';
+        }
+    }
+
+    public function setPublicadoAttribute($value) {
+        if ($value === 'true') {
+            $this->attributes['publicado'] = true;
+        } elseif ($value === 'false') {
+            $this->attributes['publicado'] = false;
+        }
+    }
+
 }

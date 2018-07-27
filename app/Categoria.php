@@ -12,5 +12,9 @@ class Categoria extends Model {
     public function blogs() {
         return $this->hasMany('App\Blog');
     }
+    
+    public function hilos_foros() {
+        return $this->hasMany('App\HiloForo');
+    }
 
 }

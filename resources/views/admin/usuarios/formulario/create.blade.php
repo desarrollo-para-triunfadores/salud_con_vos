@@ -42,7 +42,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">volver</button>
-                <button type="button" class="btn btn-primary" onclick="mandar('create');">registrar usuario</button>
+                <button type="button" class="btn btn-primary" onclick="mandar('create');">Registrar usuario</button>
             </div>
         </div>          
     </div>

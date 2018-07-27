@@ -30,11 +30,20 @@
                 <!-- Submenu Hilos -->
                 <ul id="side-hilos-ul" class="treeview-menu">
                     <li id="side-ele-hilos">
-                        <a href="#">
-                            <i class="fa fa-user-circle"></i>Hilos (en construcción)
+                        <a href="/admin/foros">
+                            <i class="fa fa-user-circle"></i>Hilos
                         </a>
                     </li>
                 </ul>
+                <!-- Submenu Hilos nuevos -->
+                <ul id="side-hilos-ul" class="treeview-menu">
+                    <li id="side-ele-hilos">
+                        <a href="/admin/indexNuevos">
+                            <i class="fa fa-user-circle"></i>A moderar (en construcción)
+                        </a>
+                    </li>
+                </ul>
+                
                 <!-- Fin Gestión de Foros -->
 
                 <!-- Inicio Gestión de Blogs -->

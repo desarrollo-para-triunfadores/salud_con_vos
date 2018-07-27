@@ -90,7 +90,8 @@
 <link type="text/css" rel="stylesheet" media="all" href="{{ asset('plantillas/AdminLTE/plugins/bootstrap-fileinput/css/fileinput.css') }}  ">
 <link type="text/css" rel="stylesheet" media="all" href="{{ asset('plantillas/AdminLTE/plugins/bootstrap-fileinput/themes/explorer-fa/theme.css') }}  ">
 
-
+    <!-- Estilo de switch -->
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
 <!--Estilos propios-->
 <link type="text/css" rel="stylesheet" href="{{ asset('css/estilos_propios.css') }}">

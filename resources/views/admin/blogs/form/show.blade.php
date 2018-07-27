@@ -70,11 +70,6 @@
                                     </div>
                                 </div>
 
-
-
-                                <!-- Campo imagenes -->
-
-
                                 <!-- Campo imagenes -->
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -135,21 +130,24 @@
 @section('script')
 <script src="{{ asset('js/Blogs.js') }}"></script>
 <script>
-    var urls = '{{$urls}}';
-    var datos_imagenes = '{{$datos_imagenes}}';
-    var urls_parseados = JSON.parse(urls.replace(/&quot;/g,'"'));
-    var datos_parseados = JSON.parse(datos_imagenes.replace(/&quot;/g,'"'));
-
-    $("#imagenes").fileinput({
-        theme: 'fa',
-        language: 'es',
-        showUpload: false,
-        uploadUrl: '#',
-        allowedFileExtensions: ['jpg', 'jpeg'],
-        initialPreview: urls_parseados,
-        initialPreviewAsData: true,
-        initialPreviewConfig: datos_parseados,                        
-        overwriteInitial: false
-    });
+                    var urls = '{{$urls}}';
+                    var datos_imagenes = '{{$datos_imagenes}}';
+                    var urls_parseados = JSON.parse(urls.replace(/&quot;/g, '"'));
+                    var datos_parseados = JSON.parse(datos_imagenes.replace(/&quot;/g, '"'));
+                    $("#imagenes").fileinput({
+                        fileActionSettings:{
+                            showRemove: false,
+                            showDownload: true,
+                            showUpload :false,
+                        },
+                        theme: 'fa',
+                        language: 'es',
+                        uploadUrl: '#',
+                        allowedFileExtensions: ['jpg', 'jpeg'],
+                        initialPreview: urls_parseados,
+                        initialPreviewAsData: true,
+                        initialPreviewConfig: datos_parseados,
+                        overwriteInitial: false
+                    });
 </script>
 @endsection

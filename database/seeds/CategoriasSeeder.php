@@ -3,7 +3,6 @@
 use Illuminate\Database\Seeder;
 use App\Categoria;
 
-
 class CategoriasSeeder extends Seeder
 {
     /**

@@ -4,7 +4,7 @@
     <section class="content-header">
         <h1>
             Usuarios
-            <small>registros almacenados</small>
+            <small>Registros almacenados</small>
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -46,7 +46,7 @@
                                 <label>&nbsp;Acciones</label>
                                 <button title="Registrar un usuario" type="button" id="boton-modal-crear" class="btn btn-primary btn-block" data-toggle="modal"
                                     data-target="#modal-crear">
-                                    <i class="fa fa-plus-circle"></i> &nbsp;registrar usuario
+                                    <i class="fa fa-plus-circle"></i> &nbsp;Registrar usuario
                                 </button>
                                 <br>
                             </div>
