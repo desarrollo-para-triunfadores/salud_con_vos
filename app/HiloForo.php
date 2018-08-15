@@ -19,9 +19,9 @@ class HiloForo extends Model {
 
     public function getPublicadoAttribute($value) {
         if ($value) {
-            return 'Si';
+            return 'Publicado';
         } else {
-            return 'No';
+            return 'No Publicado';
         }
     }
 

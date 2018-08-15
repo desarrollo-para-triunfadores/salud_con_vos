@@ -1,7 +1,6 @@
 @extends('admin.partes.index') @section('title') Foros registrados @endsection 
 
 @section('content')
-Imprimir esto primero
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content-header">
         <h1>
@@ -38,48 +37,64 @@ Imprimir esto primero
                         <!-- Inicio Tabla de Foros no moderados -->
                         <div class="row">
                             <div class="col-md-12">
-                                <br>
-                                                          
 
-                                        <table class="display example" cellspacing="0" width="100%">
-                                            <thead>
-                                                <tr>                             
-                                                    <th class="text-center">Titulo</th>
-                                                    <th class="text-center">Autor</th>
-                                                    <th class="text-center">Correo</th>
-                                                    <th class="text-center">Categoría</th>
-                                                    <th class="text-center">Fecha de creación</th>
-                                                    <th class="text-center">Acciones</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach($hilos_foros as $hilo_foro)
-                                                <tr>                                    
-                                                    <td class="text-center">{{$hilo_foro->titulo}}</td>
-                                                    <td class="text-center">{{$hilo_foro->nombre}}</td>
-                                                    <td class="text-center">{{$hilo_foro->correo}}</td>
-                                                    <td class="text-center">{{$hilo_foro->categoria->nombre}}</td>
-                                                    <td class="text-center">{{$hilo_foro->created_at->format('d/m/Y')}}</td>
-                                                    <td class="text-center" width="100">
-                                                        <a type="button" href="/admin/foros/{{$hilo_foro->id}}" title="Mostrar" class="btn btn-social-icon btn-info btn-sm"><i class="fa fa-eye"></i></a>
-                                                        <a type="button" onclick="completar_campos({{$hilo_foro}})" title="Editar" class="btn btn-social-icon btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
-                                                        <a onclick="abrir_modal_borrar({{$hilo_foro->id}})" title="Eliminar este registro" class="btn btn-social-icon btn-sm btn-danger"><i class="fa fa-trash"></i></a>
-                                                    </td>
-                                                </tr> 
-                                                @endforeach
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>                                  
-                                                    <th class="text-center">Titulo</th>
-                                                    <th class="text-center">Autor</th>
-                                                    <th class="text-center">Correo</th>
-                                                    <th class="text-center">Categoría</th>
-                                                    <th class="text-center">Fecha de creación</th>
-                                                    <th class="text-center">Acciones</th>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                    
+                                <!-- Select -->
+                                <div class="form-group pull-right" style="margin: 10px 0 10px 0">
+                                    <select id="select-hilos" onchange="seteo_global('hilos_foros', $(this).prop('value'))">
+                                        <option value="checked">Seleccionar todo</option>
+                                        <option value="unchecked">Deseleccionar todo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group pull-right" style="margin: 10px 0 10px 0">
+                                    <label class="col-sm-2 control-label">Selección:</label>
+                                </div>
+
+                                <table class="display example" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>                             
+                                            <th class="text-center">Titulo</th>
+                                            <th class="text-center">Autor</th>
+                                            <th class="text-center">Correo</th>
+                                            <th class="text-center">Categoría</th>
+                                            <th class="text-center">Fecha de creación</th>
+                                            <th class="text-center">Moderar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($hilos_foros as $hilo_foro)
+                                        <tr>                                    
+                                            <td class="text-center">{{$hilo_foro->titulo}}</td>
+                                            <td class="text-center">{{$hilo_foro->nombre}}</td>
+                                            <td class="text-center">{{$hilo_foro->correo}}</td>
+                                            <td class="text-center">{{$hilo_foro->categoria->nombre}}</td>
+                                            <td class="text-center">{{$hilo_foro->created_at->format('d/m/Y')}}</td>
+                                            <td class="text-center" width="100">
+                                                <input type="checkbox" class="filled-in checkbox-hilos"  id_elemento="{{$hilo_foro->id}}" onchange="actualizar_array({{$hilo_foro->id}}, 'hilo')"/>
+                                            </td>
+                                        </tr> 
+                                        @endforeach
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>                                  
+                                            <th class="text-center">Titulo</th>
+                                            <th class="text-center">Autor</th>
+                                            <th class="text-center">Correo</th>
+                                            <th class="text-center">Categoría</th>
+                                            <th class="text-center">Fecha de creación</th>
+                                            <th class="text-center">Moderar</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <div class="box-footer">
+                                    <row class="col-md-3 pull-right">
+                                        <a title="Moderar hilo" type="button" onclick="moderar('hilos')" id="boton-moderar-hilo"  class="btn btn-primary pull-left">
+                                            <i class="fa fa-check"></i> &nbsp;Moderar seleccionados
+                                        </a>
+                                        <a title="Eliminar hilo" type="button" onclick="eliminar()" id="boton-eliminar-hilo"  class="btn btn-danger pull-right">
+                                            <i class="fa fa-trash"></i> &nbsp;Eliminar seleccionados
+                                        </a>
+                                    </row>
+                                </div>
                             </div>                                               
                         </div>
                     </div>
@@ -89,59 +104,72 @@ Imprimir esto primero
                         <!-- Inicio Tabla de comentarios no moderados -->
                         <div class="row">
                             <div class="col-md-12">
-                                <br>
-                                                           
 
-                                        <table class="display example" cellspacing="0" width="100%">
-                                            <thead>
-                                                <tr>                             
-                                                    <th class="text-center">Autor</th>
-                                                    <th class="text-center">Correo</th>
-                                                    <th class="text-center">Contenido</th>
-                                                    <th class="text-center">Blog</th>
-                                                    <th class="text-center">Foro</th>
-                                                    <th class="text-center">Fecha de creación</th>
-                                                    <th class="text-center">Acciones</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach($comentarios as $comentario)
-                                                <tr>                                    
-                                                    <td class="text-center">{{$comentario->nombre}}</td>
-                                                    <td class="text-center">{{$comentario->correo}}</td>
-                                                    <td class="text-center">{{$comentario->contenido}}</td>
-                                                    @if(!is_null($comentario->hilo_foro))
-                                                    <td class="text-center">{{$comentario->hilo_foro->titulo}}</td>
-                                                    @else
-                                                    <td class="text-center">Ninguno</td>
-                                                    @endif
-                                                    @if(!is_null($comentario->blog))
-                                                    <td class="text-center">{{$comentario->blog->titulo}}</td>
-                                                    @else
-                                                    <td class="text-center">Ninguno</td>
-                                                    @endif
-                                                    <td class="text-center">{{$comentario->created_at->format('d/m/Y')}}</td>
-                                                    <td class="text-center" width="100">
-                                                        <a type="button" href="/admin/foros/{{$comentario->id}}" title="Mostrar" class="btn btn-social-icon btn-info btn-sm"><i class="fa fa-eye"></i></a>
-                                                        <a type="button" onclick="completar_campos({{$comentario}})" title="Editar" class="btn btn-social-icon btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
-                                                        <a onclick="abrir_modal_borrar({{$comentario->id}})" title="Eliminar este registro" class="btn btn-social-icon btn-sm btn-danger"><i class="fa fa-trash"></i></a>
-                                                    </td>
-                                                </tr> 
-                                                @endforeach
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>                                  
-                                                    <th class="text-center">Autor</th>
-                                                    <th class="text-center">Correo</th>
-                                                    <th class="text-center">Contenido</th>
-                                                    <th class="text-center">Blog</th>
-                                                    <th class="text-center">Foro</th>
-                                                    <th class="text-center">Fecha de creación</th>
-                                                    <th class="text-center">Acciones</th>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                    
+                                <!-- Select -->
+                                <div class="form-group pull-right" style="margin: 10px 0 10px 0">
+                                    <select id="select-comentarios" onchange="seteo_global('comentario', $(this).prop('value'))">
+                                        <option value="checked">Seleccionar todo</option>
+                                        <option value="unchecked">Deseleccionar todo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group pull-right" style="margin: 10px 0 10px 0">
+                                    <label class="col-sm-2 control-label">Selección:</label>
+                                </div>
+
+                                <table class="display example" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr class="active">                             
+                                            <th class="text-center">Autor</th>
+                                            <th class="text-center">Correo</th>
+                                            <th class="text-center">Contenido</th>
+                                            <th class="text-center">Tipo (Foro/Blog)</th>
+                                            <th class="text-center">Nombre</th>
+                                            <th class="text-center">Fecha de creación</th>
+                                            <th class="text-center">Moderar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($comentarios as $comentario)
+                                        <tr>                                    
+                                            <td class="text-center">{{$comentario->nombre}}</td>
+                                            <td class="text-center">{{$comentario->correo}}</td>
+                                            <td class="text-center">{{$comentario->contenido}}</td>
+                                            @if(!is_null($comentario->hilo_foro))
+                                            <td class="text-center">Foro</td>
+                                            <td class="text-center">{{$comentario->hilo_foro->titulo}}</td>
+                                            @else
+                                            <td class="text-center">Blog</td>
+                                            <td class="text-center">{{$comentario->blog->titulo}}</td>
+                                            @endif
+                                            <td class="text-center">{{$comentario->created_at->format('d/m/Y')}}</td>
+                                            <td class="text-center" width="100">
+                                                <input type="checkbox" class="filled-in checkbox-comentarios" id_elemento="{{$comentario->id}}" onchange="actualizar_array({{$comentario->id}},'comentario')"/>
+                                            </td>
+                                        </tr> 
+                                        @endforeach
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>                                  
+                                            <th class="text-center">Autor</th>
+                                            <th class="text-center">Correo</th>
+                                            <th class="text-center">Contenido</th>
+                                            <th class="text-center">Tipo (Foro/Blog)</th>
+                                            <th class="text-center">Nombre</th>
+                                            <th class="text-center">Fecha de creación</th>
+                                            <th class="text-center">Moderar</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <div class="box-footer">
+                                    <row class="col-md-3 pull-right">
+                                        <a title="Moderar comentario" type="button" onclick="moderar('comentarios')" id="boton-moderar-comentario"  class="btn btn-primary pull-left">
+                                            <i class="fa fa-check"></i> &nbsp;Moderar seleccionados
+                                        </a>
+                                        <a title="Eliminar comentario" type="button" id="boton-eliminar-comentario"  class="btn btn-danger pull-right">
+                                            <i class="fa fa-trash"></i> &nbsp;Eliminar seleccionados
+                                        </a>
+                                    </row>
+                                </div>
                             </div>                                               
                         </div>
                     </div>
@@ -158,5 +186,4 @@ Imprimir esto primero
 
 @section('script')
 <script src="{{ asset('js/Foros.js') }}"></script>
-
 @endsection

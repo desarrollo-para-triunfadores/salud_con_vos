@@ -39,7 +39,7 @@
                 <ul id="side-hilos-ul" class="treeview-menu">
                     <li id="side-ele-hilos">
                         <a href="/admin/indexNuevos">
-                            <i class="fa fa-user-circle"></i>A moderar (en construcción)
+                            <i class="fa fa-user-circle"></i>A moderar
                         </a>
                     </li>
                 </ul>

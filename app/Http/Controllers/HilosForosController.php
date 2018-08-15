@@ -76,7 +76,6 @@ class HilosForosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        dd('entro en el show, esta es la variable id: ', $id);
         if (is_null($id)) {
             $categorias = Categoria::all();
             $hilos_foros = HiloForo::all()->whereIn('moderado', true);
@@ -111,9 +110,7 @@ class HilosForosController extends Controller {
      */
     public function update(Request $request, $id) {
         $hilo_foro = HiloForo::find($id);
-
         $hilo_foro->fill($request->all());
-
         $hilo_foro->save();
         Session::flash('message', '¡Se ha actualizado la información del hilo!');
         return redirect()->route('foros.index');
@@ -140,6 +137,15 @@ class HilosForosController extends Controller {
                         ->with('hilos_foros', $hilos_foros)
                         ->with('categorias', $categorias)
                         ->with('comentarios', $comentarios);
+    }
+
+    public function moderar_masivamente(Request $request) {
+        foreach ($request->array as $hilo) {
+            $hilo_foro = HiloForo::find($hilo);
+            $hilo_foro->moderado = 'true';
+            $hilo_foro->save();
+        }
+        return response()->json('Se moderaron los hilos con éxito');
     }
 
 }

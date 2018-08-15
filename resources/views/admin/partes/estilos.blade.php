@@ -96,6 +96,8 @@
 <!--Estilos propios-->
 <link type="text/css" rel="stylesheet" href="{{ asset('css/estilos_propios.css') }}">
 
+
+
 <style>
     #miCameraOnline video {
         width: 320px;
