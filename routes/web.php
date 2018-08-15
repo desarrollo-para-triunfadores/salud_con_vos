@@ -11,8 +11,23 @@
   |
  */
 Route::get('/', function () {
-    return view('welcome');
+    return view('sitio_publico.inicio.main');
 });
+
+Route::get('/contacto', function () {
+    return view('sitio_publico.contacto.main');
+});
+
+Route::get('/quienes_somos', function () {
+    return view('sitio_publico.quienes_somos.main');
+});
+
+Route::resource('front_foros', 'FrontForoController');
+Route::resource('front_blogs', 'FrontBlogsController');
+
+
+
+
 
 Auth::routes();
 
