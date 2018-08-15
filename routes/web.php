@@ -41,4 +41,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         return view('admin.configuracion.main');
     });
     Route::get('/indexNuevos', 'HilosForosController@indexNuevos')->name('HilosNuevos');
+    Route::get('/moderar_masivamente_hilos', 'HilosForosController@moderar_masivamente');
+    Route::get('/moderar_masivamente_comentarios', 'ComentariosController@moderar_masivamente');
 });

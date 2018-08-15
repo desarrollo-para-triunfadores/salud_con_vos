@@ -14,13 +14,15 @@ function completar_campos(hilo_foro) {
 
     //Seteo el valor del boton deslizante segun el estado de publicacion, 
     //en este caso el atributo del foro es Si o No
-    if (hilo_foro.publicado === 'true') {
+    if (hilo_foro.publicado === 'Publicado') {
         $('#publicado-update').bootstrapToggle('on');
     }
     else {
         $('#publicado-update').bootstrapToggle('off');
-    };
-    
+    }
+    ;
+
+//attr sirve para setear y obtener un valor de un atributo.
     $('#modal-update').modal('show');
 }
 
@@ -30,7 +32,7 @@ function abrir_modal_borrar(id) {
     $('#form-delete').attr('action', '/admin/foros/' + id);
     $('#modal-delete').modal('show');
 }
- //El numeral es para el id y el punto para la clase.
+//El numeral es para el id y el punto para la clase.
 
 
 //Datatable
@@ -74,16 +76,88 @@ function actualizar_estado(valor, comentario_id) {
 
 }
 function actualizar_input_publicado(valor) {
-    console.log(valor);
-   if (valor) {
+    if (valor) {
         $('#publicado-update-oculto').attr('value', 'true');
     }
     else {
         $('#publicado-update-oculto').attr('value', 'false');
-    };
-    console.log($('#publicado-update-oculto').attr('value'));
-    
-    
-    
-    
+    }
+    ;
+}
+
+var comentarios = [];
+var hilos_foros = [];
+
+function actualizar_array(id, tipo) {
+    if (tipo === "comentario") {
+        if (comentarios.indexOf(id) >= 0) {
+            comentarios.splice(comentarios.indexOf(id), 1);
+        } else {
+            comentarios.push(id);
+        }
+    } else {
+        if (hilos_foros.indexOf(id) >= 0) {
+            hilos_foros.splice(hilos_foros.indexOf(id), 1);
+        } else {
+            hilos_foros.push(id);
+        }
+    }
+}
+
+function seteo_global(tipo, accion) {
+
+    if (tipo === 'comentario') {
+        comentarios = [];
+        if (accion === "checked") {
+            $(".checkbox-comentarios").each(function (index) {
+                actualizar_array($(this).attr("id_elemento"), "comentario");
+            });
+            $(".checkbox-comentarios").prop("checked", true);
+        } else {
+            $(".checkbox-comentarios").prop("checked", false);
+        }
+
+    } else {
+        hilos_foros = [];
+        if (accion === "checked") {
+            $(".checkbox-hilos").each(function (index) {
+                actualizar_array($(this).attr("id_elemento"), "hilo");
+            });
+            $(".checkbox-hilos").prop("checked", true);
+        } else {
+            $(".checkbox-hilos").prop("checked", false);
+        }
+    }
+
+
+}
+
+
+function moderar(tipo) {
+    if (tipo === 'hilos') {
+        console.log(hilos_foros);
+        $.ajax({
+            url: '/admin/moderar_masivamente_hilos', //direccion del metodo del controller al que le pedimos los datos (ruta del sistema de ruteo de laravel)
+            data: {
+                array: hilos_foros, 
+            },
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) { //Succes si va todo bien, failed y si nunca mas te responde, data seria como el request hacia nosotros desde el controller
+                location.href = "/admin/indexNuevos";
+            }
+        });
+    } else if (tipo === 'comentarios') {
+        $.ajax({
+            url: '/admin/moderar_masivamente_comentarios', //direccion del metodo del controller al que le pedimos los datos (ruta del sistema de ruteo de laravel)
+            data: {
+                array: comentarios, 
+            },
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) { //Succes si va todo bien, failed y si nunca mas te responde, data seria como el request hacia nosotros desde el controller
+                //location.href = "/admin/indexNuevos";
+            }
+        });
+    }
 }

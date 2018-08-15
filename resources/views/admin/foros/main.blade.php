@@ -27,7 +27,7 @@
 
                     <div class="box-body ">                            
                         @include('admin.partes.msj_acciones')
-                        <table id="example" class="display" cellspacing="0" width="100%">
+                        <table class="example" cellspacing="0" width="100%">
                             <thead>
                                 <tr>                             
                                     <th class="text-center">Titulo</th>

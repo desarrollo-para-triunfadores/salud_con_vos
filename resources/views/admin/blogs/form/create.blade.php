@@ -101,19 +101,6 @@
                                 </div>
                             </div>
 
-
-
-                            <!-- Campo seleccion de publicación -->
-                            <div class="col-md-6"> 
-                                <label class="radio-inline">
-                                    <h4><input type="radio" name="publicado" value="1" id="publicado"><b style="color:#229954">Publicar ahora</b></h4>
-                                </label>
-                                <label class="radio-inline">
-                                    <h4> <input type="radio" name="publicado" value="0" id="nopublicado"><b style="color:#c0392b">No publicar ahora</b></h4>
-                                </label>
-                            </div>
-
-
                             <button id="boton_submit_create" type="submit" class="btn btn-primary hide"></button>
                         </form>
 

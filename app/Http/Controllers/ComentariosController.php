@@ -84,7 +84,6 @@ class ComentariosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-//        dd('hola');
        $comentario = Comentario::find($id);
        $comentario->fill($request->all());
        $comentario->save();
@@ -103,6 +102,15 @@ class ComentariosController extends Controller {
     public function destroy($id) {
         $comentario = Comentario::find($id);
         $comentario->delete();
+    }
+    
+    public function moderar_masivamente(Request $request) {
+        foreach ($request->array as $comentario) {
+            $comentario_a = Comentario::find($comentario);
+            $comentario_a->moderado = 'true';
+            $comentario_a->save();
+        }
+        return response()->json('Se moderaron los comentarios con éxito');
     }
 
 }
