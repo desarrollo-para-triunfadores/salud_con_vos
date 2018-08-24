@@ -25,12 +25,6 @@
 <script type="text/javascript" src="{{ asset('plantillas/simplicity/wp-content/plugins/LayerSlider/js/jquerytransite2dc.js?ver=0.9.9') }}"></script>
 
 
-<script type='text/javascript'>
-    /* <![CDATA[ */
-    var qodeLike = {"ajaxurl": "http:\/\/demo.qodeinteractive.com\/simplicity\/wp-admin\/admin-ajax.php"};
-    /* ]]> */
-</script>
-
 <script type='text/javascript' src="{{ asset('plantillas/simplicity/wp-content/themes/simplicity/js/qode-like5152.js?ver=1.0') }}"></script>
 <script type='text/javascript' src="{{ asset('plantillas/simplicity/wp-content/themes/simplicity/js/plugins039c.js?ver=3.6') }}"></script>
 <script type='text/javascript' src="{{ asset('plantillas/simplicity/wp-content/themes/simplicity/js/default_dynamic039c.php?ver=3.6') }}"></script>
@@ -41,7 +35,8 @@
 <script type='text/javascript' src="{{ asset('plantillas/simplicity/wp-content/themes/simplicity/js/toolbar039c.js?ver=3.6') }}"></script>
 <script type='text/javascript' src="{{ asset('plantillas/simplicity/wp-content/themes/simplicity/js/jquery.stylish-select.min039c.js?ver=3.6') }}"></script>
 
+<script type='text/javascript' src="{{ asset('plantillas/simplicity/assets/js/leaflet.js') }}"></script>
+<script type='text/javascript' src="{{ asset('plantillas/simplicity/assets/js/sweetalert2.min.js') }}"></script>
 
+<script src="{{ asset('js/front/formulario_envio.js') }}"></script>
 
-
-<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>	  

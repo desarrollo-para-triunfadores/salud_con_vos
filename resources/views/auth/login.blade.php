@@ -2,17 +2,17 @@
 <html><head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Inmobiliaria NUBE | Ingresar</title>
+        <title>Salud Con Vos | Ingresar</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-<!-- Bootstrap 3.3.6 -->
-<link type="text/css" rel="stylesheet" href="{{ asset('plantillas/AdminLTE/bootstrap/css/bootstrap.min.css') }}  ">
+        <!-- Bootstrap 3.3.6 -->
+        <link type="text/css" rel="stylesheet" href="{{ asset('plantillas/AdminLTE/bootstrap/css/bootstrap.min.css') }}  ">
         <!-- Font Awesome -->
         <link href="{{ asset('plantillas/AdminLTE/plugins/fontawesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-<!-- Theme style -->
-<link type="text/css" rel="stylesheet" href="{{ asset('plantillas/AdminLTE/dist/css/AdminLTE.min.css') }}  ">
+        <!-- Theme style -->
+        <link type="text/css" rel="stylesheet" href="{{ asset('plantillas/AdminLTE/dist/css/AdminLTE.min.css') }}  ">
         <!-- iCheck -->
         <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
 
@@ -27,8 +27,8 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                 <a href="">Salud Con<b>Vos</b></a><br>
-                   <small>panel de administración</small>
+                <a href="">Salud Con<b> Vos</b></a><br>
+                <small>panel de administración</small>
             </div>         
             <!-- /.login-logo -->
             <div class="login-box-body">
@@ -84,13 +84,13 @@
         <script src="{{ asset('plantillas/AdminLTE/plugins/iCheck/icheck.min.js') }}"></script>      
 
         <script>
-            $(function () {
-                $('input').iCheck({
-                    checkboxClass: 'icheckbox_square-blue',
-                    radioClass: 'iradio_square-blue',
-                    increaseArea: '20%' // optional
-                });
-            });
+$(function () {
+    $('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' // optional
+    });
+});
         </script>
 
 

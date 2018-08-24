@@ -8,58 +8,55 @@ class Blog extends Model {
 
     protected $table = "blogs";
     protected $fillable = ['sinopsis', 'titulo', 'subtitulo', 'linkvideo', 'contenido', 'publicado', 'categoria_id', 'user_id'];
-    
-      public function categoria()   
-    {
+
+    public function categoria() {
         return $this->belongsTo('App\Categoria');
     }
-    
-      public function user()   
-    {
+
+    public function user() {
         return $this->belongsTo('App\User');
     }
 
-     public function comentarios()
-    {
+    public function comentarios() {
         return $this->hasMany('App\Comentario');
     }
-    
-     public function imagenes()
-    {
+
+    public function imagenes() {
         return $this->hasMany('App\Imagen');
     }
-    
-     public function estado_publicado()
-    {
-         $estado = "No publicado";
-         if ($this->publicado) {
-             $estado = "Publicado";
-         }
+
+    public function imagen() {
+        return $this->imagenes->first();
+    }
+
+    public function estado_publicado() {
+        $estado = "No publicado";
+        if ($this->publicado) {
+            $estado = "Publicado";
+        }
         return $estado;
     }
-    
-     public function datos_imagenes()
-    {
-         $datos = [];
-         foreach ($this->imagenes as $imagen){
-             $url = 'http://'.$_SERVER["HTTP_HOST"].'/imagenes/blogs/'.$imagen->nombre;
-             $dato = ['caption'=>$imagen->nombre, 'downloadUrl'=>$url, 'size'=>$imagen->peso]; 
-             array_push($datos, $dato);
-         }
+
+    public function datos_imagenes() {
+        $datos = [];
+        foreach ($this->imagenes as $imagen) {
+            $url = 'http://' . $_SERVER["HTTP_HOST"] . '/imagenes/blogs/' . $imagen->nombre;
+            $dato = ['caption' => $imagen->nombre, 'downloadUrl' => $url, 'size' => $imagen->peso];
+            array_push($datos, $dato);
+        }
         return $datos;
     }
-    
-     public function url_imagenes()
-    {
-         $urls = [];
-         foreach ($this->imagenes as $imagen){
-             $urlimagen = 'http://'.$_SERVER["HTTP_HOST"].'/imagenes/blogs/'.$imagen->nombre;
-             array_push($urls, $urlimagen);
-         }
-         
+
+    public function url_imagenes() {
+        $urls = [];
+        foreach ($this->imagenes as $imagen) {
+            $urlimagen = 'http://' . $_SERVER["HTTP_HOST"] . '/imagenes/blogs/' . $imagen->nombre;
+            array_push($urls, $urlimagen);
+        }
+
         return $urls;
     }
-    
+
     public function getPublicadoAttribute($value) {
         if ($value) {
             return 'Si';
@@ -74,6 +71,10 @@ class Blog extends Model {
         } elseif ($value === 'false') {
             $this->attributes['publicado'] = false;
         }
+    }
+    
+       public function comentarios_publicados() {
+        return $this->comentarios->where("publicado", "1");
     }
 
 }

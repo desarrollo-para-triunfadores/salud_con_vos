@@ -28,7 +28,11 @@ $(function () {
   });
 
   //bootstrap WYSIHTML5 - text editor
-  $(".textarea").wysihtml5();
+  $(".textarea").wysihtml5({
+
+	image: false//Button to insert an image. Default true,
+	
+});
 
   $('.daterange').daterangepicker({
     ranges: {

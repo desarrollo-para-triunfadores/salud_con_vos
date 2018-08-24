@@ -1,5 +1,5 @@
 <header class=" bg-black-active main-header">
-    <a href="index2.html" class="logo">
+    <a href="/" class="logo">
         <span class="logo-mini">SC<b>V</b></span>
         <span class="logo-lg">Salud Con <b>Vos</b></span>
     </a>

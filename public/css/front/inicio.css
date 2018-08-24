@@ -14,9 +14,8 @@ and open the template in the editor.
     margin: 0px 0;
 }
 
-#section-lista-blogs {
+.fondo-articulo-blog  {
     background-image:url("../../plantillas/simplicity/assets/icons/parallax_image3.png");   
-    margin-top: -35px;
 }
 
 #section-lista-blogs .container_inner{

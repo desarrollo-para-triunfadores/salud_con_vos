@@ -9,14 +9,12 @@ and open the template in the editor.
 */
 
 
-#section-lista-blogs {
+.fondo-blogs {
     background-image:url("../../plantillas/simplicity/assets/icons/home_first_slide.png");  
-    
-    margin-top: -35px;
 }
 
 #section-lista-blogs .container_inner{
-       width: inherit;
+    width: inherit;
 }
 
 
@@ -35,5 +33,10 @@ and open the template in the editor.
 
 
 #section-lista-blogs .tagcloud {
-    margin: 30px 0;
+    margin-bottom: 30px;
+}
+
+.full_width .parallax_content {
+    width: 80%;
+    margin: 0 auto;
 }

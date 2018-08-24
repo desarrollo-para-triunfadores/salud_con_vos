@@ -1,22 +1,23 @@
-<div id="panel" style="margin-left: 0px;" class="opened-panel">
+<div id="panel" style="margin-left: 0px;" >
     <div id="panel-admin">
-        <div class="comment_form_float">
+        <div class="comment_form_float"  style=" overflow: auto;">
             <div class="contact_form">
                 <h4 class="comentario">¡Pregunta lo que quieras!</h4>
-                <form id="contact-form" method="post" action="">
+                <form id="nuevo-hilo" action="/front_foros" method="POST" autocomplete="off">
+                    <input type="hidden" value="foro">    
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">  
                     <div class="panel-admin-box">
-                        <select id="tootlbar_ajax" style="display: none;">
+                        <select name="categoria_id" id="categoria_foro" style="display: none;">
                             <option value="">Categoría</option>
-                            <option value="no">No ajax, regular loading</option>
-                            <option value="updown">Page up/down</option>
-                            <option value="fade">Page fade in/fade out</option>
-                            <option value="updown_fade">Page up/down (in) / fade (out)</option>
-                            <option value="leftright">Page left/right</option>
+                            @foreach($categorias as $categoria)
+                            <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                            @endforeach                          
                         </select>
                     </div>
-                    <input style="color: #ffffff" type="text" class="requiredField placeholder" name="fname" id="fname" value="" placeholder="Tú nombre *">
-                    <input style="color: #ffffff" type="text" class="requiredField email placeholder" name="email" id="email" value="" placeholder="Email *">
-                    <textarea style="color: #ffffff" name="message" id="message" rows="10" placeholder="Mensaje" class="placeholder"></textarea>
+                    <input style="color: #ffffff" type="text" id="nombre_foro" name="nombre" placeholder="Tú nombre *">
+                    <input style="color: #ffffff" type="text" id="correo_foro" name="correo"  placeholder="Email *">
+                    <input style="color: #ffffff" type="text" id="titulo_foro" name="titulo"   placeholder="Título *">
+                    <textarea style="color: #ffffff" name="contenido" id="contenido_foro" rows="10" placeholder="Mensaje *" class="placeholder"></textarea>
                     <span class="submit_button" style="margin-left: 35px;">
                         <input class="button small" style="color: #ffffff; background-color: #3498db;" type="submit" value="Enviar">
                     </span>

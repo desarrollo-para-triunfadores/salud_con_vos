@@ -9,9 +9,8 @@ and open the template in the editor.
 */
 
 
-#section-quienes-somos {
+.fondo {
     background-image:url("../../plantillas/simplicity/assets/icons/parallaxbackground.jpg");      
-    margin-top: -35px;
 }
 
 #section-lista-blogs .container_inner{

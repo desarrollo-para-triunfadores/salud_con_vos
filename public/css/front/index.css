@@ -13,6 +13,9 @@ and open the template in the editor.
     font-size: 100%
 }
 
+.fa-heart:hover {
+    color:#e74c3c;
+}
 
 nav.main_menu ul li:hover a, nav.main_menu ul li.active a {
     color:black;
@@ -60,6 +63,9 @@ div.comment_form_float {
     line-height: 22px !important;
 }
 
+#panel {
+    top:5%;
+}
 
 .comment_form_float input[type='text'], .comment_form_float textarea {
     background-color: #506482;
@@ -114,7 +120,7 @@ div.comment_form_float {
     margin-bottom: 80px;
 }
 
-.parallax_content h2 {
+.parallax_content h2, .h2-inicio {
     margin-top:70px;
     margin-bottom:30px;
     text-align: center;    
@@ -129,4 +135,58 @@ div.comment_form_float {
     background-repeat: no-repeat;
     background-size: cover;
     justify-content: center;
+}
+
+.contact_form {
+    margin-bottom: 10%;
+}
+
+.title {
+    text-align: center;
+    padding: 45px 0;
+    border-bottom: 1px solid white;
+    opacity: 0;
+}
+
+span.subtitle {
+    color: white;
+}
+
+.widget.widget_search form {
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 0px; 
+}
+
+
+
+.open {
+    background-image: url(../../plantillas/simplicity/wp-content/themes/simplicity/css/img/options_close.png);
+    background-size: 70% 55%;
+    background-position: center 9px;
+    background-repeat: no-repeat;
+    background-color: #3a485c;
+    box-shadow: 0 -5px rgba(0, 0, 0, 0.4) inset;
+    -moz-box-shadow: 0 -5px rgba(0, 0, 0, 0.4) inset;
+    -webkit-box-shadow: 0 -5px rgba(0, 0, 0, 0.4) inset;
+    -o-box-shadow: 0 -5px rgba(0, 0, 0, 0.4) inset;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -o-border-radius: 6px;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    transition: all .4s ease;
+    display: block;
+    width: 45px;
+    height: 45px;
+    float: right;
+    margin: 0px 0px 0px 4px;
+    z-index: 1000;
+    position: relative;
+}
+
+
+.margin-aclaracion{
+    margin-bottom: 2.5%;
 }

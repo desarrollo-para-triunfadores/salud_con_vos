@@ -1,0 +1,114 @@
+.fondo-articulo-blog {
+    background-image:url("../../plantillas/simplicity/assets/icons/parallaxbackground.jpg");  
+}
+
+#section-articulo-blog {
+    margin-bottom: 20px;
+}
+
+
+.two_columns_75_25 {
+    width: 100%;
+}
+
+.two_columns_75_25>.column1 {
+    width: 70%;
+    margin-right: 5%;
+    float: left;
+}
+
+#section-articulo-blog .container_inner {
+     width: 100% !important; 
+}
+
+.blog_holder_v2 .post_content_quote h4, .blog_holder .post_content_quote h4 {
+    background-image: url("");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    min-height: 18px;
+    padding: 0px;
+}
+
+.title {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid #f6f8fc;
+    opacity: 0;
+}
+
+aside .widget h5 {
+    margin: 0 0 15px 0;
+}
+
+#section-articulo-blog .tagcloud {
+    margin: 0px 0;
+}
+
+aside .widget {
+    margin-bottom: 40px;
+}
+
+
+#section-articulo-blog div.comment_form {
+     padding: 0px; 
+    border-top: 1px solid white;
+    margin-bottom: 30px;
+}
+
+#section-articulo-blog .comentario {
+   
+    color: white;
+    font-size: 180%;
+    text-align: left; 
+    font-weight: 400;
+}
+
+#section-articulo-blog p {
+    font-size: 15px;
+color: white;
+}
+
+.full_width .parallax_content {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+.comment_holder ul.comment-list {
+    border-top: 1px solid white;
+}
+
+
+.blog_holder_v2.blog_single_holder article .post_content_holder {
+    padding: 0 0 40px 0;
+}
+
+
+
+
+
+/*Hilo Foro*/
+
+.comment_holder ul.comment-list {
+    border-top: transparent;
+}
+
+.blog_holder_v2.blog_single_holder article.quote .info {
+     padding: 0; 
+}
+
+.blog_holder_v2 article .post_content_holder {
+
+    padding: 0;
+  }
+  
+
+  .blog_holder_v2.blog_single_holder article .post_content_holder {
+     padding: 0; 
+}
+
+.comment_holder .comment .info {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 10px 0;
+}

@@ -8,14 +8,19 @@ and open the template in the editor.
     Author     : hacho
 */
 
-#section-hilos {
-    background-image:url("../../plantillas/simplicity/assets/icons/parallax_image3.png");   
+.fondo {
+    background-image:url("../../plantillas/simplicity/assets/icons/parallax_image3.png");  
+}
+
+
+
+#section-hilos {    
     margin-top: -35px;
     margin-bottom: 20px;
 }
 
 #section-hilos .container_inner{
-       width: inherit;
+    width: inherit;
 }
 
 .blog_holder_v3 article {
@@ -68,4 +73,19 @@ aside .widget {
 .full_width .parallax_content {
     width: 80%;
     margin: 0 auto;
+}
+
+.two_columns_75_25>.column2 {
+    width: 25%;
+    float: left;
+    margin-bottom: 3%;
+}
+
+
+.blog_holder_v2 .post_content_quote h4, .blog_holder .post_content_quote h4 {
+    background-image: url("");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    min-height: 18px;
+    padding: 0px;
 }

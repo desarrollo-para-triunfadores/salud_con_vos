@@ -120,7 +120,6 @@ var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 var map = L.map('map').setView([-27.330953, -55.054313], 9).addLayer(osm);
 
 
-centros_salud.forEach(function (element) {
-    console.log(element);
+centros_salud.forEach(function (element) {   
 	L.marker(element.marker).addTo(map).bindTooltip(element.title).openTooltip();
 });

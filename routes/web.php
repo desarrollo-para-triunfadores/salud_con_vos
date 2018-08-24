@@ -24,6 +24,7 @@ Route::get('/quienes_somos', function () {
 
 Route::resource('front_foros', 'FrontForoController');
 Route::resource('front_blogs', 'FrontBlogsController');
+Route::resource('front_comentarios', 'FrontComentariosController');
 
 
 

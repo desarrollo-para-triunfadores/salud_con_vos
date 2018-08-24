@@ -8,10 +8,19 @@
 @endsection 
 
 @section('content')
-
-<div class="content">
-    <div class="content_inner">
-        <div class="full_width animation_content">
+<div class="content fondo-blogs section-parallax">
+    <div class="content_inner animation_content">
+        <!--Título-->
+        <div class="title loaded">
+            <div class="container">
+                <div class="container_inner clearfix">
+                    <h1>¿Sobre qué querés saber?</h1>
+                    <span class="subtitle">En nuestro blog podrás encontrar muchos artículos muy interesantes que te pueden servir. ¡Echale un vistaso!</span>
+                </div>
+            </div>
+        </div>
+        <!--Contenido-->
+        <div class="full_width">
             <div class="full_width_inner">
                 @include('sitio_publico.blogs.articulos')
             </div>

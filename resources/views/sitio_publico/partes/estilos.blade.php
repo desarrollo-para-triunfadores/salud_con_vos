@@ -4,8 +4,8 @@
 <title>
     @yield('title','Salud con vos | Inicio')
 </title>
-<link rel="profile" href="http://gmpg.org/xfn/11"/>
-<link rel="pingback" href="xmlrpc.php"/>
+
+
 <link rel="shortcut icon" type="image/x-icon" href="{{ asset('plantillas/simplicity/wp-content/themes/simplicity/img/favicon.ico') }}  " />
 <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700italic,700,600italic,600,400italic,300italic,300|Roboto:100,300,400,500,700&amp;subset=latin,latin-ext' type='text/css' />
 <link rel='stylesheet' id='layerslider_css-css'  href="{{ asset('plantillas/simplicity/wp-content/plugins/LayerSlider/css/layerslider89df.css?ver=4.6.0') }}  " type='text/css' media='all' />
@@ -21,4 +21,5 @@
 <link rel='stylesheet' href="{{ asset('plantillas/simplicity/assets/css/font-awesome.min.css') }}" type='text/css' media='all' />
 <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="{{ asset('plantillas/simplicity/wp-includes/wlwmanifest.xml') }}  " /> 
 <link type="text/css" rel="stylesheet" href="{{ asset('css/front/index.css') }}">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css">
+<link rel='stylesheet' href="{{ asset('plantillas/simplicity/assets/css/leaflet.css') }}" type='text/css' media='all' />
+<link rel='stylesheet' href="{{ asset('plantillas/simplicity/assets/css/sweetalert2.min.css') }}" type='text/css' media='all' />

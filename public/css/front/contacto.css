@@ -14,7 +14,7 @@ and open the template in the editor.
     margin-bottom: 50px;
 }
 
-#section-contacto {
+.fondo-contacto {
     background-image:url("../../plantillas/simplicity/assets/icons/home_third_slide.png");  
 }
 
