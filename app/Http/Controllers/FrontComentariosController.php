@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comentario;
 
 class FrontComentariosController extends Controller {
 
@@ -33,6 +34,9 @@ class FrontComentariosController extends Controller {
     public function store(Request $request) {       
         $comentario = new Comentario($request->all());
         $comentario->save();
+        
+        return redirect()->route('front_foro.index');
+        
     }
 
     /**

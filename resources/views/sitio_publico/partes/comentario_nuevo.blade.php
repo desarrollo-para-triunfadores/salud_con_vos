@@ -4,9 +4,9 @@
         <form id="nuevo-comentario" action="/front_comentarios" method="POST" autocomplete="off">
             <input type="hidden" value="comentario">    
             <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
-            @if($blog)
+            @if(isset($blog))
             <input type="hidden" name="blog_id" value="{{ $blog->id }}"> 
-            @elseif($hilo_foro)
+            @elseif(isset($hilo_foro))
             <input type="hidden" name="hilo_foro_id" value="{{ $hilo_foro->id }}"> 
             @endif
 

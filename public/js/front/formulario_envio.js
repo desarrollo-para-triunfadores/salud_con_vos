@@ -84,7 +84,7 @@ lsjQuery("form").on('submit', function(evt){
             // Read more about handling dismissals
             result.dismiss === swal.DismissReason.timer
           ) {
-          //formulario.submit();
+          formulario.submit();
             console.log('I was closed by the timer')
           }
         }) 
