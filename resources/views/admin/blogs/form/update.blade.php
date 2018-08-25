@@ -58,7 +58,7 @@
                                 <div class="col-md-12"> 
                                     <div class="form-group">
                                         <label>Sinopsis</label>
-                                        <textarea id="sinopsis" name="sinopsis" style="width: 100%;" rows="6" readonly>{{$blog->sinopsis}}</textarea>                      
+                                        <textarea maxlength="5000" id="sinopsis" name="sinopsis" style="width: 100%;" rows="6" readonly>{{$blog->sinopsis}}</textarea>                      
                                     </div>
                                 </div>
 
@@ -79,7 +79,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="exampleInputFile">Imágenes para carrusel</label>
-                                        <input name="imagenes[]" id="imagenes" type="file" multiple>
+                                        <input name="imagenes[]" id="imagenes" type="file" multiple >
                                         <p class="help-block">Formatos permitidos: .JPEG y .JPG</p>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                                 <div class="col-md-12"> 
                                     <div class="form-group">
                                         <label>Contenido</label>
-                                        <textarea id="contenido" name="contenido" style="width: 100%;" rows="12" readonly>{{$blog->contenido}}</textarea>
+                                        <textarea maxlength="10000" id="contenido" name="contenido" style="width: 100%;" rows="12" readonly>{{$blog->contenido}}</textarea>
                                     </div>
                                 </div>
 
@@ -98,10 +98,10 @@
                                     <div>
                                         <label>Estado</label>
                                         <br>
-                                        @if($blog->publicado)
-                                        <input name="publicado-update" type="checkbox" checked data-toggle="toggle" data-width="130" data-onstyle="success" data-offstyle="danger" data-on="Publicado" data-off="No publicado">
+                                        @if($blog->publicado === 'Si')
+                                        <input name="publicado" type="checkbox" checked data-toggle="toggle" data-width="130" data-onstyle="success" data-offstyle="danger" data-on="Publicado" data-off="No publicado">
                                         @else
-                                        <input name="publicado-update" type="checkbox" data-toggle="toggle" data-width="130" data-onstyle="success" data-offstyle="danger" data-on="Publicado" data-off="No publicado">
+                                        <input name="publicado" type="checkbox" data-toggle="toggle" data-width="130" data-onstyle="success" data-offstyle="danger" data-on="Publicado" data-off="No publicado">
                                         @endif
                                     </div>
                                 </div>
@@ -131,26 +131,22 @@
 @section('script')
 <script src="{{ asset('js/Blogs.js') }}"></script>
 <script>
-
                             //Con esa cosa seteamos el valor del select
                             $('#categoria_id').val('{{$blog->categoria_id}}').trigger("change");
-                            $('#sinopsis').val('{{$blog->sinopsis}}');
-                            $('#contenido').val('{{$blog->contenido}}');
-
-                            if ('{{$blog->publicado}}' === '1') {
-                                $('#publicado').prop('checked', true);
-                            } else {
-                                $('#no_publicado').prop('checked', true);
-                            }
 
                             //Imágenes
-
                             var urls = '{{$urls}}';
                             var datos_imagenes = '{{$datos_imagenes}}';
                             var urls_parseados = JSON.parse(urls.replace(/&quot;/g, '"'));
                             var datos_parseados = JSON.parse(datos_imagenes.replace(/&quot;/g, '"'));
 
                             $("#imagenes").fileinput({
+                                fileActionSettings:{
+                            showRemove: true,
+                            showDownload: true,
+                            showUpload :false
+                        },
+                        deleteUrl: "/admin/casa",
                                 theme: 'fa',
                                 language: 'es',
                                 showUpload: false,
@@ -161,5 +157,29 @@
                                 initialPreviewConfig: datos_parseados,
                                 overwriteInitial: false
                             });
+
+
+
+
+
+//                            var url1 = 'http://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg',
+//                                    url2 = 'http://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Earth_Eastern_Hemisphere.jpg/600px-Earth_Eastern_Hemisphere.jpg';
+//
+//
+//                            $("#imagenes").fileinput({
+//                                initialPreview: [url1, url2],
+//                                initialPreviewAsData: true,
+//                                initialPreviewConfig: [
+//                                    {caption: "Moon.jpg", downloadUrl: url1, size: 930321, width: "120px", key: 1},
+//                                    {caption: "Earth.jpg", downloadUrl: url2, size: 1218822, width: "120px", key: 2}
+//                                ],
+//                                deleteUrl: "/site/file-delete",
+//                                overwriteInitial: false,
+//                                maxFileSize: 100,
+//                                initialCaption: "The Moon and the Earth"
+//                            });
+
+
+
 </script>
 @endsection

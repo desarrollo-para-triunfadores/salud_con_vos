@@ -39,9 +39,9 @@ class Comentario extends Model {
 
     public function setPublicadoAttribute($value) {
         if ($value === 'true') {
-            $this->attributes['moderado'] = true;
+            $this->attributes['publicado'] = true;
         } elseif ($value === 'false') {
-            $this->attributes['moderado'] = false;
+            $this->attributes['publicado'] = false;
         }
     }
     

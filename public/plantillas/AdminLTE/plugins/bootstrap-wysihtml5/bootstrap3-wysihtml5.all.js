@@ -14924,9 +14924,9 @@ function program17(depth0,data) {
         factory(jQuery);
     }
 }(function ($) {
-  $.fn.wysihtml5.locale.en = $.fn.wysihtml5.locale['en-US'] = {
+  $.fn.wysihtml5.locale.es = $.fn.wysihtml5.locale['es-ES'] = {
     font_styles: {
-      normal: 'Normal text',
+      normal: 'Texto normal',
       h1: 'Heading 1',
       h2: 'Heading 2',
       h3: 'Heading 3',
@@ -14935,26 +14935,26 @@ function program17(depth0,data) {
       h6: 'Heading 6'
     },
     emphasis: {
-      bold: 'Bold',
-      italic: 'Italic',
-      underline: 'Underline',
-      small: 'Small'
+      bold: 'Negrita',
+      italic: 'Itálica',
+      underline: 'Subrayado',
+      small: 'Pequeño'
     },
     lists: {
-      unordered: 'Unordered list',
-      ordered: 'Ordered list',
+      unordered: 'Lista desordenada',
+      ordered: 'Lista ordenada',
       outdent: 'Outdent',
       indent: 'Indent'
     },
     link: {
-      insert: 'Insert link',
-      cancel: 'Cancel',
-      target: 'Open link in new window'
+      insert: 'Insertar link',
+      cancel: 'Cancelar',
+      target: 'Abrir link en una nueva ventana'
     },
-    image: {
-      insert: 'Insert image',
-      cancel: 'Cancel'
-    },
+//    image: {
+//      insert: 'Insert image',
+//      cancel: 'Cancel'
+//    },
     html: {
       edit: 'Edit HTML'
     },

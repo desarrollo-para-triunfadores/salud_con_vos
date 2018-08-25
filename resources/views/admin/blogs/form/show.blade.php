@@ -91,10 +91,10 @@
                                 <div class="col-md-2"> 
                                     <div class="form-group">
                                         <label>Estado</label>
-                                        @if ($blog->publicado)
-                                        <span style="color:#229954" class="form-control"><b>{{$blog->estado_publicado()}}</b></span>
+                                        @if ($blog->publicado === 'Si')
+                                        <span style="color:#229954" class="form-control"><b>Publicado</b></span>
                                         @else
-                                        <span style="color:#c0392b" class="form-control"><b>{{$blog->estado_publicado()}}</b></span>
+                                        <span style="color:#ff0000" class="form-control"><b>No Publicado</b></span>
                                         @endif
                                     </div>
                                 </div>
@@ -119,6 +119,7 @@
                         </div>
                     </div>
                 </div>                                               
+            </div>
             </div>
     </section>
 </div>

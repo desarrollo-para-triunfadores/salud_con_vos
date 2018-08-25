@@ -56,15 +56,7 @@ class HilosForosController extends Controller {
         } else {
             $hilo_foro->publicado = "false";
         }
-
         $hilo_foro->save();
-
-        $comentario = new Comentario();
-        $comentario->contenido = $request->mensaje;
-        $comentario->nombre = $hilo_foro->nombre;
-        $comentario->correo = $hilo_foro->correo;
-        $comentario->hilo_foro_id = $hilo_foro->id;
-        $comentario->save();
         Session::flash('message', '¡Se ha agregado un hilo!');
         return redirect()->route('foros.index');
     }
@@ -146,6 +138,14 @@ class HilosForosController extends Controller {
             $hilo_foro->save();
         }
         return response()->json('Se moderaron los hilos con éxito');
+    }
+
+    public function eliminar_masivamente(Request $request) {
+        foreach ($request->array as $id) {
+            $hilo_foro = HiloForo::find($id);
+            $hilo_foro->delete();
+        }
+        return response()->json('Se eliminaron los hilos con éxito');
     }
 
 }

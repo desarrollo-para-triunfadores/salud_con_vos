@@ -45,18 +45,17 @@ class BlogsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-
         $blog = new Blog($request->all());
-        if ($request->publicado === '1') {
-            $blog->publicado = true;
-        }
+        if ($request->publicado === 'on') {
+            $blog->publicado = 'Si';
+        }else{$blog->publicado = 'No';}
         $blog->user_id = Auth::id();
         $blog->save();
 
         if ($request->hasfile('imagenes')) {
             foreach ($request->file('imagenes') as $clave => $file) {
                 $imagen = new Imagen(); //Se instancia un objeto de tipo Imagen
-                $imagen->nombre = 'blog_' . $blog->id . '_' . time() . '.' . $clave . '.' . $file->getClientOriginalExtension(); //Se asigna el nombre de la imagen subida al atributo nombre del objeto Imagen
+                $imagen->nombre = 'blog_' . $blog->id . '_' . time() . '_' . $clave . '.' . $file->getClientOriginalExtension(); //Se asigna el nombre de la imagen subida al atributo nombre del objeto Imagen
                 $imagen->peso = filesize($file);
                 $imagen->ancho = getimagesize($file)[0];
                 $imagen->alto = getimagesize($file)[1];
@@ -76,11 +75,13 @@ class BlogsController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id) {
         $blog = Blog::find($id);
         $urls = json_encode($blog->url_imagenes());
         $datos_imagenes = json_encode($blog->datos_imagenes());
         $categorias = Categoria::all();
+        
         return view('/admin/blogs/form/show')
                         ->with('categorias', $categorias)
                         ->with('blog', $blog)
@@ -114,7 +115,11 @@ class BlogsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
+        dd($request);
         $blog = Blog::find($id);
+        if ($request->publicado === 'on') {
+            $blog->publicado = 'Si';
+        }else{$blog->publicado = 'No';}
         $blog->fill($request->all());
         $blog->save();
 
@@ -133,7 +138,7 @@ class BlogsController extends Controller {
              */
             foreach ($request->file('imagenes') as $clave => $file) {
                 $imagen = new Imagen(); //Se instancia un objeto de tipo Imagen
-                $imagen->nombre = 'blog_' . $blog->id . '_' . time() . '.' . $clave . '.' . $file->getClientOriginalExtension(); //Se asigna el nombre de la imagen subida al atributo nombre del objeto Imagen
+                $imagen->nombre = 'blog_' . $blog->id . '_' . time() . '_' . $clave . '.' . $file->getClientOriginalExtension(); //Se asigna el nombre de la imagen subida al atributo nombre del objeto Imagen
                 $imagen->peso = filesize($file);
                 $imagen->ancho = getimagesize($file)[0];
                 $imagen->alto = getimagesize($file)[1];
@@ -168,4 +173,5 @@ class BlogsController extends Controller {
         Session::flash('message', '¡El Blog ha sido eliminado!');
         return redirect()->route('blogs.index');
     }
+    
 }

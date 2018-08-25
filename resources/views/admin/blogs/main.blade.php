@@ -47,7 +47,11 @@
                                     <td class="text-center">{{$blog->categoria->nombre}}</td>
                                     <td class="text-center">{{$blog->created_at->format('d/m/Y')}}</td>
                                     <td class="text-center">{{$blog->comentarios->count()}}</td>
-                                    <td class="text-center">{{$blog->estado_publicado()}}</td>
+                                    @if ($blog->publicado === 'Si')
+                                    <td class="text-center" style="color:#229954">Publicado</td>
+                                    @else
+                                    <td class="text-center" style="color:#ff0000">No Publicado</td>
+                                    @endif
                                     <td class="text-center" width="100">
                                         <a type="button" href="/admin/blogs/{{$blog->id}}" title="Mostrar" class="btn btn-social-icon btn-info btn-sm"><i class="fa fa-eye"></i></a>
                                         <a type="button" href="/admin/blogs/{{$blog->id}}/edit" title="Editar" class="btn btn-social-icon btn-warning btn-sm"><i class="fa fa-pencil"></i></a>

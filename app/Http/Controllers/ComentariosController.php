@@ -84,13 +84,13 @@ class ComentariosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-       $comentario = Comentario::find($id);
-       $comentario->fill($request->all());
-       $comentario->save();
+        $comentario = Comentario::find($id);
+        $comentario->fill($request->all());
+        $comentario->save();
         //Si la respuesta vino por JSON, se debe contestar por JSON
         if ($request->ajax()) {
             return response()->json($comentario);
-       }
+        }
     }
 
     /**
@@ -103,7 +103,7 @@ class ComentariosController extends Controller {
         $comentario = Comentario::find($id);
         $comentario->delete();
     }
-    
+
     public function moderar_masivamente(Request $request) {
         foreach ($request->array as $comentario) {
             $comentario_a = Comentario::find($comentario);
@@ -113,4 +113,11 @@ class ComentariosController extends Controller {
         return response()->json('Se moderaron los comentarios con éxito');
     }
 
+    public function eliminar_masivamente(Request $request) {
+        foreach ($request->array as $id) {
+            $comentario = Comentario::find($id);
+            $comentario->delete();
+        }
+        return response()->json('Se eliminaron los comentarios con éxito');
+    }
 }

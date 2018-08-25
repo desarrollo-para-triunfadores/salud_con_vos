@@ -56,7 +56,7 @@
                                 <div class="col-md-12"> 
                                     <div class="form-group">
                                         <label>Sinopsis</label>
-                                        <textarea id="sinopsis" name="sinopsis" placeholder="Escriba aquí la sinopsis..." style="width: 100%;" rows="6" required></textarea>
+                                        <textarea maxlength="5000" id="sinopsis" name="sinopsis" placeholder="Escriba aquí la sinopsis..." style="width: 100%;" rows="6" required></textarea>
                                     </div>
                                 </div>
 
@@ -86,18 +86,17 @@
                                 <div class="col-md-12"> 
                                     <div class="form-group">
                                         <label>Contenido</label>
-                                        <textarea id="contenido" name="contenido" placeholder="Escriba aquí el contenido del Blog..." style="width: 100%;" rows="12" required></textarea>
+                                        <textarea maxlength="10000" id="contenido" name="contenido" placeholder="Escriba aquí el contenido del Blog..." style="width: 100%;" rows="12" required></textarea>
                                     </div>
                                 </div>
                             </div>
-
 
                             <!--Campo seleccion de estado de publicación -->
                             <div class="col-md-6"> 
                                 <div>
                                     <label>Estado</label>
                                     <br>
-                                    <input name="publicado-create" type="checkbox" data-width="130" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Publicado" data-off="No publicado">
+                                    <input id="publicado" name="publicado" type="checkbox" data-width="130" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Publicado" data-off="No publicado">
                                 </div>
                             </div>
 

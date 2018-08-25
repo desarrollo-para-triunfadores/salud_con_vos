@@ -1,4 +1,4 @@
-<div class="modal fade bs-example-modal-lg" id="modal-crear">
+<div class="modal fade bs-example-modal" id="modal-crear">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -23,7 +23,7 @@
                                 <input type="text" name="titulo" class="form-control" placeholder="Campo obligatorio" required>
                             </div>
                         </div>
-
+                        
                         <!--Campo de selección de categoría -->
                         <div class="col-md-4"> 
                             <div class="form-group">
@@ -36,24 +36,20 @@
                                 </select> 
                             </div>                 
                         </div>
-
+                        
                     </div>
                     <br>
-                    
-                    <!--Campo de contenido del primer mensaje -->
                     <div class="row">
-                        <div class="col-md-12"> 
+                         <!--Campo contenido -->
+                        <div class="col-md-8"> 
                             <div class="form-group">
-                                <label>Mensaje</label>
-                                <textarea id="mensaje" name="mensaje" placeholder="Escriba aquí el primer mensaje..." style="width: 100%;" rows="5" required></textarea>
+                                <label>Contenido</label>
+                                <input type="text" name="contenido" class="form-control" placeholder="Campo obligatorio" required>
                             </div>
                         </div>
-                    </div>
-                    <br>
-                    <div class="row">
                         
                         <!--Campo seleccion de estado de publicación -->
-                        <div class="col-md-6"> 
+                        <div class="col-md-4"> 
                             <div>
                                  <label>Estado</label>
                                  <br>

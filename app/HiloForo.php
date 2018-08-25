@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class HiloForo extends Model {
 
     protected $table = "hilos_foros";
-    protected $fillable = ['titulo', 'correo', 'nombre', 'categoria_id', 'publicado', 'avatar', 'moderado'];
+    protected $fillable = ['titulo', 'contenido', 'correo', 'nombre', 'categoria_id', 'publicado', 'avatar', 'moderado'];
 
     public function categoria() {
         return $this->belongsTo('App\Categoria');

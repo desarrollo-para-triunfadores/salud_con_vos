@@ -29,15 +29,6 @@ class Blog extends Model {
         return $this->hasMany('App\Imagen');
     }
     
-     public function estado_publicado()
-    {
-         $estado = "No publicado";
-         if ($this->publicado) {
-             $estado = "Publicado";
-         }
-        return $estado;
-    }
-    
      public function datos_imagenes()
     {
          $datos = [];
@@ -69,9 +60,9 @@ class Blog extends Model {
     }
 
     public function setPublicadoAttribute($value) {
-        if ($value === 'true') {
+        if ($value === 'Si') {
             $this->attributes['publicado'] = true;
-        } elseif ($value === 'false') {
+        } elseif ($value === 'No') {
             $this->attributes['publicado'] = false;
         }
     }

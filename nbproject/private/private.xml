@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/manuel/Desarrollo/salud_con_vos/app/Http/Controllers/HilosForosController.php</file>
-            <file>file:/home/manuel/Desarrollo/salud_con_vos/routes/web.php</file>
-            <file>file:/home/manuel/Desarrollo/salud_con_vos/resources/views/admin/foros/main.blade.php</file>
-            <file>file:/home/manuel/Desarrollo/salud_con_vos/app/Comentario.php</file>
-            <file>file:/home/manuel/Desarrollo/salud_con_vos/public/js/Foros.js</file>
-            <file>file:/home/manuel/Desarrollo/salud_con_vos/app/Http/Controllers/ComentariosController.php</file>
-            <file>file:/home/manuel/Desarrollo/salud_con_vos/resources/views/admin/foros/mainNuevos.blade.php</file>
+            <file>file:/home/manuel/Desarrollo/salud_con_vos/app/Http/Controllers/BlogsController.php</file>
+            <file>file:/home/manuel/Desarrollo/salud_con_vos/app/Blog.php</file>
+            <file>file:/home/manuel/Desarrollo/salud_con_vos/resources/views/admin/blogs/form/show.blade.php</file>
+            <file>file:/home/manuel/Desarrollo/salud_con_vos/resources/views/admin/blogs/form/update.blade.php</file>
+            <file>file:/home/manuel/Desarrollo/salud_con_vos/public/js/Blogs.js</file>
+            <file>file:/home/manuel/Desarrollo/salud_con_vos/resources/views/admin/blogs/form/create.blade.php</file>
         </group>
     </open-files>
 </project-private>

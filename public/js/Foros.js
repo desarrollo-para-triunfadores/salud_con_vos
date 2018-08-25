@@ -7,6 +7,7 @@ $("#side-ele-foros").addClass("active");
 /** Modal de update y de delete */
 function completar_campos(hilo_foro) {
     $('#update-titulo').val(hilo_foro.titulo); //Numeral es para identificar el id. Para clases se usa punto en vez de numeral.
+    $('#update-contenido').val(hilo_foro.contenido);
     $('#form-update').attr('action', '/admin/foros/' + hilo_foro.id); //Modifica atributos "attr"
 
     //Con esa cosa seteamos el valor del select
@@ -96,16 +97,15 @@ function actualizar_array(id, tipo) {
             comentarios.push(id);
         }
     } else {
-        if (hilos_foros.indexOf(id) >= 0) {
+        if (hilos_foros.indexOf(id) >= 0) { //Si encuentra el id en el array
             hilos_foros.splice(hilos_foros.indexOf(id), 1);
-        } else {
+        } else { //Si el id no está en el array
             hilos_foros.push(id);
         }
     }
 }
 
 function seteo_global(tipo, accion) {
-
     if (tipo === 'comentario') {
         comentarios = [];
         if (accion === "checked") {
@@ -128,18 +128,14 @@ function seteo_global(tipo, accion) {
             $(".checkbox-hilos").prop("checked", false);
         }
     }
-
-
 }
 
-
 function moderar(tipo) {
-    if (tipo === 'hilos') {
-        console.log(hilos_foros);
+    if (tipo === 'hilos' && hilos_foros.length > 0) {
         $.ajax({
             url: '/admin/moderar_masivamente_hilos', //direccion del metodo del controller al que le pedimos los datos (ruta del sistema de ruteo de laravel)
             data: {
-                array: hilos_foros, 
+                array: hilos_foros
             },
             type: 'GET',
             dataType: 'json',
@@ -147,16 +143,44 @@ function moderar(tipo) {
                 location.href = "/admin/indexNuevos";
             }
         });
-    } else if (tipo === 'comentarios') {
+    } else if (tipo === 'comentarios' && comentarios.length > 0) {
         $.ajax({
             url: '/admin/moderar_masivamente_comentarios', //direccion del metodo del controller al que le pedimos los datos (ruta del sistema de ruteo de laravel)
             data: {
-                array: comentarios, 
+                array: comentarios
             },
             type: 'GET',
             dataType: 'json',
             success: function (data) { //Succes si va todo bien, failed y si nunca mas te responde, data seria como el request hacia nosotros desde el controller
-                //location.href = "/admin/indexNuevos";
+                location.href = "/admin/indexNuevos";
+            }
+        });
+    }
+}
+
+function eliminar(tipo) {
+    if (tipo === 'hilos' && hilos_foros.length > 0) {
+        $.ajax({
+            url: '/admin/eliminar_masivamente_hilos',
+            data: {
+                array: hilos_foros
+            },
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                location.href = "/admin/indexNuevos";
+            }
+        });
+    } else if (tipo === 'comentarios' && comentarios.length > 0) {
+        $.ajax({
+            url: '/admin/eliminar_masivamente_comentarios',
+            data: {
+                array: comentarios
+            },
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                location.href = "/admin/indexNuevos";
             }
         });
     }

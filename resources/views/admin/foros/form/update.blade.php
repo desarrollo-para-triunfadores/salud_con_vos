@@ -18,6 +18,12 @@
                         <label>Título</label>
                         <input type="text" name="titulo" id="update-titulo" class="form-control" placeholder="Campo obligatorio" >
                     </div>
+                    
+                    <!--Campo titulo -->
+                    <div class="form-group">
+                        <label>Contenido</label>
+                        <input type="text" name="contenido" id="update-contenido" class="form-control" placeholder="Campo obligatorio" >
+                    </div>
 
                     <!-- Campo de seleccion de categoria -->
                     <div class="form-group">

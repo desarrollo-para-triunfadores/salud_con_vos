@@ -24,8 +24,8 @@
             <!-- Cabeceras de pestañas -->
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Hilos foros</a></li>
-                    <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Comentarios</a></li>
+                    <li class="active" id="li-hilos"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Hilos foros</a></li>
+                    <li class="" id="li-comentarios"><a href="#tab_2" data-toggle="tab" aria-expanded="false">Comentarios</a></li>
                 </ul>
 
                 <!-- Contenido de pestañas -->
@@ -69,7 +69,9 @@
                                             <td class="text-center">{{$hilo_foro->categoria->nombre}}</td>
                                             <td class="text-center">{{$hilo_foro->created_at->format('d/m/Y')}}</td>
                                             <td class="text-center" width="100">
-                                                <input type="checkbox" class="filled-in checkbox-hilos"  id_elemento="{{$hilo_foro->id}}" onchange="actualizar_array({{$hilo_foro->id}}, 'hilo')"/>
+
+
+                                                <input type="checkbox" class="filled-in checkbox-hilos"  id_elemento="{{$hilo_foro->id}}" onChange="actualizar_array('{{$hilo_foro->id}}', 'hilo')"/>
                                             </td>
                                         </tr> 
                                         @endforeach
@@ -85,15 +87,21 @@
                                         </tr>
                                     </tfoot>
                                 </table>
+
+                                <!--Footer con botones que se acomodan a la resolución de la pantalla-->
                                 <div class="box-footer">
-                                    <row class="col-md-3 pull-right">
-                                        <a title="Moderar hilo" type="button" onclick="moderar('hilos')" id="boton-moderar-hilo"  class="btn btn-primary pull-left">
-                                            <i class="fa fa-check"></i> &nbsp;Moderar seleccionados
-                                        </a>
-                                        <a title="Eliminar hilo" type="button" onclick="eliminar()" id="boton-eliminar-hilo"  class="btn btn-danger pull-right">
-                                            <i class="fa fa-trash"></i> &nbsp;Eliminar seleccionados
-                                        </a>
-                                    </row>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="pull-right">
+                                                <a title="Moderar hilo" type="button" onclick="moderar('hilos')" id="boton-moderar-hilo"  class="btn btn-primary">
+                                                    <i class="fa fa-check"></i> &nbsp;Moderar seleccionados
+                                                </a>
+                                                <a title="Eliminar hilo" type="button" onclick="eliminar('hilos')" id="boton-eliminar-hilo"  class="btn btn-danger">
+                                                    <i class="fa fa-trash"></i> &nbsp;Eliminar seleccionados
+                                                </a>
+                                            </div>  
+                                        </div>
+                                    </div>
                                 </div>
                             </div>                                               
                         </div>
@@ -143,7 +151,7 @@
                                             @endif
                                             <td class="text-center">{{$comentario->created_at->format('d/m/Y')}}</td>
                                             <td class="text-center" width="100">
-                                                <input type="checkbox" class="filled-in checkbox-comentarios" id_elemento="{{$comentario->id}}" onchange="actualizar_array({{$comentario->id}},'comentario')"/>
+                                                <input type="checkbox" class="filled-in checkbox-comentarios" id_elemento="{{$comentario->id}}" onChange="actualizar_array('{{$comentario->id}}', 'comentario')"/>
                                             </td>
                                         </tr> 
                                         @endforeach
@@ -160,15 +168,20 @@
                                         </tr>
                                     </tfoot>
                                 </table>
+                                <!--Footer con botones que se acomodan a la resolución de la pantalla-->
                                 <div class="box-footer">
-                                    <row class="col-md-3 pull-right">
-                                        <a title="Moderar comentario" type="button" onclick="moderar('comentarios')" id="boton-moderar-comentario"  class="btn btn-primary pull-left">
-                                            <i class="fa fa-check"></i> &nbsp;Moderar seleccionados
-                                        </a>
-                                        <a title="Eliminar comentario" type="button" id="boton-eliminar-comentario"  class="btn btn-danger pull-right">
-                                            <i class="fa fa-trash"></i> &nbsp;Eliminar seleccionados
-                                        </a>
-                                    </row>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="pull-right">
+                                                <a title="Moderar comentario" type="button" onclick="moderar('comentarios')" id="boton-moderar-comentario"  class="btn btn-primary">
+                                                    <i class="fa fa-check"></i> &nbsp;Moderar seleccionados
+                                                </a>
+                                                <a title="Eliminar hilo" type="button" onclick="eliminar('comentarios')" id="boton-eliminar-hilo"  class="btn btn-danger">
+                                                    <i class="fa fa-trash"></i> &nbsp;Eliminar seleccionados
+                                                </a>
+                                            </div>  
+                                        </div>
+                                    </div>
                                 </div>
                             </div>                                               
                         </div>
