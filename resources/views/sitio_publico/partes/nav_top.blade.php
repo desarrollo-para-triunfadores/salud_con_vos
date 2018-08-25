@@ -8,8 +8,8 @@
             <div class="header_inner clearfix">
                 <div class="logo">
                     <a href="/">
-                        <img class="normal" src="{{ asset('plantillas/simplicity/assets/icons/logo-navtop.png') }}" alt="Logo" />
-                        <img class="sticky" src="{{ asset('plantillas/simplicity/assets/icons/logo-navtop.png') }}" alt="Logo" />
+                        <img class="normal" src="{{ asset('plantillas/simplicity/assets/icons/logo2.gif') }}" alt="Logo" />
+                        <img class="sticky" src="{{ asset('plantillas/simplicity/assets/icons/logo2.gif') }}" alt="Logo" />
                     </a>
                 </div>
                 <div class="header_inner_right">

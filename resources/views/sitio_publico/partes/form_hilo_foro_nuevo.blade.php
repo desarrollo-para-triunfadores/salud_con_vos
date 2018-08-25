@@ -1,4 +1,4 @@
-<div id="panel" style="margin-left: 0px;" >
+<div id="panel" style="margin-left: -235px;" >
     <div id="panel-admin">
         <div class="comment_form_float"  style=" overflow: auto;">
             <div class="contact_form">

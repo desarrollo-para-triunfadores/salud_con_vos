@@ -115,7 +115,7 @@ class BlogsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        dd($request);
+
         $blog = Blog::find($id);
         if ($request->publicado === 'on') {
             $blog->publicado = 'Si';

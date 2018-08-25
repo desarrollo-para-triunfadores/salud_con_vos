@@ -56,7 +56,7 @@
                                 <div class="col-md-12"> 
                                     <div class="form-group">
                                         <label>Sinopsis</label>
-                                        <textarea maxlength="5000" id="sinopsis" name="sinopsis" placeholder="Escriba aquí la sinopsis..." style="width: 100%;" rows="6" required></textarea>
+                                        <textarea maxlength="280" id="sinopsis" name="sinopsis" placeholder="Escriba aquí la sinopsis..." style="width: 100%;" rows="4" required></textarea>
                                     </div>
                                 </div>
 

@@ -57,5 +57,5 @@
 <script>
     lsjQuery("#nav-foro").addClass("active");
 </script>
-<!--<script src="{{ asset('js/front/inicio.js') }}"></script>-->
+<script src="{{ asset('js/front/foro.js') }}"></script>
 @endsection

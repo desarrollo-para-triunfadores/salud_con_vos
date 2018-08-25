@@ -8,8 +8,8 @@ function completar_campos(blog) {
     $('#update-nombre').val(blog.nombre); //Numeral es para identificar el id. Para clases se usa punto en vez de numeral.
     $('#update-descripcion').val(blog.descripcion);
     $('#form-update').attr('action', '/admin/blogs/' + blog.id); //Modifica atributos "attr"
-    
-    
+
+
     //Seteo el valor del boton deslizante segun el estado de publicacion, 
     //en este caso el atributo del foro es booleano (True o False)
     if (blog.publicado === 'Si') {
@@ -17,8 +17,9 @@ function completar_campos(blog) {
     }
     else {
         $('#publicado-update').prop('checked', false).change();
-    };
-    
+    }
+    ;
+
     $('#modal-update').modal('show');
 }
 
@@ -47,20 +48,17 @@ $('#example tbody').on('mouseenter', 'td', function () {
     $(table.column(colIdx).nodes()).addClass('highlight');
 });
 
-    $("#sinopsis").wysihtml5();
-    $("#contenido").wysihtml5();
-    
-    $('.input_archivo').fileinput({
-        
-        fileActionSettings:{
-                            showDownload: false,
-                            showRemove: true,
-                            showUpload :false
-                        },
-        
-        theme: 'fa',
-        language: 'es',
-        showUpload: false,
-        uploadUrl: '#',
-        allowedFileExtensions: ['jpg', 'jpeg']
-    });
+$("#contenido").wysihtml5();
+
+$('.input_archivo').fileinput({
+    fileActionSettings: {
+        showDownload: false,
+        showRemove: true,
+        showUpload: false
+    },
+    theme: 'fa',
+    language: 'es',
+    showUpload: false,
+    uploadUrl: '#',
+    allowedFileExtensions: ['jpg', 'jpeg']
+});

@@ -198,5 +198,5 @@
 @endsection 
 
 @section('script')
-<script src="{{ asset('js/Foros.js') }}"></script>
+<script src="{{ asset('js/Moderacion.js') }}"></script>
 @endsection

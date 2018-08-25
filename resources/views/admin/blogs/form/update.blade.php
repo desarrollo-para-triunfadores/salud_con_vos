@@ -58,7 +58,7 @@
                                 <div class="col-md-12"> 
                                     <div class="form-group">
                                         <label>Sinopsis</label>
-                                        <textarea maxlength="5000" id="sinopsis" name="sinopsis" style="width: 100%;" rows="6" readonly>{{$blog->sinopsis}}</textarea>                      
+                                        <textarea maxlength="280" id="sinopsis" name="sinopsis" style="width: 100%;" rows="4" readonly>{{$blog->sinopsis}}</textarea>                      
                                     </div>
                                 </div>
 
