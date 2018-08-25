@@ -65,4 +65,8 @@ class HiloForo extends Model {
         return $estado1;
     }
 
+    public function comentarios_publicados() {
+        return $this->comentarios->where("publicado", "1");
+    }
+
 }

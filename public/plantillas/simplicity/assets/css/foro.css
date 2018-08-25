@@ -1,0 +1,29 @@
+.two_columns_75_25>.column1 {
+    width: 70%;
+    margin-right: 5%;
+    float: left;
+}
+
+.title {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid #f6f8fc;
+    opacity: 0;
+}
+
+aside .widget h5 {
+    margin: 0 0 15px 0;
+}
+
+#section-lista-blogs .tagcloud {
+    margin: 0px 0;
+}
+
+aside .widget {
+    margin-bottom: 40px;
+}
+
+.full_width .parallax_content {
+    width: 88%;
+    margin: 0 auto;
+}

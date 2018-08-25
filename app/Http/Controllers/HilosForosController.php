@@ -28,6 +28,8 @@ class HilosForosController extends Controller {
         return view('/admin/foros/main')->with('hilos_foros', $hilos_foros)->with('categorias', $categorias);
     }
 
+    
+    
     /**
      * Show the form for creating a new resource.
      *

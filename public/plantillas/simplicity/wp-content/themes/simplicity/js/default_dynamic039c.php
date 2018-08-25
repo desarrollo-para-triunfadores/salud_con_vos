@@ -38,9 +38,9 @@ function initialize() {
     {name: "Qode Map"});
 
 	geocoder = new google.maps.Geocoder();
-	var latlng = new google.maps.LatLng(-34.397, 150.644);
+	var latlng = new google.maps.LatLng(-27.366, -55.893);
 	var myOptions = {
-		zoom: 12,
+		zoom: 7,
 				scrollwheel: false,
 				center: latlng,
 		zoomControl: true,
@@ -92,7 +92,7 @@ function codeAddress(data) {
 			map.setCenter(results[0].geometry.location);
 			var marker = new google.maps.Marker({
 				map: map, 
-				position: results[0].geometry.location,
+				position: {lat: -27.366, lng: -55.893},
 								icon:  'http://demo.qodeinteractive.com/simplicity/wp-content/themes/simplicity/img/pin.png',
 								title: data['store_title']
 			});

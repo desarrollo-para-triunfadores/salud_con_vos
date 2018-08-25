@@ -1,0 +1,61 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11/08/2018, 10:54:12
+    Author     : hacho
+*/
+
+
+.fondo {
+    background-image:url("../../plantillas/simplicity/assets/icons/parallaxbackground.jpg");      
+}
+
+#section-lista-blogs .container_inner{
+       width: inherit;
+}
+
+
+.blog_holder_v3 article {
+    width: 24%;
+}
+
+.p-leyend2 {
+    font-size: 120%;
+    text-align: justify;    
+    color: white;
+    margin-bottom: 25px;
+}
+
+#section-lista-blogs .link-filtro {
+    cursor: pointer;
+    padding: 15px;
+    margin: 5px 11px;
+    font-size: 14px!important;
+    font-weight: bold;
+}
+
+
+#section-lista-blogs .tagcloud {
+    margin: 30px 0;
+}
+
+.list.circle.animate_list {
+    margin-bottom: 5%;
+}
+
+.two_columns_33_66>.column2 {
+    width: 60%;
+    float: right;
+}
+
+img.attachment-full.wp-post-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+        margin-bottom: 65px;
+    margin-top: 40px;
+}
