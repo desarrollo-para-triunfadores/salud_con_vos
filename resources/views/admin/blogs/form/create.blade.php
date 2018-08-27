@@ -65,7 +65,7 @@
                                     <div class="form-group">
                                         <label>Link video</label>
                                         <div class="input-group">
-                                            <input name="linkvideo" type="url" class="form-control" placeholder="Link YouTube">
+                                            <input name="linkvideo" type="text" class="form-control" placeholder="Link YouTube">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-youtube-play" aria-hidden="true"></i>
                                             </span>

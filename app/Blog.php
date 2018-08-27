@@ -40,8 +40,8 @@ class Blog extends Model {
     public function datos_imagenes() {
         $datos = [];
         foreach ($this->imagenes as $imagen) {
-            $url = 'http://' . $_SERVER["HTTP_HOST"] . '/imagenes/blogs/' . $imagen->nombre;
-            $dato = ['caption' => $imagen->nombre, 'downloadUrl' => $url, 'size' => $imagen->peso];
+            $url = 'http://' . $_SERVER["HTTP_HOST"] . '/imagenes/blogs/' . $imagen->nombre;                       
+            $dato = ['caption' => $imagen->nombre, 'downloadUrl' => $url, 'size' => $imagen->peso, 'key'=> $imagen->id, 'extra'=> 'dato'];
             array_push($datos, $dato);
         }
         return $datos;
