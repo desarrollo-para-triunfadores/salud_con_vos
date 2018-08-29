@@ -4,15 +4,15 @@
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content-header">
         <h1>
-            Foros
+            Hilos Foros y Comentarios
             <small>Registros almacenados</small>
         </h1>
         <ol class="breadcrumb">
             <li>
                 <a href="#">
-                    <i class="fa fa-users"></i>Foros</a>
+                    <i class="fa fa-users"></i>Moderación</a>
             </li>
-            <li class="active">Hilos</li>
+            <li class="active">Foros y Comentarios</li>
         </ol>
     </section>
     <br>
@@ -41,8 +41,12 @@
                                 <!-- Select -->
                                 <div class="form-group pull-right" style="margin: 10px 0 10px 0">
                                     <select id="select-hilos" onchange="seteo_global('hilos_foros', $(this).prop('value'))">
-                                        <option value="checked">Seleccionar todo</option>
-                                        <option value="unchecked">Deseleccionar todo</option>
+                                        <option value="">Seleccionar/Deseleccionar</option>
+                                        <option value="checked-moderar">Tildar p/moderar</option>
+                                        <option value="checked-publicar">Tildar p/publicar</option>
+                                        <option value="unchecked-moderar">Destildar p/moderar</option>
+                                        <option value="unchecked-publicar">Destildar p/publicar</option>
+                                        <option value="unchecked-moderar">Destildar todo</option>
                                     </select>
                                 </div>
                                 <div class="form-group pull-right" style="margin: 10px 0 10px 0">
@@ -57,7 +61,8 @@
                                             <th class="text-center">Correo</th>
                                             <th class="text-center">Categoría</th>
                                             <th class="text-center">Fecha de creación</th>
-                                            <th class="text-center">Moderar</th>
+                                            <th class="text-center">Moderar/Eliminar</th>
+                                            <th class="text-center">Publicar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -68,10 +73,15 @@
                                             <td class="text-center">{{$hilo_foro->correo}}</td>
                                             <td class="text-center">{{$hilo_foro->categoria->nombre}}</td>
                                             <td class="text-center">{{$hilo_foro->created_at->format('d/m/Y')}}</td>
+                                            @if ($hilo_foro->moderado === 'true')
+                                            <td class="text-center" width="100" style="color:#229954">Moderado</td>
+                                            @else
                                             <td class="text-center" width="100">
-
-
-                                                <input type="checkbox" class="filled-in checkbox-hilos"  id_elemento="{{$hilo_foro->id}}" onChange="actualizar_array('{{$hilo_foro->id}}', 'hilo')"/>
+                                                <input type="checkbox" class="checkbox-hilos-moderar" id="moderar-hilo{{$hilo_foro->id}}" id_elemento="{{$hilo_foro->id}}" onChange="actualizar_array('{{$hilo_foro->id}}', 'hilo-moderar')"/>
+                                            </td>    
+                                            @endif
+                                            <td class="text-center" width="100">
+                                                <input type="checkbox" class="checkbox-hilos-publicar" id="publicar-hilo{{$hilo_foro->id}}" id_elemento="{{$hilo_foro->id}}" onChange="actualizar_array('{{$hilo_foro->id}}', 'hilo-publicar')"/>
                                             </td>
                                         </tr> 
                                         @endforeach
@@ -83,7 +93,8 @@
                                             <th class="text-center">Correo</th>
                                             <th class="text-center">Categoría</th>
                                             <th class="text-center">Fecha de creación</th>
-                                            <th class="text-center">Moderar</th>
+                                            <th class="text-center">Moderar/Eliminar</th>
+                                            <th class="text-center">Publicar</th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -93,11 +104,8 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="pull-right">
-                                                <a title="Moderar hilo" type="button" onclick="moderar('hilos')" id="boton-moderar-hilo"  class="btn btn-primary">
+                                                <a title="Moderar hilo" type="button" onclick="moderar_publicar('hilos')" id="boton-moderar-hilo"  class="btn btn-primary">
                                                     <i class="fa fa-check"></i> &nbsp;Moderar seleccionados
-                                                </a>
-                                                <a title="Eliminar hilo" type="button" onclick="eliminar('hilos')" id="boton-eliminar-hilo"  class="btn btn-danger">
-                                                    <i class="fa fa-trash"></i> &nbsp;Eliminar seleccionados
                                                 </a>
                                             </div>  
                                         </div>
@@ -115,9 +123,13 @@
 
                                 <!-- Select -->
                                 <div class="form-group pull-right" style="margin: 10px 0 10px 0">
-                                    <select id="select-comentarios" onchange="seteo_global('comentario', $(this).prop('value'))">
-                                        <option value="checked">Seleccionar todo</option>
-                                        <option value="unchecked">Deseleccionar todo</option>
+                                    <select id="select-comentarios" onchange="seteo_global('comentarios', $(this).prop('value'))">
+                                        <option value="">Seleccionar/Deseleccionar</option>
+                                        <option value="checked-moderar">Tildar p/moderar</option>
+                                        <option value="checked-publicar">Tildar p/publicar</option>
+                                        <option value="unchecked-moderar">Destildar p/moderar</option>
+                                        <option value="unchecked-publicar">Destildar p/publicar</option>
+                                        <option value="unchecked-todo">Destildar todo</option>
                                     </select>
                                 </div>
                                 <div class="form-group pull-right" style="margin: 10px 0 10px 0">
@@ -133,7 +145,8 @@
                                             <th class="text-center">Tipo (Foro/Blog)</th>
                                             <th class="text-center">Nombre</th>
                                             <th class="text-center">Fecha de creación</th>
-                                            <th class="text-center">Moderar</th>
+                                            <th class="text-center">Moderar/Eliminar</th>
+                                            <th class="text-center">Publicar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -150,8 +163,15 @@
                                             <td class="text-center">{{$comentario->blog->titulo}}</td>
                                             @endif
                                             <td class="text-center">{{$comentario->created_at->format('d/m/Y')}}</td>
+                                            @if ($comentario->moderado === 'true')
+                                            <td class="text-center" width="100" style="color:#229954">Moderado</td>
+                                            @else
                                             <td class="text-center" width="100">
-                                                <input type="checkbox" class="filled-in checkbox-comentarios" id_elemento="{{$comentario->id}}" onChange="actualizar_array('{{$comentario->id}}', 'comentario')"/>
+                                                <input type="checkbox" class="checkbox-comentarios-moderar" id="moderar-comentario{{$comentario->id}}" id_elemento="{{$comentario->id}}" onChange="actualizar_array('{{$comentario->id}}', 'comentario-moderar')"/>
+                                            </td>
+                                            @endif
+                                            <td class="text-center" width="100">
+                                                <input type="checkbox" class="checkbox-comentarios-publicar" id="publicar-comentario{{$comentario->id}}" id_elemento="{{$comentario->id}}" onChange="actualizar_array('{{$comentario->id}}', 'comentario-publicar')"/>
                                             </td>
                                         </tr> 
                                         @endforeach
@@ -164,7 +184,8 @@
                                             <th class="text-center">Tipo (Foro/Blog)</th>
                                             <th class="text-center">Nombre</th>
                                             <th class="text-center">Fecha de creación</th>
-                                            <th class="text-center">Moderar</th>
+                                            <th class="text-center">Moderar/Eliminar</th>
+                                            <th class="text-center">Publicar</th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -173,11 +194,8 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="pull-right">
-                                                <a title="Moderar comentario" type="button" onclick="moderar('comentarios')" id="boton-moderar-comentario"  class="btn btn-primary">
-                                                    <i class="fa fa-check"></i> &nbsp;Moderar seleccionados
-                                                </a>
-                                                <a title="Eliminar hilo" type="button" onclick="eliminar('comentarios')" id="boton-eliminar-hilo"  class="btn btn-danger">
-                                                    <i class="fa fa-trash"></i> &nbsp;Eliminar seleccionados
+                                                <a title="Moderar/Publicar comentario" type="button" onclick="moderar_publicar('comentarios')" id="boton-moderar-comentario"  class="btn btn-primary">
+                                                    <i class="fa fa-check"></i> &nbsp;Moderar/Publicar seleccionados
                                                 </a>
                                             </div>  
                                         </div>
@@ -199,4 +217,9 @@
 
 @section('script')
 <script src="{{ asset('js/Foros.js') }}"></script>
+
+<script>
+  $("#side-moderar-li").addClass("active");
+</script>
+    
 @endsection

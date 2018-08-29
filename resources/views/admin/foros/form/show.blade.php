@@ -42,7 +42,7 @@
                                         <b>Categoría</b> <a class="pull-right">{{$hilo_foro->categoria->nombre}}</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Cantidad de mensajes</b> <a class="pull-right">13,287</a>
+                                        <b>Cantidad de mensajes</b> <a class="pull-right">{{$hilo_foro->comentarios->count()}}</a>
                                     </li>
                                 </ul>
 

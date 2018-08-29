@@ -1,8 +1,3 @@
-/** Inicio Código de Sidebar */
-$("#side-foros-li").addClass("active");
-$("#side-foros-ul").addClass("menu-open");
-$("#side-ele-foros").addClass("active");
-/** Fin Código de Sidebar */
 
 /** Modal de update y de delete */
 function completar_campos(hilo_foro) {
@@ -56,9 +51,10 @@ $('.example tbody').on('mouseenter', 'td', function () {
     $(table.column(colIdx).nodes()).addClass('highlight');
 });
 
+//Instanciación de barra de herramientas de edición de texto
 $("#mensaje").wysihtml5();
 
-//Codigo switch
+//Codigo switch (instanciación de boton deslizante)
 $('#toggle-one').bootstrapToggle();
 
 
@@ -86,84 +82,184 @@ function actualizar_input_publicado(valor) {
     ;
 }
 
+
+
+
+//----SECCION SETEO DE VECTORES PARA PUBLICAR, MODERAR Y ELIMINAR-----
+
+
 var comentarios = [];
 var hilos_foros = [];
-
-function actualizar_array(id, tipo) {
-    if (tipo === "comentario") {
-        if (comentarios.indexOf(id) >= 0) {
-            comentarios.splice(comentarios.indexOf(id), 1);
-        } else {
-            comentarios.push(id);
-        }
-    } else {
-        if (hilos_foros.indexOf(id) >= 0) { //Si encuentra el id en el array
-            hilos_foros.splice(hilos_foros.indexOf(id), 1);
-        } else { //Si el id no está en el array
-            hilos_foros.push(id);
-        }
-    }
-}
+var comentarios_publicar = [];
+var hilos_foros_publicar = [];
 
 function seteo_global(tipo, accion) {
-    if (tipo === 'comentario') {
-        comentarios = [];
-        if (accion === "checked") {
-            $(".checkbox-comentarios").each(function (index) {
-                actualizar_array($(this).attr("id_elemento"), "comentario");
-            });
-            $(".checkbox-comentarios").prop("checked", true);
-        } else {
-            $(".checkbox-comentarios").prop("checked", false);
-        }
 
-    } else {
-        hilos_foros = [];
-        if (accion === "checked") {
-            $(".checkbox-hilos").each(function (index) {
-                actualizar_array($(this).attr("id_elemento"), "hilo");
+    if (accion === 'checked-publicar') {
+        if (tipo === 'comentarios') {
+            $(".checkbox-comentarios-publicar").each(function (index) {
+                actualizar_array($(this).attr("id_elemento"), "comentario-publicar");
             });
-            $(".checkbox-hilos").prop("checked", true);
         } else {
-            $(".checkbox-hilos").prop("checked", false);
+            $(".checkbox-hilos-publicar").each(function (index) {
+                actualizar_array($(this).attr("id_elemento"), "hilo-publicar");
+            });
+        }
+    } else if (accion === 'checked-moderar') {
+        if (tipo === 'comentarios') {
+            $(".checkbox-comentarios-moderar").each(function (index) {
+                actualizar_array($(this).attr("id_elemento"), "comentario-moderar");
+            });
+        } else {
+            $(".checkbox-hilos-moderar").each(function (index) {
+                actualizar_array($(this).attr("id_elemento"), "hilo-moderar");
+            });
+        }
+    } else if (accion === 'unchecked-publicar') {
+        if (tipo === 'comentarios') {
+            $(".checkbox-comentarios-publicar").each(function (index) {
+                actualizar_array($(this).attr("id_elemento"), "comentario-publicar");
+            });
+        } else {
+            $(".checkbox-hilos-publicar").each(function (index) {
+                actualizar_array($(this).attr("id_elemento"), "hilo-publicar");
+            });
+        }
+    } else if (accion === 'unchecked-moderar') {
+        if (tipo === 'comentarios') {
+            comenarios = [];
+            comentarios_publicar = [];
+            $(".checkbox-comentarios-moderar").prop("checked", false);
+            $(".checkbox-comentarios-publicar").prop("checked", false);
+        } else {
+            hilos_foros = [];
+            hilos_foros_publicar = [];
+            $(".checkbox-hilos-moderar").prop("checked", false);
+            $(".checkbox-hilos-publicar").prop("checked", false);
         }
     }
 }
 
-function moderar(tipo) {
-    if (tipo === 'hilos' && hilos_foros.length > 0) {
-        $.ajax({
-            url: '/admin/moderar_masivamente_hilos', //direccion del metodo del controller al que le pedimos los datos (ruta del sistema de ruteo de laravel)
-            data: {
-                array: hilos_foros
-            },
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) { //Succes si va todo bien, failed y si nunca mas te responde, data seria como el request hacia nosotros desde el controller
-                location.href = "/admin/indexNuevos";
+
+function actualizar_array(id, tipo) {
+    if (tipo === 'comentario-moderar') { //Para moderar solamente
+        if (comentarios.indexOf(id) >= 0) {
+            comentarios.splice(comentarios.indexOf(id), 1);
+            $("#moderar-comentario" + id).prop("checked", false);
+            if (comentarios_publicar.indexOf(id) >= 0) {
+                comentarios_publicar.splice(comentarios_publicar.indexOf(id), 1);
+                $("#publicar-comentario" + id).prop("checked", false);
             }
-        });
-    } else if (tipo === 'comentarios' && comentarios.length > 0) {
-        $.ajax({
-            url: '/admin/moderar_masivamente_comentarios', //direccion del metodo del controller al que le pedimos los datos (ruta del sistema de ruteo de laravel)
-            data: {
-                array: comentarios
-            },
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) { //Succes si va todo bien, failed y si nunca mas te responde, data seria como el request hacia nosotros desde el controller
-                location.href = "/admin/indexNuevos";
+        } else {
+            comentarios.push(id);
+            $("#moderar-comentario" + id).prop("checked", true);
+        }
+
+    } else if (tipo === 'comentario-publicar') { //Moderar y publicar, se analizan los dos array
+        if (comentarios_publicar.indexOf(id) >= 0) {
+            comentarios_publicar.splice(comentarios_publicar.indexOf(id), 1);
+            $("#publicar-comentario" + id).prop("checked", false);
+        } else {
+            comentarios_publicar.push(id);
+            $("#publicar-comentario" + id).prop("checked", true);
+            if (comentarios.indexOf(id) < 0) {
+                comentarios.push(id);
+                $("#moderar-comentario" + id).prop("checked", true);
             }
-        });
+        }
+
+    } else if (tipo === 'hilo-moderar') {//Para moderar solamente
+        if (hilos_foros.indexOf(id) >= 0) {
+            hilos_foros.splice(hilos_foros.indexOf(id), 1);
+            if (hilos_foros_publicar.indexOf(id) >= 0) {
+                hilos_foros_publicar.splice(hilos_foros_publicar.indexOf(id), 1);
+                $("#publicar-hilo" + id).prop("checked", false);
+            }
+        } else {
+            hilos_foros.push(id);
+            $("#moderar-hilo" + id).prop("checked", true);
+        }
+
+    } else if (tipo === 'hilo-publicar') { //Moderar y publicar, se analizan los dos array
+        if (hilos_foros_publicar.indexOf(id) >= 0) {
+            hilos_foros_publicar.splice(hilos_foros_publicar.indexOf(id), 1);
+            $("#publicar-hilo" + id).prop("checked", false);
+        } else {
+            hilos_foros_publicar.push(id);
+            $("#publicar-hilo" + id).prop("checked", true);
+            if (hilos_foros.indexOf(id) < 0) {
+                hilos_foros.push(id);
+                $("#moderar-hilo" + id).prop("checked", true);
+            }
+        }
+    }
+}
+
+function moderar_publicar(tipo) {
+    if (tipo === 'hilos' && hilos_foros.length >= 0) {
+        if (hilos_foros_publicar.length < 0) {
+            $.ajax({
+                url: '/admin/moderar_masivamente_hilos', //direccion del metodo del controller al que le pedimos los datos (ruta del sistema de ruteo de laravel)
+                data: {
+                    ids_hilos_foros: hilos_foros
+                },
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) { //Succes si va todo bien, failed y si nunca mas te responde, data seria como el request hacia nosotros desde el controller
+                    location.href = "/admin/indexNuevos";
+                }
+            });
+        } else if (hilos_foros_publicar.length >= 0) {
+            $.ajax({
+                url: '/admin/moderar_masivamente_hilos', //direccion del metodo del controller al que le pedimos los datos (ruta del sistema de ruteo de laravel)
+                data: {
+                    ids_hilos_foros: hilos_foros,
+                    ids_hilos_foros_publicar: hilos_foros_publicar
+                },
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) { //Succes si va todo bien, failed y si nunca mas te responde, data seria como el request hacia nosotros desde el controller
+                    location.href = "/admin/indexNuevos";
+                }
+            });
+        }
+    } else if (tipo === 'comentarios' && comentarios.length >= 0) {
+        if (hilos_foros_publicar.length < 0) {
+            $.ajax({
+                url: '/admin/moderar_masivamente_comentarios', //direccion del metodo del controller al que le pedimos los datos (ruta del sistema de ruteo de laravel)
+                data: {
+                    ids_comentarios: comentarios
+                },
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) { //Succes si va todo bien, failed y si nunca mas te responde, data seria como el request hacia nosotros desde el controller
+                    location.href = "/admin/indexNuevos";
+                }
+            });
+        } else if (comentarios_publicar.length >= 0) {
+            $.ajax({
+                url: '/admin/moderar_masivamente_comentarios', //direccion del metodo del controller al que le pedimos los datos (ruta del sistema de ruteo de laravel)
+                data: {
+                    ids_comentarios: comentarios,
+                    ids_comentarios_publicar: comentarios_publicar
+                },
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) { //Succes si va todo bien, failed y si nunca mas te responde, data seria como el request hacia nosotros desde el controller
+                    location.href = "/admin/indexNuevos";
+                }
+            });
+        }
     }
 }
 
 function eliminar(tipo) {
-    if (tipo === 'hilos' && hilos_foros.length > 0) {
+    if (tipo === 'hilos' && (hilos_foros.length >= 0 || hilos_foros_publicar.length >= 0)) {
         $.ajax({
             url: '/admin/eliminar_masivamente_hilos',
             data: {
-                array: hilos_foros
+                ids_hilos_foros: hilos_foros,
+                ids_hilos_foros_publicar: hilos_foros_publicar
             },
             type: 'GET',
             dataType: 'json',
@@ -171,11 +267,12 @@ function eliminar(tipo) {
                 location.href = "/admin/indexNuevos";
             }
         });
-    } else if (tipo === 'comentarios' && comentarios.length > 0) {
+    } else if (tipo === 'comentarios' && (comentarios.length >= 0 || comentarios_publicar >= 0)) {
         $.ajax({
             url: '/admin/eliminar_masivamente_comentarios',
             data: {
-                array: comentarios
+                ids_comentarios: comentarios,
+                ids_comentarios_publicar: comentarios_publicar
             },
             type: 'GET',
             dataType: 'json',

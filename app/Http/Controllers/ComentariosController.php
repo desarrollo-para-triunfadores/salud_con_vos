@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
-
 class ComentariosController extends Controller {
 
     public function __construct() {
@@ -105,12 +104,26 @@ class ComentariosController extends Controller {
     }
 
     public function moderar_masivamente(Request $request) {
-        foreach ($request->array as $comentario) {
-            $comentario_a = Comentario::find($comentario);
-            $comentario_a->moderado = 'true';
-            $comentario_a->save();
+        if ($request->ids_comentarios_publicar) {
+            foreach ($request->ids_comentarios as $id_comentario) {
+                $comentario = Comentario::find($id_comentario);
+                $comentario->moderado = 'true';
+                $comentario->save();
+            }
+            foreach ($request->ids_comentarios_publicar as $id_comentario) {
+                $comentario = Comentario::find($id_comentario);
+                $comentario->publicado = 'true';
+                $comentario->save();
+            }
+            return response()->json('Se moderaron y publicaron los comentarios con éxito');
+        } else if ($request->ids_comentarios) {
+            foreach ($request->ids_comentarios as $id_comentario) {
+                $comentario = Comentario::find($id_comentario);
+                $comentario->moderado = 'true';
+                $comentario->save();
+                return response()->json('Se moderaron los comentarios con éxito');
+            }
         }
-        return response()->json('Se moderaron los comentarios con éxito');
     }
 
     public function eliminar_masivamente(Request $request) {
@@ -120,4 +133,5 @@ class ComentariosController extends Controller {
         }
         return response()->json('Se eliminaron los comentarios con éxito');
     }
+
 }
