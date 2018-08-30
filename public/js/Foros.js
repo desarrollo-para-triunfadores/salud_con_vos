@@ -70,7 +70,10 @@ function actualizar_estado(valor, comentario_id) {
         success: function (data) { //Succes si va todo bien, failed y si nunca mas te responde, data seria como el request hacia nosotros desde el controller
         }
     });
-
+    if (valor) {
+        $('#span-moderacion').html('Moderado');
+        $('#span-moderacion').css("color", "#229954");
+    }
 }
 function actualizar_input_publicado(valor) {
     if (valor) {

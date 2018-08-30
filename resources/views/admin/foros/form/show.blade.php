@@ -88,7 +88,15 @@
                                             <a href="#">{{$comentario->nombre}}</a>
                                         </span>
                                         <!-- Fecha de creacion del comentario -->
-                                        <span class="description">Creado el {{$comentario->created_at->format('d/m/Y')}} - Publicado: {{$comentario->publicado}}</span>
+
+                                        <span id="span-fecha" class="description">Creado el {{$comentario->created_at->format('d/m/Y')}}</span> 
+
+                                        @if($comentario->moderado === 'true') 
+                                            <span id="span-moderacion" class="description" style="color:#229954">Moderado</span>
+                                        @else 
+                                            <span id="span-moderacion" class="description" style="color:#ff0000">No moderado</span>
+                                        @endif
+
 
                                     </div>
                                     <!-- Contenido del comentario -->

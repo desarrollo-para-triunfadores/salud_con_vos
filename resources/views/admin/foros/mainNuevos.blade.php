@@ -105,7 +105,7 @@
                                         <div class="col-md-12">
                                             <div class="pull-right">
                                                 <a title="Moderar hilo" type="button" onclick="moderar_publicar('hilos')" id="boton-moderar-hilo"  class="btn btn-primary">
-                                                    <i class="fa fa-check"></i> &nbsp;Moderar seleccionados
+                                                    <i class="fa fa-check"></i> &nbsp;Moderar/Publicar seleccionados
                                                 </a>
                                             </div>  
                                         </div>

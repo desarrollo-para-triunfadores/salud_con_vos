@@ -85,6 +85,9 @@ class ComentariosController extends Controller {
     public function update(Request $request, $id) {
         $comentario = Comentario::find($id);
         $comentario->fill($request->all());
+        if ($request->publicado === 'true'){
+            $comentario->moderado = 'true';
+        }
         $comentario->save();
         //Si la respuesta vino por JSON, se debe contestar por JSON
         if ($request->ajax()) {
