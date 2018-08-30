@@ -19,7 +19,7 @@ class ArticulosNuevosComposer {
     }
 
     public function compose(View $view) {
-        $blogs = Blog::all()->sortByDesc('id')->take(5);
+        $blogs = Blog::all()->where('publicado', 'Si');
         $view->with('blogs_nuevos', $blogs);
     }
 

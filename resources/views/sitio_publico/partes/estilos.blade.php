@@ -5,6 +5,9 @@
     @yield('title','Salud con vos | Inicio')
 </title>
 
+<!-- Font Awesome -->
+<link href="{{ asset('plantillas/AdminLTE/plugins/fontawesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"
+/>
 
 <link rel="shortcut icon" type="image/x-icon" href="{{ asset('plantillas/simplicity/wp-content/themes/simplicity/img/favicon.ico') }}  " />
 <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700italic,700,600italic,600,400italic,300italic,300|Roboto:100,300,400,500,700&amp;subset=latin,latin-ext' type='text/css' />
@@ -18,7 +21,6 @@
 <link rel='stylesheet' id='custom_css-css'  href="{{ asset('plantillas/simplicity/wp-content/themes/simplicity/css/custom_css039c.css?ver=3.6') }}  " type='text/css' media='all' />
 <link href="https://fonts.googleapis.com/css?family=Kirang+Haerang" rel="stylesheet">
 <link rel='stylesheet' href="{{ asset('plantillas/simplicity/assets/css/animate.css') }}" type='text/css' media='all' />
-<link rel='stylesheet' href="{{ asset('plantillas/simplicity/assets/css/font-awesome.min.css') }}" type='text/css' media='all' />
 <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="{{ asset('plantillas/simplicity/wp-includes/wlwmanifest.xml') }}  " /> 
 <link type="text/css" rel="stylesheet" href="{{ asset('css/front/index.css') }}">
 <link rel='stylesheet' href="{{ asset('plantillas/simplicity/assets/css/leaflet.css') }}" type='text/css' media='all' />

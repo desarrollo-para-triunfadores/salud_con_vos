@@ -77,7 +77,9 @@ class FrontForoController extends Controller {
      */
     public function show($id) {
         $hilo_foro = HiloForo::find($id);
-        $comentarios = Comentario::where('hilo_foro_id', $id)->orderBy('id', 'DESC')->paginate(10);
+        $comentarios = Comentario::where('hilo_foro_id', $id)
+                ->where('moderado', 1)
+                ->orderBy('id', 'DESC')->paginate(10);
         return view('sitio_publico.foro.hilo_foro')
                         ->with('hilo_foro', $hilo_foro)
                         ->with('comentarios', $comentarios);

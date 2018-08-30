@@ -1,10 +1,10 @@
-$j(window).load(function(){
-	setTimeout(function(){
-		$j("#panel").animate({marginLeft: "0px"});
-		$j("a.open").addClass('opened');
-		$j("#panel").addClass('opened-panel');
-	},1000);
-});
+//$j(window).load(function(){
+//	setTimeout(function(){
+////		$j("#panel").animate({marginLeft: "0px"});
+//		$j("a.open").addClass('opened');
+//		$j("#panel").addClass('opened-panel');
+//	},1000);
+//});
 
 
 $j(document).ready(function() {

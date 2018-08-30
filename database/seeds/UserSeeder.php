@@ -27,11 +27,12 @@ class UserSeeder extends Seeder
             'password' => bcrypt('123123'),
             'imagen' => 'usuario_1499215225.jpg'
         ]);
-        $user_3 = User::create([
-            'name' => 'Manuel Antonio Kuhn',
-            'email' => 'manuelk.sv@gmail.com',
-            'password' => bcrypt('123123'),
-            'imagen' => 'sin_imagen.png'
-        ]);
+        
+//        $user_3 = User::create([
+//            'name' => 'Manuel Antonio Kuhn',
+//            'email' => 'manuelk.sv@gmail.com',
+//            'password' => bcrypt('123123'),
+//            'imagen' => 'sin_imagen.png'
+//        ]);
     }
 }

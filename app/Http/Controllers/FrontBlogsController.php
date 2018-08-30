@@ -23,7 +23,7 @@ class FrontBlogsController extends Controller {
         /*
          * Definimos las variables con las cuales vamos a trabajar
          */
-        $blogs = Blog::orderBy('id', 'DESC')->paginate(10);
+        $blogs = Blog::where('publicado', 1)->orderBy('id', 'DESC')->paginate(10);
         $categoria_seleccionada = "todas las categorías";
 
         if ($request->buscar) {
@@ -32,13 +32,13 @@ class FrontBlogsController extends Controller {
              * Solicitud de filtrado por contenido 
              */
             $palabra = "%" . $request->buscar . "%";
-            $blogs = Blog::where('titulo', 'like', $palabra)->orderBy('id', 'DESC')->paginate(10);
+            $blogs = Blog::where('publicado', 1)->where('titulo', 'like', $palabra)->orderBy('id', 'DESC')->paginate(10);
             $categoria_seleccionada = "todos los artículos que contienen: " . $request->buscar;
         } elseif ($request->categoria) {
             /*
              * Solicitud de filtrado por categoría 
              */
-            $blogs = Blog::where('categoria_id', $request->categoria)->orderBy('id', 'DESC')->paginate(10);
+            $blogs = Blog::where('publicado', 1)->where('categoria_id', $request->categoria)->orderBy('id', 'DESC')->paginate(10);
             $categoria_seleccionada = Categoria::find($request->categoria)->nombre;
         }
 
@@ -74,7 +74,9 @@ class FrontBlogsController extends Controller {
      */
     public function show($id) {
         $blog = Blog::find($id);
-        $comentarios = Comentario::where('blog_id', $id)->orderBy('id', 'DESC')->paginate(10);
+        $comentarios = Comentario::where('blog_id', $id)          
+                ->where('moderado', 1)
+                ->orderBy('id', 'DESC')->paginate(10);
         return view('sitio_publico.blogs.articulo')
                         ->with('blog', $blog)
                         ->with('comentarios', $comentarios);

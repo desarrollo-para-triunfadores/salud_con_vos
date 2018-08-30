@@ -50,7 +50,7 @@
                                                     <div class="post_content_holder">
                                                         <div class="post_image">
                                                             <div class="post_content_quote">
-                                                                <h4>{{$hilo_foro->titulo}}</h4>
+                                                                <h4>{{$hilo_foro->contenido}}</h4>
                                                             </div>
                                                         </div>
                                                         <div class="post_text">

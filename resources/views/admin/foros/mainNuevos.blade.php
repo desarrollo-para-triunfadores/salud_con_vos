@@ -216,10 +216,5 @@
 @endsection 
 
 @section('script')
-<script src="{{ asset('js/Foros.js') }}"></script>
-
-<script>
-  $("#side-moderar-li").addClass("active");
-</script>
-    
+<script src="{{ asset('js/Moderacion.js') }}"></script>
 @endsection

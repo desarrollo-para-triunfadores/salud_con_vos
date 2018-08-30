@@ -62,4 +62,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/moderar_masivamente_comentarios', 'ComentariosController@moderar_masivamente');
     Route::get('/eliminar_masivamente_hilos', 'HilosForosController@eliminar_masivamente');
     Route::get('/eliminar_masivamente_comentarios', 'ComentariosController@eliminar_masivamente');
+    
+    
+    Route::post('/eliminar_imagen', 'BlogsController@eliminar_imagen');
+    
+    
+    
 });

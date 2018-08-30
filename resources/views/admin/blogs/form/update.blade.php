@@ -30,7 +30,7 @@
 
                         <form id="form" action="/admin/blogs/{{$blog->id}}"  method="POST" enctype="multipart/form-data">
                             <input name="_method" type="hidden" value="PUT">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                             <div class="row"> 
 
                                 <!-- Campo para titulo -->
@@ -58,7 +58,7 @@
                                 <div class="col-md-12"> 
                                     <div class="form-group">
                                         <label>Sinopsis</label>
-                                        <textarea maxlength="5000" id="sinopsis" name="sinopsis" style="width: 100%;" rows="6" readonly>{{$blog->sinopsis}}</textarea>                      
+                                        <textarea maxlength="280" id="sinopsis" name="sinopsis" style="width: 100%;" rows="4" readonly>{{$blog->sinopsis}}</textarea>                      
                                     </div>
                                 </div>
 
@@ -67,7 +67,7 @@
                                     <div class="form-group">
                                         <label>Link video</label>
                                         <div class="input-group">
-                                            <input name="linkvideo" value="{{$blog->linkvideo}}" type="url" class="form-control" placeholder="Link YouTube">
+                                            <input name="linkvideo" value="{{$blog->linkvideo}}" type="text" class="form-control" placeholder="Link YouTube">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-youtube-play" aria-hidden="true"></i>
                                             </span>
@@ -138,46 +138,26 @@
                             var urls = '{{$urls}}';
                             var datos_imagenes = '{{$datos_imagenes}}';
                             var urls_parseados = JSON.parse(urls.replace(/&quot;/g, '"'));
-                            var datos_parseados = JSON.parse(datos_imagenes.replace(/&quot;/g, '"'));
+                            var datos_parseados1 = JSON.parse(datos_imagenes.replace(/&quot;/g, '"'));
+                            var datos_parseados2 = [];
+                            var token = $("#token").val();
+
+                            datos_parseados1.forEach(function (element) {
+                                var imagen = element;
+                                imagen.extra = {'_token': token};
+                                datos_parseados2.push(imagen);
+                            });                   
 
                             $("#imagenes").fileinput({
-                                fileActionSettings:{
-                            showRemove: true,
-                            showDownload: true,
-                            showUpload :false
-                        },
-                        deleteUrl: "/admin/casa",
-                                theme: 'fa',
                                 language: 'es',
-                                showUpload: false,
-                                uploadUrl: '#',
                                 allowedFileExtensions: ['jpg', 'jpeg'],
                                 initialPreview: urls_parseados,
                                 initialPreviewAsData: true,
-                                initialPreviewConfig: datos_parseados,
-                                overwriteInitial: false
+                                initialPreviewConfig: datos_parseados2,
+                                deleteUrl: "/admin/eliminar_imagen",
+                                overwriteInitial: false,
+                                maxFileSize: 5120
                             });
-
-
-
-
-
-//                            var url1 = 'http://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg',
-//                                    url2 = 'http://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Earth_Eastern_Hemisphere.jpg/600px-Earth_Eastern_Hemisphere.jpg';
-//
-//
-//                            $("#imagenes").fileinput({
-//                                initialPreview: [url1, url2],
-//                                initialPreviewAsData: true,
-//                                initialPreviewConfig: [
-//                                    {caption: "Moon.jpg", downloadUrl: url1, size: 930321, width: "120px", key: 1},
-//                                    {caption: "Earth.jpg", downloadUrl: url2, size: 1218822, width: "120px", key: 2}
-//                                ],
-//                                deleteUrl: "/site/file-delete",
-//                                overwriteInitial: false,
-//                                maxFileSize: 100,
-//                                initialCaption: "The Moon and the Earth"
-//                            });
 
 
 

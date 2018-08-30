@@ -48,7 +48,9 @@ class BlogsController extends Controller {
         $blog = new Blog($request->all());
         if ($request->publicado === 'on') {
             $blog->publicado = 'Si';
-        }else{$blog->publicado = 'No';}
+        } else {
+            $blog->publicado = 'No';
+        }
         $blog->user_id = Auth::id();
         $blog->save();
 
@@ -75,13 +77,12 @@ class BlogsController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
     public function show($id) {
         $blog = Blog::find($id);
         $urls = json_encode($blog->url_imagenes());
         $datos_imagenes = json_encode($blog->datos_imagenes());
         $categorias = Categoria::all();
-        
+
         return view('/admin/blogs/form/show')
                         ->with('categorias', $categorias)
                         ->with('blog', $blog)
@@ -115,23 +116,17 @@ class BlogsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        dd($request);
+
         $blog = Blog::find($id);
         if ($request->publicado === 'on') {
             $blog->publicado = 'Si';
-        }else{$blog->publicado = 'No';}
+        } else {
+            $blog->publicado = 'No';
+        }
         $blog->fill($request->all());
         $blog->save();
 
         if ($request->hasfile('imagenes')) {
-
-            /*
-             * Borramos las imágenes asociadas al blog
-             */
-            foreach ($blog->imagenes as $imagen) {
-                Storage::disk('blogs')->delete($imagen->nombre);
-                $imagen->delete();
-            }
 
             /*
              * Cargamos las imágenes que nos hayan facilitado
@@ -173,5 +168,12 @@ class BlogsController extends Controller {
         Session::flash('message', '¡El Blog ha sido eliminado!');
         return redirect()->route('blogs.index');
     }
-    
+
+    public function eliminar_imagen(Request $request) {
+        $imagen = Imagen::find($request->key);
+        Storage::disk('blogs')->delete($imagen->nombre);
+        $imagen->delete();
+        return json_encode("ok");
+    }
+
 }

@@ -56,7 +56,7 @@
                                 <div class="col-md-12"> 
                                     <div class="form-group">
                                         <label>Sinopsis</label>
-                                        <textarea maxlength="5000" id="sinopsis" name="sinopsis" placeholder="Escriba aquí la sinopsis..." style="width: 100%;" rows="6" required></textarea>
+                                        <textarea maxlength="280" id="sinopsis" name="sinopsis" placeholder="Escriba aquí la sinopsis..." style="width: 100%;" rows="4" required></textarea>
                                     </div>
                                 </div>
 
@@ -65,7 +65,7 @@
                                     <div class="form-group">
                                         <label>Link video</label>
                                         <div class="input-group">
-                                            <input name="linkvideo" type="url" class="form-control" placeholder="Link YouTube">
+                                            <input name="linkvideo" type="text" class="form-control" placeholder="Link YouTube">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-youtube-play" aria-hidden="true"></i>
                                             </span>
