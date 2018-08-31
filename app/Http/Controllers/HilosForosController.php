@@ -103,6 +103,9 @@ class HilosForosController extends Controller {
     public function update(Request $request, $id) {
         $hilo_foro = HiloForo::find($id);
         $hilo_foro->fill($request->all());
+        if ($request->publicado === 'true') {
+            $hilo_foro->moderado = 'true';
+        }
         $hilo_foro->save();
         Session::flash('message', '¡Se ha actualizado la información del hilo!');
         return redirect()->route('foros.index');
@@ -146,7 +149,6 @@ class HilosForosController extends Controller {
                 $hilo_foro->save();
             }
             return response()->json('Se moderaron y publicaron los hilos con éxito');
-            
         } else if ($request->ids_hilos_foros) {
             foreach ($request->ids_hilos_foros as $hilo) {
                 $hilo_foro = HiloForo::find($hilo);

@@ -129,7 +129,7 @@
                                         <option value="checked-publicar">Tildar p/publicar</option>
                                         <option value="unchecked-moderar">Destildar p/moderar</option>
                                         <option value="unchecked-publicar">Destildar p/publicar</option>
-                                        <option value="unchecked-todo">Destildar todo</option>
+                                        <option value="unchecked-moderar">Destildar todo</option>
                                     </select>
                                 </div>
                                 <div class="form-group pull-right" style="margin: 10px 0 10px 0">

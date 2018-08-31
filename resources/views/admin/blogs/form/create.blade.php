@@ -106,9 +106,14 @@
                         <!-- Footer con boton de registro -->
                     </div> 
                     <div class="box-footer">
-                        <button type="button" class="btn btn-primary pull-right" onclick="$('#boton_submit_create').click()">
-                            <i class="fa fa-plus-circle"></i> &nbsp;Guardar
-                        </button>
+                        <div class="row pull-right">
+                            <div class="col-md-12">
+                                <a href="http://localhost:8000/admin/blogs" title="Volver a la pantalla anterior" class="btn btn-default"><i class="fa fa-trash"></i>  Descartar</a>
+                                <button type="button" class="btn btn-primary" onclick="$('#boton_submit_create').click()">
+                                    <i class="fa fa-plus-circle"></i> &nbsp;Guardar
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>                                               

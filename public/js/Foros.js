@@ -10,7 +10,7 @@ function completar_campos(hilo_foro) {
 
     //Seteo el valor del boton deslizante segun el estado de publicacion, 
     //en este caso el atributo del foro es Si o No
-    if (hilo_foro.publicado === 'Publicado') {
+    if (hilo_foro.publicado === 'true') {
         $('#publicado-update').bootstrapToggle('on');
     }
     else {
@@ -75,6 +75,7 @@ function actualizar_estado(valor, comentario_id) {
         $('#span-moderacion').css("color", "#229954");
     }
 }
+
 function actualizar_input_publicado(valor) {
     if (valor) {
         $('#publicado-update-oculto').attr('value', 'true');
@@ -82,7 +83,6 @@ function actualizar_input_publicado(valor) {
     else {
         $('#publicado-update-oculto').attr('value', 'false');
     }
-    ;
 }
 
 
