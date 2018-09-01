@@ -53,8 +53,8 @@
                                     <td class="text-center" style="color:#ff0000">No Publicado</td>
                                     @endif
                                     <td class="text-center" width="100">
-                                        <a type="button" href="/admin/blogs/{{$blog->id}}" title="Mostrar" class="btn btn-social-icon btn-info btn-sm"><i class="fa fa-eye"></i></a>
-                                        <a type="button" href="/admin/blogs/{{$blog->id}}/edit" title="Editar" class="btn btn-social-icon btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
+                                        <a type="button" href="/admin/blogs/{{$blog->slug}}" title="Mostrar" class="btn btn-social-icon btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                        <a type="button" href="/admin/blogs/{{$blog->slug}}/edit" title="Editar" class="btn btn-social-icon btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
                                         <a onclick="abrir_modal_borrar({{$blog->id}})" title="Eliminar este registro" class="btn btn-social-icon btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr> 

@@ -46,6 +46,7 @@ class HilosForosController extends Controller {
      */
     public function store(Request $request) {
         $hilo_foro = new HiloForo($request->all());
+        $hilo_foro->slug = Str_slug($request->titulo); //Linea agregada para el slug
         if (is_null($request->nombre)) {
             $hilo_foro->nombre = Auth::user()->name;
             $hilo_foro->correo = Auth::user()->email;
@@ -67,13 +68,13 @@ class HilosForosController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
-        if (is_null($id)) {
+    public function show($slug) {
+        if (is_null($slug)) {
             $categorias = Categoria::all();
-            $hilos_foros = HiloForo::all()->whereIn('moderado', true);
+            $hilos_foros = HiloForo::where('slug',$slug)->firstOrFail()->whereIn('moderado', true);
             return view('/admin/foros/mainNuevos')->with('hilos_foros', $hilos_foros)->with('categorias', $categorias);
         } else {
-            $hilo_foro = HiloForo::find($id);
+            $hilo_foro = HiloForo::where('slug',$slug)->firstOrFail();
             $categorias = Categoria::all();
             return view('/admin/foros/form/show')->with('hilo_foro', $hilo_foro)->with('categorias', $categorias);
         }
