@@ -89,20 +89,22 @@
                                         <textarea maxlength="10000" id="contenido" name="contenido" placeholder="Escriba aquí el contenido del Blog..." style="width: 100%;" rows="12" required></textarea>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!--Campo seleccion de estado de publicación -->
-                            <div class="col-md-6"> 
-                                <div>
-                                    <label>Estado</label>
-                                    <br>
-                                    <input id="publicado" name="publicado" type="checkbox" data-width="130" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Publicado" data-off="No publicado">
+                                <!--Campo seleccion de estado de publicación -->
+                                <div class="col-md-6"> 
+                                    <div>
+                                        <label>Estado</label>
+                                        <br>
+                                        <input id="publicado" name="publicado" type="checkbox" data-width="130" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Publicado" data-off="No publicado">
+                                    </div>
                                 </div>
                             </div>
 
+
+
                             <button id="boton_submit_create" type="submit" class="btn btn-primary hide"></button>
                         </form>
-
+                        <br>
                         <!-- Footer con boton de registro -->
                     </div> 
                     <div class="box-footer">

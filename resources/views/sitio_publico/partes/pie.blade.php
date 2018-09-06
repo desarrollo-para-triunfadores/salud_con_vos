@@ -4,49 +4,45 @@
         <ul class="carousel_slider">
             <li>
                 <a href="#">
-                    <img src="{{ asset('plantillas/simplicity/assets/icons/Canon.29.delayed.png') }}" title="" alt="" />
+                    <img src="{{ asset('plantillas/simplicity/assets/icons/carrusel-logo/3.png') }}" title="" alt="" />
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="{{ asset('plantillas/simplicity/assets/icons/Coca.png') }}" title="" alt="" />
+                    <img src="{{ asset('plantillas/simplicity/assets/icons/carrusel-logo/2.png') }}" title="" alt="" />
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="{{ asset('plantillas/simplicity/assets/icons/Dell.png') }}" title="" alt="" />
+                    <img src="{{ asset('plantillas/simplicity/assets/icons/carrusel-logo/3.png') }}" title="" alt="" />
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="{{ asset('plantillas/simplicity/assets/icons/Diesel.2c.delayed.png') }}" title="" alt="" />
+                    <img src="{{ asset('plantillas/simplicity/assets/icons/carrusel-logo/2.png') }}" title="" alt="" />
+                </a>
+            </li>
+           <li>
+                <a href="#">
+                    <img src="{{ asset('plantillas/simplicity/assets/icons/carrusel-logo/3.png') }}" title="" alt="" />
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="{{ asset('plantillas/simplicity/assets/icons/Fedex.png') }}" title="" alt="" />
+                    <img src="{{ asset('plantillas/simplicity/assets/icons/carrusel-logo/2.png') }}" title="" alt="" />
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="{{ asset('plantillas/simplicity/assets/icons/Intel.2e.delayed.png') }}" title="" alt="" />
+                    <img src="{{ asset('plantillas/simplicity/assets/icons/carrusel-logo/3.png') }}" title="" alt="" />
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="{{ asset('plantillas/simplicity/assets/icons/Mazda.png') }}" title="" alt="" />
+                    <img src="{{ asset('plantillas/simplicity/assets/icons/carrusel-logo/2.png') }}" title="" alt="" />
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <img src="{{ asset('plantillas/simplicity/assets/icons/Lego.png') }}" title="" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{{ asset('plantillas/simplicity/assets/icons/Moto.png') }}" title="" alt="" />
-                </a>
-            </li>
+      
         </ul>
     </div>
     <!--Fin Carrusel Logos-->

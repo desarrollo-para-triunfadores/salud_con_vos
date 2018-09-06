@@ -16,7 +16,7 @@
             <div class="container">
                 <div class="container_inner clearfix">
                     <h1>{{$blog->titulo}}</h1>
-                    <span class="subtitle">{{$blog->sinopsis}}</span>
+                    <span class="subtitle sombra">{{$blog->sinopsis}}</span>
                 </div>
             </div>
         </div>
@@ -80,7 +80,7 @@
                                                                     <a href="index.html" title="{{$blog->titulo}}">
                                                                         <img width="1010" height="568" src="{{ asset('imagenes/blogs/'.$blog->imagen()->nombre) }}" class="attachment-full wp-post-image"></a>
                                                                 </div>
-                                                        
+
                                                                 @elseif($blog->linkvideo)
                                                                 <!--Muestro Video-->
                                                                 <div class="post_image_video">
@@ -129,8 +129,8 @@
                                                                             </span>
                                                                         </span>
                                                                     </span>
-
-                                                                    {!! $blog->contenido !!}
+                                                                    <div class="sombra">  {!! $blog->contenido !!}</div>
+                                                                  
 
                                                                 </div>
                                                             </div>

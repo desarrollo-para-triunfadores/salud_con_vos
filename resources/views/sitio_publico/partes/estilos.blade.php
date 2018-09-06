@@ -25,3 +25,5 @@
 <link type="text/css" rel="stylesheet" href="{{ asset('css/front/index.css') }}">
 <link rel='stylesheet' href="{{ asset('plantillas/simplicity/assets/css/leaflet.css') }}" type='text/css' media='all' />
 <link rel='stylesheet' href="{{ asset('plantillas/simplicity/assets/css/sweetalert2.min.css') }}" type='text/css' media='all' />
+
+<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Shadows+Into+Light" rel="stylesheet">

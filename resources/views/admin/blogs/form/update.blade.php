@@ -105,7 +105,7 @@
                                         @endif
                                     </div>
                                 </div>
-
+  </div> 
 
                                 <!-- Boton submiteo oculto -->    
                                 <button id="boton_submit_update" type="submit" class="btn btn-primary hide"></button>

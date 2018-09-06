@@ -7,6 +7,19 @@
 }
 
 
+.blog_holder_v2.blog_single_holder article .post_image {
+    padding: 0 0 10px 0;
+}
+
+.sombra {
+      text-shadow: -1px 0 black, 1px 0 black, 0 1px black, 0 -1px black;
+   color: black;
+}
+
+span.info {
+    margin-bottom: 7%;
+}
+
 .two_columns_75_25 {
     width: 100%;
 }
