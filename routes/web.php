@@ -56,7 +56,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/configuracion', function () {// esta ruta es solo para zafar, pero hay que hacer un controller con la info de la empresa
         return view('admin.configuracion.main');
     });
-    Route::get('/indexNuevos', 'HilosForosController@indexNuevos')->name('HilosNuevos');
+    Route::get('/indexNuevos', 'HilosForosController@indexNuevos');
+    Route::get('/indexNuevosParaPublicar', 'HilosForosController@indexNuevosParaPublicar');
     Route::get('/moderar_masivamente_hilos', 'HilosForosController@moderar_masivamente');
     Route::get('/moderar_masivamente_comentarios', 'ComentariosController@moderar_masivamente');
     Route::get('/eliminar_masivamente_hilos', 'HilosForosController@eliminar_masivamente');

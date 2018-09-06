@@ -46,10 +46,14 @@
                                     <td class="text-center">{{$hilo_foro->nombre}}</td>
                                     <td class="text-center">{{$hilo_foro->correo}}</td>
                                     <td class="text-center">{{$hilo_foro->categoria->nombre}}</td>
-                                    <td class="text-center">{{$hilo_foro->publicado}}</td>
+                                    @if ($hilo_foro->publicado === 'true')
+                                    <td class="text-center" width="100" style="color:#229954">Publicado</td>
+                                    @else
+                                    <td class="text-center" width="100" style="color:#ff0000">No Publicado</td>
+                                    @endif
                                     <td class="text-center">{{$hilo_foro->created_at->format('d/m/Y')}}</td>
                                     <td class="text-center" width="100">
-                                        <a type="button" href="/admin/foros/{{$hilo_foro->id}}" title="Mostrar" class="btn btn-social-icon btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                        <a type="button" href="/admin/foros/{{$hilo_foro->slug}}" title="Mostrar" class="btn btn-social-icon btn-info btn-sm"><i class="fa fa-eye"></i></a>
                                         <a type="button" onclick="completar_campos({{$hilo_foro}})" title="Editar" class="btn btn-social-icon btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
                                         <a onclick="abrir_modal_borrar({{$hilo_foro->id}})" title="Eliminar este registro" class="btn btn-social-icon btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                                     </td>
@@ -90,5 +94,9 @@
 
 @section('script')
 <script src="{{ asset('js/Foros.js') }}"></script>
+
+<script>
+   $("#side-foros-li").addClass("active");
+</script>
 
 @endsection

@@ -12,7 +12,6 @@
                     @include('admin.partes.msj_acciones')
 
                     <!-- Form de creación de Hilo -->
-
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="row"> 
 
@@ -28,7 +27,7 @@
                         <div class="col-md-4"> 
                             <div class="form-group">
                                 <label>Categoría</label>
-                                <select style="width: 100%"  name="categoria_id"  placeholder="Campo obligatorio"  class="select2 form-control" required>
+                                <select style="width: 100%"  name="categoria_id" class="select2 form-control" required>
                                     <option></option>
                                     @foreach($categorias as $categoria)
                                     <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>                                                    

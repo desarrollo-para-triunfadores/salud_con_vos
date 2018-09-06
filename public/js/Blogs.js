@@ -1,7 +1,5 @@
 /** Inicio Código de Sidebar */
 $("#side-blogs-li").addClass("active");
-$("#side-blogs-ul").addClass("menu-open");
-$("#side-ele-blogs").addClass("active");
 /** Fin Código de Sidebar */
 /** Modal de update y de delete */
 function completar_campos(blog) {

@@ -28,8 +28,6 @@ class HilosForosController extends Controller {
         return view('/admin/foros/main')->with('hilos_foros', $hilos_foros)->with('categorias', $categorias);
     }
 
-    
-    
     /**
      * Show the form for creating a new resource.
      *
@@ -48,6 +46,7 @@ class HilosForosController extends Controller {
      */
     public function store(Request $request) {
         $hilo_foro = new HiloForo($request->all());
+        $hilo_foro->slug = Str_slug($request->titulo); //Linea agregada para el slug
         if (is_null($request->nombre)) {
             $hilo_foro->nombre = Auth::user()->name;
             $hilo_foro->correo = Auth::user()->email;
@@ -69,13 +68,13 @@ class HilosForosController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
-        if (is_null($id)) {
+    public function show($slug) {
+        if (is_null($slug)) {
             $categorias = Categoria::all();
-            $hilos_foros = HiloForo::all()->whereIn('moderado', true);
+            $hilos_foros = HiloForo::where('slug',$slug)->firstOrFail()->whereIn('moderado', true);
             return view('/admin/foros/mainNuevos')->with('hilos_foros', $hilos_foros)->with('categorias', $categorias);
         } else {
-            $hilo_foro = HiloForo::find($id);
+            $hilo_foro = HiloForo::where('slug',$slug)->firstOrFail();
             $categorias = Categoria::all();
             return view('/admin/foros/form/show')->with('hilo_foro', $hilo_foro)->with('categorias', $categorias);
         }
@@ -105,6 +104,9 @@ class HilosForosController extends Controller {
     public function update(Request $request, $id) {
         $hilo_foro = HiloForo::find($id);
         $hilo_foro->fill($request->all());
+        if ($request->publicado === 'true') {
+            $hilo_foro->moderado = 'true';
+        }
         $hilo_foro->save();
         Session::flash('message', '¡Se ha actualizado la información del hilo!');
         return redirect()->route('foros.index');
@@ -125,8 +127,8 @@ class HilosForosController extends Controller {
 
     public function indexNuevos() {
         $categorias = Categoria::all();
-        $hilos_foros = HiloForo::all()->whereIn('moderado', 'false');
-        $comentarios = Comentario::all()->whereIn('moderado', 'false');
+        $hilos_foros = HiloForo::all()->whereIn('publicado', 'false');
+        $comentarios = Comentario::all()->whereIn('publicado', 'false');
         return view('/admin/foros/mainNuevos')
                         ->with('hilos_foros', $hilos_foros)
                         ->with('categorias', $categorias)
@@ -134,12 +136,28 @@ class HilosForosController extends Controller {
     }
 
     public function moderar_masivamente(Request $request) {
-        foreach ($request->array as $hilo) {
-            $hilo_foro = HiloForo::find($hilo);
-            $hilo_foro->moderado = 'true';
-            $hilo_foro->save();
+        if ($request->ids_hilos_foros_publicar) {
+
+
+            foreach ($request->ids_hilos_foros as $hilo) {
+                $hilo_foro = HiloForo::find($hilo);
+                $hilo_foro->moderado = 'true';
+                $hilo_foro->save();
+            }
+            foreach ($request->ids_hilos_foros_publicar as $hilo) {
+                $hilo_foro = HiloForo::find($hilo);
+                $hilo_foro->publicado = 'true';
+                $hilo_foro->save();
+            }
+            return response()->json('Se moderaron y publicaron los hilos con éxito');
+        } else if ($request->ids_hilos_foros) {
+            foreach ($request->ids_hilos_foros as $hilo) {
+                $hilo_foro = HiloForo::find($hilo);
+                $hilo_foro->moderado = 'true';
+                $hilo_foro->save();
+            }
+            return response()->json('Se moderaron los hilos con éxito');
         }
-        return response()->json('Se moderaron los hilos con éxito');
     }
 
     public function eliminar_masivamente(Request $request) {

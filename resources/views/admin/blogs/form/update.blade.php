@@ -114,10 +114,14 @@
                         <!-- Footer con boton de registro -->
                     </div> 
                     <div class="box-footer">
-                        <a href="http://localhost:8000/admin/blogs" title="Volver a la pantalla anterior" class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i>Volver</a>
-                        <button type="button" class="btn btn-warning pull-right" onclick="$('#boton_submit_update').click()">
-                            <i class="fa fa-pencil"></i> &nbsp;Guardar cambios
-                        </button>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="http://localhost:8000/admin/blogs" title="Volver a la pantalla anterior" class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i>  Volver</a>
+                                <button type="button" class="btn btn-warning pull-right" onclick="$('#boton_submit_update').click()">
+                                    <i class="fa fa-pencil"></i> &nbsp;Guardar cambios
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>                                               
@@ -146,7 +150,7 @@
                                 var imagen = element;
                                 imagen.extra = {'_token': token};
                                 datos_parseados2.push(imagen);
-                            });                   
+                            });
 
                             $("#imagenes").fileinput({
                                 language: 'es',

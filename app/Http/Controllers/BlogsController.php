@@ -46,6 +46,7 @@ class BlogsController extends Controller {
      */
     public function store(Request $request) {
         $blog = new Blog($request->all());
+        $blog->slug = Str_slug($request->titulo); //Linea agregada para el slug
         if ($request->publicado === 'on') {
             $blog->publicado = 'Si';
         } else {
@@ -77,8 +78,8 @@ class BlogsController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
-        $blog = Blog::find($id);
+    public function show($slug) {
+        $blog = Blog::where('slug',$slug)->firstOrFail();
         $urls = json_encode($blog->url_imagenes());
         $datos_imagenes = json_encode($blog->datos_imagenes());
         $categorias = Categoria::all();
@@ -96,8 +97,8 @@ class BlogsController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) {
-        $blog = Blog::find($id);
+    public function edit($slug) {
+        $blog = Blog::where('slug',$slug)->firstOrFail();
         $urls = json_encode($blog->url_imagenes());
         $datos_imagenes = json_encode($blog->datos_imagenes());
         $categorias = Categoria::all();
