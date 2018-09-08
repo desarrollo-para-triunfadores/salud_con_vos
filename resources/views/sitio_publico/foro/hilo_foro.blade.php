@@ -57,7 +57,7 @@
                                                             <div class="inner">
                                                                 <span class="info">
                                                                     <span class="left">Por: <b>{{$hilo_foro->nombre}}</b>. 
-                                                                        <a href="/front_foros?categoria={{$hilo_foro->categoria->id}}" title="ver todas las preguntas referidas a este tema">{{$hilo_foro->categoria->nombre}}</a>
+                                                                        <a href="/front_foros?categoria={{$hilo_foro->categoria->slug}}" title="ver todas las preguntas referidas a este tema">{{$hilo_foro->categoria->nombre}}</a>
                                                                     </span>
                                                                     <span class="right">
                                                                         <div class="right">

@@ -31,12 +31,15 @@ class FrontComentariosController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {       
+    public function store(Request $request) {
         $comentario = new Comentario($request->all());
         $comentario->save();
-        
-        return redirect()->route('front_foro.index');
-        
+
+        if ($comentario->blog_id) {
+            return redirect()->route('front_blogs.show', $comentario->blog->slug);
+        } elseif($comentario->hilo_foro_id) {
+            return redirect()->route('front_foros.index', $comentario->hilo_foro->slug);
+        }
     }
 
     /**

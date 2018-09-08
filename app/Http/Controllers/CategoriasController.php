@@ -43,8 +43,9 @@ class CategoriasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {        
         $categoria = new Categoria($request->all());
+        $categoria->slug = Str_slug($request->nombre." ".time()); //Linea agregada para el slug
         $categoria->save();
         Session::flash('message', '¡Se ha registrado a una nueva categoría!');
         return redirect()->route('categorias.index');
@@ -83,6 +84,7 @@ class CategoriasController extends Controller
     {
         $categoria = Categoria::find($id);
         $categoria->fill($request->all());
+        $categoria->slug = Str_slug($request->nombre." ".time()); //Linea agregada para el slug
         $categoria->save();
         Session::flash('message', '¡Se ha actualizado la información de la categoría con éxito!');
         return redirect()->route('categorias.index');

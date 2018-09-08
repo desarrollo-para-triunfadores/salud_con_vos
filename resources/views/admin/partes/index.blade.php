@@ -3,7 +3,7 @@
     <head>        
         @include('admin.partes.estilos')  
     </head>
-    <body class="hold-transition sidebar-mini">
+    <body class="sidebar-mini skin-blue hold-transition">
         <div class="wrapper">
 
             <!-- top nav -->

@@ -6,7 +6,7 @@
                 <div class="tagcloud">
                     <a href='/front_blogs' class='link-filtro' title='{{$blogs->count()}} entradas'>Todo</a>          
                     @foreach($categorias as $categoria)            
-                    <a href='/front_blogs?categoria={{$categoria->id}}' class='link-filtro' title='{{$categoria->hilos_foros->count()}} entradas'>{{$categoria->nombre}}</a>          
+                    <a href='/front_blogs?categoria={{$categoria->slug}}' class='link-filtro' title='{{$categoria->hilos_foros->count()}} entradas'>{{$categoria->nombre}}</a>          
                     @endforeach
                 </div>
             </div>
@@ -63,11 +63,11 @@
                     <div class="post_text">
                         <span class="info">
                             <span class="left">{{$blog->created_at->diffForHumans() }} en: 
-                                <a href="/front_blogs?categoria={{$blog->categoria->id}}" title="ver todos los artículos referidos a este tema">{{$blog->categoria->nombre}}</a>                                   
+                                <a href="/front_blogs?categoria={{$blog->categoria->slug}}" title="ver todos los artículos referidos a este tema">{{$blog->categoria->nombre}}</a>                                   
                             </span>
                         </span>
                         <h4>
-                            <a href="/front_blogs/{{$blog->id}}" title="{{$blog->titulo}}">{{$blog->titulo}}</a>
+                            <a href="/front_blogs/{{$blog->slug}}" title="{{$blog->titulo}}">{{$blog->titulo}}</a>
                         </h4>
                         <p>{{$blog->sinopsis}}</p>
                     </div>

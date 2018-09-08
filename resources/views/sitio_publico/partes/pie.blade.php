@@ -22,16 +22,6 @@
                     <img src="{{ asset('plantillas/simplicity/assets/icons/carrusel-logo/2.png') }}" title="" alt="" />
                 </a>
             </li>
-           <li>
-                <a href="#">
-                    <img src="{{ asset('plantillas/simplicity/assets/icons/carrusel-logo/3.png') }}" title="" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{{ asset('plantillas/simplicity/assets/icons/carrusel-logo/2.png') }}" title="" alt="" />
-                </a>
-            </li>
             <li>
                 <a href="#">
                     <img src="{{ asset('plantillas/simplicity/assets/icons/carrusel-logo/3.png') }}" title="" alt="" />
@@ -42,7 +32,17 @@
                     <img src="{{ asset('plantillas/simplicity/assets/icons/carrusel-logo/2.png') }}" title="" alt="" />
                 </a>
             </li>
-      
+            <li>
+                <a href="#">
+                    <img src="{{ asset('plantillas/simplicity/assets/icons/carrusel-logo/3.png') }}" title="" alt="" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{{ asset('plantillas/simplicity/assets/icons/carrusel-logo/2.png') }}" title="" alt="" />
+                </a>
+            </li>
+
         </ul>
     </div>
     <!--Fin Carrusel Logos-->
@@ -63,17 +63,17 @@
                                         <div style="margin-top:10px;margin-bottom:10px;" class="separator transparent"></div>                                     
                                         <ul class='social_menu elegant'>
                                             <li class='twitter'>
-                                                <a href='http://twitter.com/' target='_blank'>
+                                                <a href='https://twitter.com/0800adolessalud?lang=es' target='_blank'>
                                                     <span>twitter</span>
                                                 </a>
                                             </li>
                                             <li class='facebook'>
-                                                <a href='http://www.facebook.com/' target='_blank'>
+                                                <a href='https://www.facebook.com/saludadolescentemisiones/' target='_blank'>
                                                     <span>facebook</span>
                                                 </a>
                                             </li>
                                             <li class='youtube'>
-                                                <a href='http://www.facebook.com/' target='_blank'>
+                                                <a href='https://www.youtube.com/watch?v=dP-Wcu9Ul64' target='_blank'>
                                                     <span>youtube</span>
                                                 </a>
                                             </li>
@@ -91,7 +91,7 @@
                                     <ul>
                                         @foreach($blogs_nuevos as $blog)
                                         <li>
-                                            <a href="/front_blogs/{{$blog->id}}">{{$blog->titulo}}</a>
+                                            <a href="/front_blogs/{{$blog->slug}}">{{$blog->titulo}}</a>
                                         </li>
                                         @endforeach
                                     </ul>
@@ -103,6 +103,7 @@
                                 <div id="tag_cloud-3" class="widget widget_tag_cloud">
                                     <h5>Temas</h5>
                                     <div class="tagcloud">
+                                        <a href='/front_blogs' class='tag-link-12' title='Todas las entradas' style='font-size: 13.25pt;'>Todos</a>  
                                         @foreach($categorias as $categoria)
                                         <a href='/front_blogs?categoria={{$categoria->id}}' class='tag-link-12' title='{{$categoria->blogs->count()}} entradas' style='font-size: 13.25pt;'>{{$categoria->nombre}}</a>
                                         @endforeach

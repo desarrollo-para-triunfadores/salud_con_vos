@@ -38,8 +38,9 @@ class FrontBlogsController extends Controller {
             /*
              * Solicitud de filtrado por categoría 
              */
-            $blogs = Blog::where('publicado', 1)->where('categoria_id', $request->categoria)->orderBy('id', 'DESC')->paginate(10);
-            $categoria_seleccionada = Categoria::find($request->categoria)->nombre;
+            $categoria = Categoria::where('slug', $request->categoria)->firstOrFail();
+            $blogs = Blog::where('publicado', 1)->where('categoria_id', $categoria->id)->orderBy('id', 'DESC')->paginate(10);
+            $categoria_seleccionada = $categoria->nombre;
         }
 
         return view('sitio_publico.blogs.main')
@@ -69,14 +70,15 @@ class FrontBlogsController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
-        $blog = Blog::find($id);
-        $comentarios = Comentario::where('blog_id', $id)          
-                ->where('moderado', 1)
-                ->orderBy('id', 'DESC')->paginate(10);
+    public function show($slug) {
+        $blog = Blog::where('slug', $slug)->firstOrFail();
+        $comentarios = Comentario::where('blog_id', $blog->id)
+                        ->where('moderado', 1)
+                        ->where('publicado', 1)
+                        ->orderBy('id', 'DESC')->paginate(10);
         return view('sitio_publico.blogs.articulo')
                         ->with('blog', $blog)
                         ->with('comentarios', $comentarios);

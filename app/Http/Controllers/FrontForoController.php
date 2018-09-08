@@ -7,6 +7,7 @@ use App\Comentario;
 use App\Categoria;
 use App\HiloForo;
 use Carbon\Carbon;
+Use Session;
 
 //use  Illuminate\Support\Collection as Collection;
 
@@ -25,7 +26,7 @@ class FrontForoController extends Controller {
         /*
          * Definimos las variables con las cuales vamos a trabajar
          */
-        $hilos_foros = HiloForo::orderBy('id', 'DESC')->paginate(10);
+        $hilos_foros = HiloForo::where('publicado', 1)->where('moderado', 1);
         $categoria_seleccionada = "todas las categorías";
 
         if ($request->buscar) {
@@ -34,15 +35,20 @@ class FrontForoController extends Controller {
              * Solicitud de filtrado por contenido 
              */
             $palabra = "%" . $request->buscar . "%";
-            $hilos_foros = HiloForo::where('titulo', 'like', $palabra)->orderBy('id', 'DESC')->paginate(10);
+            $hilos_foros = $hilos_foros->where('titulo', 'like', $palabra);
             $categoria_seleccionada = "todos los hilos que contienen: " . $request->buscar;
         } elseif ($request->categoria) {
             /*
              * Solicitud de filtrado por categoría 
              */
-            $hilos_foros = HiloForo::where('categoria_id', $request->categoria)->orderBy('id', 'DESC')->paginate(10);
-            $categoria_seleccionada = Categoria::find($request->categoria)->nombre;
+
+            $categoria = Categoria::where('slug', $request->categoria)->firstOrFail();
+            $hilos_foros = $hilos_foros->where('categoria_id', $categoria->id);
+            $categoria_seleccionada = $categoria->nombre;
         }
+
+        $hilos_foros = $hilos_foros->orderBy('id', 'DESC')->paginate(10);
+
 
         return view('sitio_publico.foro.main')
                         ->with('categoria_seleccionada', $categoria_seleccionada)
@@ -66,20 +72,25 @@ class FrontForoController extends Controller {
      */
     public function store(Request $request) {
         $hilo_foro = new HiloForo($request->all());
+        $hilo_foro->slug = Str_slug($request->titulo." ".time()); //Linea agregada para el slug
         $hilo_foro->save();
+        Session::flash('message_hilo_nuevo', '¡Hola '.$hilo_foro->nombre.'!. Antes de que tu mensaje sea publicado pasará por un proceso de moderación. Tan pronto los administradores la publiquen te avisaremos a tu correo. ¡Nos vemos pronto!');
+        return redirect()->route('front_foros.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
-        $hilo_foro = HiloForo::find($id);
-        $comentarios = Comentario::where('hilo_foro_id', $id)
-                ->where('moderado', 1)
-                ->orderBy('id', 'DESC')->paginate(10);
+    public function show($slug) {
+
+        $hilo_foro = HiloForo::where('slug', $slug)->firstOrFail();
+        $comentarios = Comentario::where('hilo_foro_id', $hilo_foro->id)
+                        ->where('moderado', 1)
+                        ->where('publicado', 1)
+                        ->orderBy('id', 'DESC')->paginate(10);
         return view('sitio_publico.foro.hilo_foro')
                         ->with('hilo_foro', $hilo_foro)
                         ->with('comentarios', $comentarios);

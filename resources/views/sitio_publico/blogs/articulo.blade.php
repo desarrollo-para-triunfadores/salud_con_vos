@@ -94,7 +94,7 @@
                                                                 <div class="inner">
                                                                     <span class="info">
                                                                         <span class="left">Por: <b>{{$blog->user->name}}</b>. 
-                                                                            <a href="/front_blogs?categoria={{$blog->categoria->id}}" title="ver todos los artículos referidos a este tema">{{$blog->categoria->nombre}}</a>
+                                                                            <a href="/front_blogs?categoria={{$blog->categoria->slug}}" title="ver todos los artículos referidos a este tema">{{$blog->categoria->nombre}}</a>
                                                                         </span>
                                                                         <span class="right">
                                                                             <span class="social_share_holder">

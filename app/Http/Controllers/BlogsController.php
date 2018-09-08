@@ -46,7 +46,7 @@ class BlogsController extends Controller {
      */
     public function store(Request $request) {
         $blog = new Blog($request->all());
-        $blog->slug = Str_slug($request->titulo); //Linea agregada para el slug
+        $blog->slug = Str_slug($request->titulo." ".time()); //Linea agregada para el slug
         if ($request->publicado === 'on') {
             $blog->publicado = 'Si';
         } else {
@@ -125,6 +125,7 @@ class BlogsController extends Controller {
             $blog->publicado = 'No';
         }
         $blog->fill($request->all());
+        $blog->slug = Str_slug($request->titulo." ".time()); //Linea agregada para el slug
         $blog->save();
 
         if ($request->hasfile('imagenes')) {

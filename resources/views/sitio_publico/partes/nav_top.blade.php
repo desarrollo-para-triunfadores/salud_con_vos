@@ -9,7 +9,7 @@
                 <div class="logo">
                     <a href="/">
                         <img class="normal" src="{{ asset('plantillas/simplicity/assets/icons/logo.gif') }}" alt="Logo" />
-                        <img class="sticky" src="{{ asset('plantillas/simplicity/assets/icons/logo.gif') }}" alt="Logo" />
+                        <img class="sticky" src="{{ asset('plantillas/simplicity/assets/icons/logo-navtop.png') }}" style="width: 50%" alt="Logo" />
                     </a>
                 </div>
                 <div class="header_inner_right">

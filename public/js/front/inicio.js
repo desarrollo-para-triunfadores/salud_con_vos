@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-$j(window).load(function(){
-	setTimeout(function(){
-		$j("#panel").animate({marginLeft: "0px"});
-		$j("a.open").addClass('opened');
-		$j("#panel").addClass('opened-panel');
-	},1000);
+$j(window).load(function () {
+    setTimeout(function () {
+        $j("#panel").animate({marginLeft: "0px"});
+        $j("a.open").addClass('opened');
+        $j("#panel").addClass('opened-panel');
+    }, 1000);
 });
 
 
@@ -28,7 +28,7 @@ lsjQuery(document).ready(function () {
     else {
         lsjQuery("#layerslider_5").layerSlider({
             width: '100%',
-           height: '570px',
+            height: '570px',
             responsive: true,
             responsiveUnder: 1100,
             sublayerContainer: 1100,
@@ -47,9 +47,9 @@ lsjQuery(document).ready(function () {
             touchNav: true,
             skin: 'preview',
             globalBGColor: 'transparent',
-            navPrevNext: true,
+            navPrevNext: false,
             navStartStop: false,
-            navButtons: true,
+            navButtons: false,
             hoverPrevNext: true,
             hoverBottomNav: true,
             showBarTimer: false,

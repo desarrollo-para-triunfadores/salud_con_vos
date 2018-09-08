@@ -70,10 +70,7 @@ aside .widget {
     margin-bottom: 40px;
 }
 
-.full_width .parallax_content {
-    width: 80%;
-    margin: 0 auto;
-}
+
 
 .two_columns_75_25>.column2 {
     width: 25%;
@@ -88,4 +85,8 @@ aside .widget {
     background-repeat: no-repeat;
     min-height: 18px;
     padding: 0px;
+}
+
+.post_text {
+    margin-bottom: -5%;
 }

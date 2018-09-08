@@ -25,11 +25,11 @@
                     <div class="post_text">
                         <span class="info">
                             <span class="left">Por: <b>{{$hilo_foro->nombre}}</b>.
-                                <a href="/front_foros?categoria={{$hilo_foro->categoria->id}}" title="ver todas las preguntas referidas a este tema">{{$hilo_foro->categoria->nombre}}</a>
+                                <a href="/front_foros?categoria={{$hilo_foro->categoria->slug}}" title="ver todas las preguntas referidas a este tema">{{$hilo_foro->categoria->nombre}}</a>
                             </span>
                         </span>
                         <h4>
-                            <a href="/front_foros/{{$hilo_foro->id}}">{{$hilo_foro->titulo}}</a>
+                            <a href="/front_foros/{{$hilo_foro->slug}}">{{$hilo_foro->titulo}}</a>
                         </h4>                      
                     </div>
                 </div>

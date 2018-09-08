@@ -9,7 +9,7 @@
 
 $j(document).ready(function() {
 	
-	$j('#panel select').sSelect();
+	$j('#panel select').sSelect({ddMaxHeight: '200px'}); 
 	
 	$j("#panel a.open").click(function(e){
 		e.preventDefault();

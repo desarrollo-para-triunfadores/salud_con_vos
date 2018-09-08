@@ -46,7 +46,7 @@ class HilosForosController extends Controller {
      */
     public function store(Request $request) {
         $hilo_foro = new HiloForo($request->all());
-        $hilo_foro->slug = Str_slug($request->titulo); //Linea agregada para el slug
+        $hilo_foro->slug = Str_slug($request->titulo." ".time()); //Linea agregada para el slug
         if (is_null($request->nombre)) {
             $hilo_foro->nombre = Auth::user()->name;
             $hilo_foro->correo = Auth::user()->email;
@@ -57,6 +57,7 @@ class HilosForosController extends Controller {
         } else {
             $hilo_foro->publicado = "false";
         }
+        $hilo_foro->moderado = "true";
         $hilo_foro->save();
         Session::flash('message', '¡Se ha agregado un hilo!');
         return redirect()->route('foros.index');
@@ -104,6 +105,7 @@ class HilosForosController extends Controller {
     public function update(Request $request, $id) {
         $hilo_foro = HiloForo::find($id);
         $hilo_foro->fill($request->all());
+         $hilo_foro->slug = Str_slug($request->titulo." ".time()); //Linea agregada para el slug
         if ($request->publicado === 'true') {
             $hilo_foro->moderado = 'true';
         }

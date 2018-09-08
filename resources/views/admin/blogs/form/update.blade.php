@@ -58,7 +58,7 @@
                                 <div class="col-md-12"> 
                                     <div class="form-group">
                                         <label>Sinopsis</label>
-                                        <textarea maxlength="280" id="sinopsis" name="sinopsis" style="width: 100%;" rows="4" readonly>{{$blog->sinopsis}}</textarea>                      
+                                        <textarea maxlength="280" id="sinopsis" name="sinopsis" style="width: 100%;" rows="4">{{$blog->sinopsis}}</textarea>                      
                                     </div>
                                 </div>
 
@@ -160,7 +160,7 @@
                                 initialPreviewConfig: datos_parseados2,
                                 deleteUrl: "/admin/eliminar_imagen",
                                 overwriteInitial: false,
-                                maxFileSize: 5120
+                                maxFileSize: 3072
                             });
 
 

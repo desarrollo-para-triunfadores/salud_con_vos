@@ -111,7 +111,7 @@
                                         <i class="fa fa-plus-circle"></i> &nbsp;Redactar Blog
                                     </a>
                                     <div class="pull-right">                                    
-                                        <a href="/admin/blogs/{{$blog->id}}/edit" title="Editar este registro" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i>Editar registro</a>
+                                        <a href="/admin/blogs/{{$blog->slug}}/edit" title="Editar este registro" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i>Editar registro</a>
                                         <a onclick="abrir_modal_borrar({{$blog->id}})" title="Eliminar este registro" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Eliminar registro</a>
                                     </div>
                                 </div>    

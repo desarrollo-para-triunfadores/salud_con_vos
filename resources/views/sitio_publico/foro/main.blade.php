@@ -58,4 +58,9 @@
     lsjQuery("#nav-foro").addClass("active");
 </script>
 <script src="{{ asset('js/front/foro.js') }}"></script>
+<script>
+    if ('{{Session::has("message_hilo_nuevo")}}') {
+        swal('¡Mensaje enviado!', '{{Session::get("message_hilo_nuevo")}}', 'success');
+    }
+</script>
 @endsection

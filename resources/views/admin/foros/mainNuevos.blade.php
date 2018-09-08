@@ -61,7 +61,7 @@
                                             <th class="text-center">Correo</th>
                                             <th class="text-center">Categoría</th>
                                             <th class="text-center">Fecha de creación</th>
-                                            <th class="text-center">Moderar/Eliminar</th>
+                                            <th class="text-center">Moderar</th>
                                             <th class="text-center">Publicar</th>
                                         </tr>
                                     </thead>
@@ -93,7 +93,7 @@
                                             <th class="text-center">Correo</th>
                                             <th class="text-center">Categoría</th>
                                             <th class="text-center">Fecha de creación</th>
-                                            <th class="text-center">Moderar/Eliminar</th>
+                                            <th class="text-center">Moderar</th>
                                             <th class="text-center">Publicar</th>
                                         </tr>
                                     </tfoot>
@@ -145,7 +145,7 @@
                                             <th class="text-center">Tipo (Foro/Blog)</th>
                                             <th class="text-center">Nombre</th>
                                             <th class="text-center">Fecha de creación</th>
-                                            <th class="text-center">Moderar/Eliminar</th>
+                                            <th class="text-center">Moderar</th>
                                             <th class="text-center">Publicar</th>
                                         </tr>
                                     </thead>
@@ -157,10 +157,10 @@
                                             <td class="text-center">{{$comentario->contenido}}</td>
                                             @if(!is_null($comentario->hilo_foro))
                                             <td class="text-center">Foro</td>
-                                            <td class="text-center">{{$comentario->hilo_foro->titulo}}</td>
+                                            <td class="text-center"><a href="/admin/foros/{{$comentario->hilo_foro->slug}}" title="ir al hilo">{{$comentario->hilo_foro->titulo}}</a></td>
                                             @else
                                             <td class="text-center">Blog</td>
-                                            <td class="text-center">{{$comentario->blog->titulo}}</td>
+                                            <td class="text-center"><a href="/admin/blogs/{{$comentario->blog->slug}}" title="ir al blog">{{$comentario->blog->titulo}}</a></td>
                                             @endif
                                             <td class="text-center">{{$comentario->created_at->format('d/m/Y')}}</td>
                                             @if ($comentario->moderado === 'true')
@@ -184,7 +184,7 @@
                                             <th class="text-center">Tipo (Foro/Blog)</th>
                                             <th class="text-center">Nombre</th>
                                             <th class="text-center">Fecha de creación</th>
-                                            <th class="text-center">Moderar/Eliminar</th>
+                                            <th class="text-center">Moderar</th>
                                             <th class="text-center">Publicar</th>
                                         </tr>
                                     </tfoot>

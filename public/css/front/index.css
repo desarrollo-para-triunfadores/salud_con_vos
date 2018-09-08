@@ -191,10 +191,11 @@ span.subtitle {
     margin-bottom: 2.5%;
 }
 
+img.normal { 
+    height: 120px !important;    
+}
 
-
-img.normal {
- 
-    height: 120px !important;
-    
+img.sticky {
+    height: 40% !important;
+    top: -20%;
 }

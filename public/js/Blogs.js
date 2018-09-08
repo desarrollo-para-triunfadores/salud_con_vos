@@ -58,5 +58,6 @@ $('.input_archivo').fileinput({
     language: 'es',
     showUpload: false,
     uploadUrl: '#',
-    allowedFileExtensions: ['jpg', 'jpeg']
+    allowedFileExtensions: ['jpg', 'jpeg'],
+     maxFileSize: 3072
 });
