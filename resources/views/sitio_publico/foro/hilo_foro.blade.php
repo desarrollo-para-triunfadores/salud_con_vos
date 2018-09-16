@@ -53,7 +53,7 @@
                                                                 <h4>{{$hilo_foro->contenido}}</h4>
                                                             </div>
                                                         </div>
-                                                        <div class="post_text">
+                                                        <div class="post_text post_text_hilo">
                                                             <div class="inner">
                                                                 <span class="info">
                                                                     <span class="left">Por: <b>{{$hilo_foro->nombre}}</b>. 
