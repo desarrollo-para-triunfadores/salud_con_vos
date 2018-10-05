@@ -4,8 +4,7 @@
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content-header">
         <h1>
-            Hilos Foros y Comentarios
-            <small>Registros almacenados</small>
+            Hilos y comentarios sin moderar
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -56,23 +55,21 @@
                                 <table class="display example" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>                             
-                                            <th class="text-center">Titulo</th>
-                                            <th class="text-center">Autor</th>
-                                            <th class="text-center">Correo</th>
-                                            <th class="text-center">Categoría</th>
-                                            <th class="text-center">Fecha de creación</th>
+                                            <th class="text-center">Título</th>
+                                            <th class="text-center">Contenido</th>                                          
                                             <th class="text-center">Moderar</th>
                                             <th class="text-center">Publicar</th>
+                                            <th class="none text-center">Autor</th>
+                                            <th class="none text-center">Correo</th>
+                                            <th class="none text-center">Categoría</th>  
+                                            <th class="none text-center">Fecha de creación</th>                                        
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($hilos_foros as $hilo_foro)
                                         <tr>                                    
-                                            <td class="text-center">{{$hilo_foro->titulo}}</td>
-                                            <td class="text-center">{{$hilo_foro->nombre}}</td>
-                                            <td class="text-center">{{$hilo_foro->correo}}</td>
-                                            <td class="text-center">{{$hilo_foro->categoria->nombre}}</td>
-                                            <td class="text-center">{{$hilo_foro->created_at->format('d/m/Y')}}</td>
+                                            <td class="text-center">{{$hilo_foro->titulo}}</td>                                           
+                                            <td class="text-center">{{$hilo_foro->contenido}}</td>
                                             @if ($hilo_foro->moderado === 'true')
                                             <td class="text-center" width="100" style="color:#229954">Moderado</td>
                                             @else
@@ -83,18 +80,23 @@
                                             <td class="text-center" width="100">
                                                 <input type="checkbox" class="checkbox-hilos-publicar" id="publicar-hilo{{$hilo_foro->id}}" id_elemento="{{$hilo_foro->id}}" onChange="actualizar_array('{{$hilo_foro->id}}', 'hilo-publicar')"/>
                                             </td>
+                                            <td class="text-center">{{$hilo_foro->correo}}</td>
+                                            <td class="text-center">{{$hilo_foro->categoria->nombre}}</td>
+                                            <td class="text-center">{{$hilo_foro->categoria->nombre}}</td>
+                                            <td class="text-center">{{$hilo_foro->created_at->format('d/m/Y')}}</td>
                                         </tr> 
                                         @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>                                  
-                                            <th class="text-center">Titulo</th>
-                                            <th class="text-center">Autor</th>
-                                            <th class="text-center">Correo</th>
-                                            <th class="text-center">Categoría</th>
-                                            <th class="text-center">Fecha de creación</th>
+                                            <th class="text-center">Título</th>
+                                            <th class="text-center">Contenido</th>                                                                                                            
                                             <th class="text-center">Moderar</th>
                                             <th class="text-center">Publicar</th>
+                                            <th class="none text-center">Autor</th>
+                                            <th class="none text-center">Correo</th>
+                                            <th class="none text-center">Categoría</th>   
+                                            <th class="none text-center">Fecha de creación</th>                                            
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -136,25 +138,22 @@
                                     <label class="col-sm-2 control-label">Selección:</label>
                                 </div>
 
-                                <table class="display example" cellspacing="0" width="100%">
+                                <table class="display example responsive" cellspacing="0" width="100%">
                                     <thead>
-                                        <tr class="active">                             
-                                            <th class="text-center">Autor</th>
-                                            <th class="text-center">Correo</th>
-                                            <th class="text-center">Contenido</th>
+                                        <tr class="active">    
+                                            <th class="text-center">Título</th>
                                             <th class="text-center">Tipo (Foro/Blog)</th>
-                                            <th class="text-center">Nombre</th>
-                                            <th class="text-center">Fecha de creación</th>
+                                            <th class="text-center">Contenido</th>
                                             <th class="text-center">Moderar</th>
                                             <th class="text-center">Publicar</th>
+                                            <th class="none text-center">Autor</th>
+                                            <th class="none text-center">Correo</th>
+                                            <th class="none text-center">Fecha de creación</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($comentarios as $comentario)
-                                        <tr>                                    
-                                            <td class="text-center">{{$comentario->nombre}}</td>
-                                            <td class="text-center">{{$comentario->correo}}</td>
-                                            <td class="text-center">{{$comentario->contenido}}</td>
+                                        <tr>      
                                             @if(!is_null($comentario->hilo_foro))
                                             <td class="text-center">Foro</td>
                                             <td class="text-center"><a href="/admin/foros/{{$comentario->hilo_foro->slug}}" title="ir al hilo">{{$comentario->hilo_foro->titulo}}</a></td>
@@ -162,7 +161,7 @@
                                             <td class="text-center">Blog</td>
                                             <td class="text-center"><a href="/admin/blogs/{{$comentario->blog->slug}}" title="ir al blog">{{$comentario->blog->titulo}}</a></td>
                                             @endif
-                                            <td class="text-center">{{$comentario->created_at->format('d/m/Y')}}</td>
+                                            <td class="text-center">{{$comentario->contenido}}</td>                                        
                                             @if ($comentario->moderado === 'true')
                                             <td class="text-center" width="100" style="color:#229954">Moderado</td>
                                             @else
@@ -173,19 +172,22 @@
                                             <td class="text-center" width="100">
                                                 <input type="checkbox" class="checkbox-comentarios-publicar" id="publicar-comentario{{$comentario->id}}" id_elemento="{{$comentario->id}}" onChange="actualizar_array('{{$comentario->id}}', 'comentario-publicar')"/>
                                             </td>
+                                            <td class="text-center">{{$comentario->nombre}}</td>
+                                            <td class="text-center">{{$comentario->correo}}</td>
+                                            <td class="text-center">{{$comentario->created_at->format('d/m/Y')}}</td>
                                         </tr> 
                                         @endforeach
                                     </tbody>
                                     <tfoot>
-                                        <tr>                                  
-                                            <th class="text-center">Autor</th>
-                                            <th class="text-center">Correo</th>
-                                            <th class="text-center">Contenido</th>
+                                        <tr>          
+                                            <th class="text-center">Título</th>
                                             <th class="text-center">Tipo (Foro/Blog)</th>
-                                            <th class="text-center">Nombre</th>
-                                            <th class="text-center">Fecha de creación</th>
+                                            <th class="text-center">Contenido</th>                                           
                                             <th class="text-center">Moderar</th>
                                             <th class="text-center">Publicar</th>
+                                            <th class="text-center">Autor</th>
+                                            <th class="text-center">Correo</th>
+                                            <th class="text-center">Fecha de creación</th>
                                         </tr>
                                     </tfoot>
                                 </table>

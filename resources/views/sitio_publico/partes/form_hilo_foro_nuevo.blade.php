@@ -14,10 +14,10 @@
                             @endforeach                          
                         </select>
                     </div>
-                    <input style="color: #ffffff" type="text" id="nombre_foro" name="nombre" placeholder="Tú nombre *">
-                    <input style="color: #ffffff" type="text" id="correo_foro" name="correo"  placeholder="Email *">
-                    <input style="color: #ffffff" type="text" id="titulo_foro" name="titulo"   placeholder="Título *">
-                    <textarea style="color: #ffffff" name="contenido" id="contenido_foro" rows="10" placeholder="Mensaje *" class="placeholder"></textarea>
+                    <input style="color: #ffffff" type="text" id="nombre_foro" name="nombre" maxlength="45" placeholder="Tú nombre *">
+                    <input style="color: #ffffff" type="text" id="correo_foro" name="correo" maxlength="60" placeholder="Email *">
+                    <input style="color: #ffffff" type="text" id="titulo_foro" name="titulo"  maxlength="200" placeholder="Título *">
+                    <textarea style="color: #ffffff" name="contenido" id="contenido_foro" maxlength="2000" rows="10" placeholder="Mensaje *" class="placeholder"></textarea>
                     <span class="submit_button" style="margin-left: 35px;">
                         <input class="button small" style="color: #ffffff; background-color: #3498db;" type="submit" value="Enviar">
                     </span>

@@ -31,16 +31,19 @@
                         <div style="margin-top:35px;margin-bottom:35px;" class="separator transparent"></div>                                       
                         <div class="container animation_content start">
                             <div class="container_inner" style="transform: none;">
-                                <div class="container_inner2 clearfix">
-                                    <div class="two_columns_75_25 background_color_sidebar grid2 clearfix">
-                                        <div class="column1">                
-                                            @include('sitio_publico.foro.hilos')
+                                <div class="container_inner clearfix">
+                                    <div class="two_columns_75_25 clearfix">
+                                        <div class="column1">
+                                            <div class="column_inner">
+                                              @include('sitio_publico.foro.hilos')
+                                            </div>
                                         </div>
-
-                                        <div class="column2">                
-                                            @include('sitio_publico.foro.panel')
+                                        <div class="column2">
+                                            <div class="column_inner">
+                                                @include('sitio_publico.foro.panel')
+                                            </div>
                                         </div>
-                                    </div>
+                                    </div>  
                                 </div>
                             </div>
                         </div>

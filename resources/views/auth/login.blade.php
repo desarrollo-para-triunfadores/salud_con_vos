@@ -13,10 +13,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
         <link type="text/css" rel="stylesheet" href="{{ asset('plantillas/AdminLTE/dist/css/AdminLTE.min.css') }}  ">
-        <!-- iCheck -->
-        <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
-
-        <link href="{{ asset('plantillas/AdminLTE/plugins/iCheck/square/blue.css') }}" rel="stylesheet" type="text/css"/>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -59,19 +55,13 @@
                         @endif
                     </div>
                     <div class="row">
-                        <div class="col-xs-8">
-                            <div class="checkbox icheck">
-                                <label class="">
-                                    <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Recuérdame
-                                </label>
-                            </div>
-                        </div>
+                        <div class="col-xs-8"></div>
                         <div class="col-xs-4">
                             <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
                         </div>
                     </div>
                 </form>
-                <a href="#">Recuperar mi contraseña</a><br>
+
 
             </div>
         </div>
@@ -80,19 +70,6 @@
         <script src="{{ asset('plantillas/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
         <!-- Bootstrap 3.3.6 -->
         <script src="{{ asset('plantillas/AdminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
-        <!-- iCheck -->
-        <script src="{{ asset('plantillas/AdminLTE/plugins/iCheck/icheck.min.js') }}"></script>      
-
-        <script>
-$(function () {
-    $('input').iCheck({
-        checkboxClass: 'icheckbox_square-blue',
-        radioClass: 'iradio_square-blue',
-        increaseArea: '20%' // optional
-    });
-});
-        </script>
-
 
     </body>
 </html>

@@ -18,15 +18,12 @@ class CreateTableBlogs extends Migration
             $table->string('titulo');
             $table->string('sinopsis',5000)->nullable();
             $table->string('linkvideo')->nullable();
-            $table->string('contenido',10000)->nullable();
-            $table->boolean('publicado')->default(false);
-            
+            $table->longText('contenido')->nullable();
+            $table->boolean('publicado')->default(false);            
             $table->integer('categoria_id')->unsigned();
-            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
-            
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');            
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');            
             $table->timestamps();
         });
     }

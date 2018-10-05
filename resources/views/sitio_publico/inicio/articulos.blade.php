@@ -11,14 +11,12 @@
                 </div>
             </div>
         </div>	
-   
+
         <!--Contenido-->
 
         <div class=" blog_holder_v3" style="position: relative; overflow: hidden; height: 1053px;">
-
             @if($blogs_nuevos->count()>0)
             @foreach($blogs_nuevos as $blog)     
-
             <article class="galllery " style="position: absolute; left: 0px; top: 0px;">
                 <div class="post_content_holder">
                     <div class="post_image">
@@ -54,11 +52,10 @@
                         <!--Muestro Video-->
                         <div class="post_image_video">
                             <div class="fluid-width-video-wrapper" style="padding-top: 68.4932%;">                                
-                                {{!! $blog->linkvideo !!}}
+                                {!! $blog->linkvideo !!}
                             </div>
                         </div>
                         @endif
-
                     </div>
                     <div class="post_text">
                         <span class="info">
@@ -78,26 +75,26 @@
                             <a class="comments" href="#">{{$blog->comentarios_publicados()->count()}}</a>
                         </div>
                         <div class="right">
-                            <span class="social_share_holder">
+                            <span id="{{$blog->slug}}" estado="cerrado" onclick="mostrar_botones('{{$blog->slug}}')" class="social_share_holder">
                                 <span class="social_share_icon">Compartir</span>
-                                <div class="social_share_dropdown">
+                                <div id="social_share_dropdown_{{$blog->slug}}" class="social_share_dropdown">
                                     <span class="inner_arrow_social"></span>
-                                    <ul>
+                                    <ul style="width: 91px;">
                                         <li>
                                             <h5>Redes</h5>
-                                        </li>
+                                        </li>                                  
                                         <li class="facebook_share">
-                                            <a href="#" onclick="window.open('https://www.facebook.com/sharer.php?s=100&amp;p%5Btitle%5D=Welcome+to+Cartoon+Land&amp;p%5Bsummary%5D=The+term+minimalism+is+also+used+to+describe+a+trend+in+design+and+architecture+where+in+the+subject+is+reduced+to+its+necessary+elements.&amp;p%5Burl%5D=http%3A%2F%2Fdemo.qodeinteractive.com%2Fsimplicity%2Fwelcome-to-cartoon-land%2F&amp;p%5Bimages%5D%5B0%5D=http%3A%2F%2Fdemo.qodeinteractive.com%2Fsimplicity%2Fwp-content%2Fuploads%2F2013%2F08%2F012.jpg&amp;', 'sharer', 'toolbar=0,status=0,width=620,height=280');">
+                                            <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + window.location.href+'front_blogs/{{$blog->slug}}', 'sharer', 'toolbar=0,status=0,width=620,height=280');">
                                                 <span class="social_image">
                                                     <span class="social_image_inner"></span>
                                                 </span>
                                                 <span class="share_text">Like</span>
                                             </a>
-                                        </li>
+                                        </li>                                                                                                                        
                                         <li class="twitter_share">
-                                            <a href="#" onclick="popUp = window.open('http://twitter.com/share?url=http%3A%2F%2Fdemo.qodeinteractive.com%2Fsimplicity%2Fwelcome-to-cartoon-land%2F&amp;text=The+term+minimalism+is+also+used+to+describe+a+trend+in+design+&amp;count=horiztonal', 'popupwindow', 'scrollbars=yes,width=800,height=400');
-                                                    popUp.focus();
-                                                    return false;"
+                                            <a href="#" onclick="popUp = window.open('http://twitter.com/share?url=' + window.location.href+'front_blogs/{{$blog->slug}}', 'popupwindow', 'scrollbars=yes,width=800,height=400');
+                                                popUp.focus();
+                                                return false;"
                                                target="_blank" rel="nofollow">
                                                 <span class="social_image">
                                                     <span class="social_image_inner"></span>

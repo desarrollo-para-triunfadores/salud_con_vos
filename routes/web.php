@@ -12,7 +12,7 @@
  */
 Route::get('/', function () {
     return view('sitio_publico.inicio.main');
-});
+})->name('inicio');
 
 Route::get('/contacto', function () {
     return view('sitio_publico.contacto.main');
@@ -25,9 +25,7 @@ Route::get('/quienes_somos', function () {
 Route::resource('front_foros', 'FrontForoController');
 Route::resource('front_blogs', 'FrontBlogsController');
 Route::resource('front_comentarios', 'FrontComentariosController');
-
-
-
+Route::resource('front_email', 'EmailController');
 
 
 Auth::routes();
@@ -47,9 +45,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('comentarios', 'ComentariosController');
     //Route::view('/foros/mainNuevos', 'HilosForosController@indexNuevos');
 
-
-
-
     /**
      * Rutas para métodos o funciones específicas
      */
@@ -61,11 +56,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/moderar_masivamente_hilos', 'HilosForosController@moderar_masivamente');
     Route::get('/moderar_masivamente_comentarios', 'ComentariosController@moderar_masivamente');
     Route::get('/eliminar_masivamente_hilos', 'HilosForosController@eliminar_masivamente');
-    Route::get('/eliminar_masivamente_comentarios', 'ComentariosController@eliminar_masivamente');
-    
-    
-    Route::post('/eliminar_imagen', 'BlogsController@eliminar_imagen');
-    
-    
-    
+    Route::get('/eliminar_masivamente_comentarios', 'ComentariosController@eliminar_masivamente');        
+    Route::post('/eliminar_imagen', 'BlogsController@eliminar_imagen');           
 });
+
+

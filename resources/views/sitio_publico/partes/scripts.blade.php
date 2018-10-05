@@ -40,3 +40,27 @@
 
 <script src="{{ asset('js/front/formulario_envio.js') }}"></script>
 
+<script>
+
+    lsjQuery("body").css("overflow-y", "scroll");
+
+
+    lsjQuery(window).load(function () {
+        ajustar_pie();
+    });
+
+
+    lsjQuery(window).resize(function () {
+        ajustar_pie();
+    });
+
+
+    function ajustar_pie() {
+        var ancho = lsjQuery(window).width();
+        if (ancho < 800) {
+            lsjQuery(".logo-pie").css("margin-top", "10%");
+        } else {
+            lsjQuery(".logo-pie").css("margin-top", "0px");
+        }
+    }
+</script>

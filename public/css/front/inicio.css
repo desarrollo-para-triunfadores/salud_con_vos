@@ -8,7 +8,9 @@ and open the template in the editor.
     Author     : hacho
 */
 
-
+.owl-carousel {
+  touch-action: none;
+}
 
 .margin-arcticulos {
     margin: 0px 0;
@@ -22,9 +24,7 @@ and open the template in the editor.
     width: inherit;
 }
 
-.blog_holder_v3 article {
-    width: 24%;
-}
+
 
 #section-lista-blogs .link-filtro {
     cursor: pointer;
@@ -47,20 +47,20 @@ and open the template in the editor.
 
 
 .fondo-carrusel {
-    width: 105% !important;
-    padding: 0px;
-    border-width: 0px;
-    height: 1080px;
-    margin-left: -53% !important;
-    margin-top: -340px !important;
-}
-
-
-.fondo-carrusel {
-    width: 100% !important;
+   width: 100% !important;
     padding: 0px;
     border-width: 0px;
     height: 1080px;
     margin-left: -50% !important;
     margin-top: -340px !important;
+}
+
+.cortar{
+  width:200px;
+  height:20px;
+  padding:20px;
+  border:1px solid blue;
+  text-overflow:ellipsis;
+  white-space:nowrap; 
+  overflow:hidden; 
 }

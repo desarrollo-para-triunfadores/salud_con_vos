@@ -16,7 +16,7 @@ class CreateTableHilosForos extends Migration
         Schema::create('hilos_foros', function (Blueprint $table) {
             $table->increments('id');
             $table->string('titulo');
-            $table->string('contenido');
+            $table->longText('contenido');
             $table->string('correo');
             $table->string('nombre');
             $table->string('avatar')->default('sin_imagen.png');

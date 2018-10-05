@@ -31,11 +31,11 @@
                                 <p class="text-muted text-center">{{$hilo_foro->correo}}</p>
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">
-                                        <b>Título</b> <a class="pull-right">{{$hilo_foro->titulo}}</a>
+                                        <b>Título</b> <p>{{$hilo_foro->titulo}}</p>
                                     </li>
 
                                     <li class="list-group-item">
-                                        <b>Contenido</b> <a class="pull-right">{{$hilo_foro->contenido}}</a>
+                                        <b>Contenido</b> <p>{{$hilo_foro->contenido}}</p>
                                     </li>
 
                                     <li class="list-group-item">

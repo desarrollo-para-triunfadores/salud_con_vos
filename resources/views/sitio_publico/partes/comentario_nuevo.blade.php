@@ -16,13 +16,13 @@
                         <input style="color: #ffffff" type="text" class="requiredField placeholder" name="nombre" id="nombre_comentario" value="" placeholder="Tú nombre *">
                     </div>
                 </div>
-                <div class="column1">
+                <div class="column2">
                     <div class="column_inner">
                         <input style="color: #ffffff" type="text" class="requiredField email placeholder" name="correo" id="correo_comentario" value="" placeholder="Email *">
                     </div>
                 </div>
             </div>
-            <textarea style="color: #ffffff" name="contenido" id="contenido_comentario" rows="10" placeholder="Mensaje" class="placeholder"></textarea>
+            <textarea style="color: #ffffff" name="contenido" id="contenido_comentario" rows="10" maxlength="500" placeholder="Mensaje" class="placeholder"></textarea>
             <span class="submit_button">
                 <input class="button small" type="submit" value="Enviar">
             </span>

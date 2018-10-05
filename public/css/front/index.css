@@ -26,9 +26,7 @@ nav.main_menu ul li:hover a, nav.main_menu ul li.active a {
 }
 
 
-section {
-    margin-top: -35px;
-}
+
 
 .p-leyend {
     font-size: 120%;
@@ -187,15 +185,19 @@ span.subtitle {
 }
 
 
-.margin-aclaracion{
-    margin-bottom: 2.5%;
+.margin-aclaracion {
+    margin-bottom: 5%;
 }
 
-img.normal { 
-    height: 120px !important;    
-}
+
 
 img.sticky {
     height: 40% !important;
     top: -20%;
+}
+
+
+#social_icons_widget .social_icons_widget_inner2 {
+    position: relative;
+    top: 0%;
 }

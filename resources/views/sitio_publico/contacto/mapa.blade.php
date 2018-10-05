@@ -10,7 +10,7 @@
                         <div class="contact_form">
                             <h2 style="  margin-top:0px; ">¡Contáctanos!</h2>
                             <br>
-                            <form id="nuevo-comentario" action="/front_comentarios" method="POST" autocomplete="off">
+                            <form id="nuevo-comentario" action="/front_email" method="POST" autocomplete="off">
                                 <input type="hidden" value="mapa">    
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
                                 <div class="two_columns_50_50 clearfix">
@@ -40,7 +40,7 @@
                             <div class="div-lindo">
                                 <div class="list circle animate_list">    
                                     <ul>
-                                        <li style="opacity: 1; top: 0px;"><b>Correo electrónico:</b> programaadolescenciamisiones@gmail.com </li> 
+                                        <li style="opacity: 1; top: 0px;"><b>Correo electrónico:</b> <p>programaadolescenciamisiones@gmail.com</p> </li> 
                                         <li style="opacity: 1; top: 0px;"><b>Whatsapp:</b> 3764862719</li>
                                         <li style="opacity: 1; top: 0px;"><b>Teléfono:</b> (0376) 44447840 – 44447808</li>
                                         <li style="opacity: 1; top: 0px;"><b>Dirección:</b> Ministerio de Salud Pública, Tucumán 2174, 2do Piso. Posadas – Misiones</li>

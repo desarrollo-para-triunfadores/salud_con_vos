@@ -34,5 +34,5 @@
 <script>
     lsjQuery("#nav-blog").addClass("active");
 </script>
-<!--<script src="{{ asset('js/front/inicio.js') }}"></script>-->
+<script src="{{ asset('js/front/botones_redes.js') }}"></script>
 @endsection

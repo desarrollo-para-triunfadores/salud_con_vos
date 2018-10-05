@@ -297,17 +297,17 @@ function socialShare() {
 
 function initNiceScroll() {
     "use strict";
-    if ($j('.smooth_scroll').length) {
+//    if ($j('.smooth_scroll').length) {
         $j("html").niceScroll({
-            scrollspeed: 60,
-            mousescrollstep: 35,
-            cursorwidth: 20,
+//            scrollspeed: 60,
+//            mousescrollstep: 35,
+//            cursorwidth: 20,
             cursorborder: 0,
-            cursorcolor: "#ffffff",
-            autohidemode: false,
-            horizrailenabled: false
+//            cursorcolor: "#ffffff",
+//            autohidemode: false,
+//            horizrailenabled: false
         })
-    }
+//    }
 }
 
 function initPortfolio() {

@@ -74,7 +74,7 @@ class FrontForoController extends Controller {
         $hilo_foro = new HiloForo($request->all());
         $hilo_foro->slug = Str_slug($request->titulo." ".time()); //Linea agregada para el slug
         $hilo_foro->save();
-        Session::flash('message_hilo_nuevo', '¡Hola '.$hilo_foro->nombre.'!. Antes de que tu mensaje sea publicado pasará por un proceso de moderación. Tan pronto los administradores la publiquen te avisaremos a tu correo. ¡Nos vemos pronto!');
+        Session::flash('message_hilo_nuevo', '¡Hola '.$hilo_foro->nombre.'!. Antes de que tu mensaje sea publicado pasará por un proceso de moderación. ¡Nos vemos pronto!');
         return redirect()->route('front_foros.index');
     }
 

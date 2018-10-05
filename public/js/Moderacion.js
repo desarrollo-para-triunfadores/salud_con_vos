@@ -5,20 +5,12 @@ $("#side-moderar-li").addClass("active");
 
 //Datatable
 var table = $('.example').DataTable({
-    language: tabla_traducida
-});
-
-$('a.toggle-vis').on('click', function (e) {
-    e.preventDefault();
-    // Get the column API object
-    var column = table.column($(this).attr('data-column'));
-    // Toggle the visibility
-    column.visible(!column.visible());
+    'language': tabla_traducida,
+    'responsive': true
 });
 
 $('.example tbody').on('mouseenter', 'td', function () {
     var colIdx = table.cell(this).index().column;
-
     $(table.cells().nodes()).removeClass('highlight');
     $(table.column(colIdx).nodes()).addClass('highlight');
 });
@@ -46,8 +38,7 @@ function actualizar_estado(valor, comentario_id) {
 function actualizar_input_publicado(valor) {
     if (valor) {
         $('#publicado-update-oculto').attr('value', 'true');
-    }
-    else {
+    } else {
         $('#publicado-update-oculto').attr('value', 'false');
     }
 }

@@ -75,12 +75,10 @@
                                                                 </div>
                                                                 @elseif($blog->imagenes->count()>0)
                                                                 <!--Muestro una Imagen-->
-
                                                                 <div class="inner">
                                                                     <a href="index.html" title="{{$blog->titulo}}">
                                                                         <img width="1010" height="568" src="{{ asset('imagenes/blogs/'.$blog->imagen()->nombre) }}" class="attachment-full wp-post-image"></a>
                                                                 </div>
-
                                                                 @elseif($blog->linkvideo)
                                                                 <!--Muestro Video-->
                                                                 <div class="post_image_video">
@@ -97,26 +95,26 @@
                                                                             <a href="/front_blogs?categoria={{$blog->categoria->slug}}" title="ver todos los artículos referidos a este tema">{{$blog->categoria->nombre}}</a>
                                                                         </span>
                                                                         <span class="right">
-                                                                            <span class="social_share_holder">
+                                                                            <span id="{{$blog->slug}}" estado="cerrado" onclick="mostrar_botones('{{$blog->slug}}')" class="social_share_holder">
                                                                                 <span class="social_share_icon">Compartir</span>
-                                                                                <div class="social_share_dropdown">
+                                                                                <div id="social_share_dropdown_{{$blog->slug}}" class="social_share_dropdown">
                                                                                     <span class="inner_arrow_social"></span>
-                                                                                    <ul>
+                                                                                    <ul style="width: 91px;">
                                                                                         <li>
                                                                                             <h5>Redes</h5>
                                                                                         </li>
                                                                                         <li class="facebook_share">
-                                                                                            <a href="#" onclick="window.open('https://www.facebook.com/sharer.php?s=100&amp;p%5Btitle%5D=My+Life+Is+Music&amp;p%5Bsummary%5D=The+term+minimalism+is+also+used+to+describe+a+trend+in+design+and+architecture+where+in+the+subject+is+reduced+to+its+necessary+elements.&amp;p%5Burl%5D=http%3A%2F%2Fdemo.qodeinteractive.com%2Fsimplicity%2Fmy-life-is-music%2F&amp;p%5Bimages%5D%5B0%5D=http%3A%2F%2Fdemo.qodeinteractive.com%2Fsimplicity%2Fwp-content%2Fuploads%2F2013%2F08%2F032.jpg&amp;', 'sharer', 'toolbar=0,status=0,width=620,height=280');">
+                                                                                            <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + window.location.href+'front_blogs/{{$blog->slug}}', 'sharer', 'toolbar=0,status=0,width=620,height=280');">
                                                                                                 <span class="social_image">
                                                                                                     <span class="social_image_inner"></span>
                                                                                                 </span>
                                                                                                 <span class="share_text">Like</span>
                                                                                             </a>
-                                                                                        </li>
+                                                                                        </li>                                                                                                                        
                                                                                         <li class="twitter_share">
-                                                                                            <a href="#" onclick="popUp = window.open('http://twitter.com/share?url=http%3A%2F%2Fdemo.qodeinteractive.com%2Fsimplicity%2Fmy-life-is-music%2F&amp;text=The+term+minimalism+is+also+used+to+describe+a+trend+in+design+and+&amp;count=horiztonal', 'popupwindow', 'scrollbars=yes,width=800,height=400');
-                                                                                                    popUp.focus();
-                                                                                                    return false;"
+                                                                                            <a href="#" onclick="popUp = window.open('http://twitter.com/share?url=' + window.location.href+'front_blogs/{{$blog->slug}}', 'popupwindow', 'scrollbars=yes,width=800,height=400');
+                                                                                                popUp.focus();
+                                                                                                return false;"
                                                                                                target="_blank" rel="nofollow">
                                                                                                 <span class="social_image">
                                                                                                     <span class="social_image_inner"></span>
@@ -130,8 +128,6 @@
                                                                         </span>
                                                                     </span>
                                                                     <div class="sombra">  {!! $blog->contenido !!}</div>
-                                                                  
-
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -163,5 +159,5 @@
 <script>
     lsjQuery("#nav-blog").addClass("active");
 </script>
-<!--<script src="{{ asset('js/front/inicio.js') }}"></script>-->
+<script src="{{ asset('js/front/botones_redes.js') }}"></script>
 @endsection

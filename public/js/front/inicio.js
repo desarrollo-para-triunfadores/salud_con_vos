@@ -4,28 +4,29 @@
  * and open the template in the editor.
  */
 
-$j(window).load(function () {
-    setTimeout(function () {
+lsjQuery(document).ready(function () {
+    
+     setTimeout(function () {
         $j("#panel").animate({marginLeft: "0px"});
         $j("a.open").addClass('opened');
         $j("#panel").addClass('opened-panel');
     }, 1000);
-});
+    
+    var ancho = $j(window).width();
 
-
-
-lsjQuery(document).ready(function () {
-
-
-    var alto = (lsjQuery(window).height() - 130) + 'px';
+    lsjQuery(".ls-bg").addClass("fondo-carrusel");
+    if (ancho < 800) {
+        lsjQuery(".ls-bg").removeClass("fondo-carrusel");
+        lsjQuery(".section-parallax").css("margin-top", "-9%");
+    } else {
+        lsjQuery(".section-parallax").css("margin-top", "-4%");
+    }
 
     if (typeof lsjQuery.fn.layerSlider == "undefined") {
         lsShowNotice('layerslider_5', 'jquery');
-    }
-    else if (typeof lsjQuery.transit == "undefined" || typeof lsjQuery.transit.modifiedForLayerSlider == "undefined") {
+    } else if (typeof lsjQuery.transit == "undefined" || typeof lsjQuery.transit.modifiedForLayerSlider == "undefined") {
         lsShowNotice('layerslider_5', 'transit');
-    }
-    else {
+    } else {
         lsjQuery("#layerslider_5").layerSlider({
             width: '100%',
             height: '570px',

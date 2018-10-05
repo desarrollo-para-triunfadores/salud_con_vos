@@ -45,11 +45,7 @@ and open the template in the editor.
 }
 
 
-.two_columns_75_25>.column1 {
-    width: 70%;
-    margin-right: 5%;
-    float: left;
-}
+
 
 .title {
     text-align: center;
@@ -72,11 +68,6 @@ aside .widget {
 
 
 
-.two_columns_75_25>.column2 {
-    width: 25%;
-    float: left;
-    margin-bottom: 3%;
-}
 
 
 .blog_holder_v2 .post_content_quote h4, .blog_holder .post_content_quote h4 {
@@ -85,8 +76,71 @@ aside .widget {
     background-repeat: no-repeat;
     min-height: 18px;
     padding: 0px;
+    margin-top: 2%;
 }
 
 /*.post_text_hilo {
     margin-bottom: -5%;
 }*/
+
+
+
+
+
+
+
+
+
+
+
+
+.blog_holder_v2 article {
+    display: inline-block;
+    width: auto !important;
+    padding: 0 0 40px;
+}
+
+
+.post_content_holder {
+    float: left;
+    width: 92%;
+    padding: 0 0 15px 0;
+}
+
+
+.post_info {
+    float: left;
+    width: 8%;
+    margin-top: 2%;
+}
+
+
+.columna-pc {
+    width: 65%;
+    margin-right: 5%;
+    float: left;
+}
+
+
+
+.div-traslucido {   
+    color: white;  
+    padding: 15px !important;
+    background-color: rgba(20, 20, 20, 0.5);
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+
+.blog_holder_v2.blog_single_holder article.quote .info {
+    padding: 0px !important;
+}
+
+.blog_holder_v2 article .post_content_holder, .blog_holder_v2.blog_single_holder article .post_content_holder {
+    padding: 0px !important;
+}
+
+.two_columns_75_25 {
+    width: 100%;
+    margin-bottom: 6%;
+}

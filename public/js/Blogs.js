@@ -7,17 +7,13 @@ function completar_campos(blog) {
     $('#update-descripcion').val(blog.descripcion);
     $('#form-update').attr('action', '/admin/blogs/' + blog.id); //Modifica atributos "attr"
 
-
     //Seteo el valor del boton deslizante segun el estado de publicacion, 
     //en este caso el atributo del foro es booleano (True o False)
     if (blog.publicado === 'Si') {
         $('#publicado-update').prop('checked', true).change();
-    }
-    else {
+    } else {
         $('#publicado-update').prop('checked', false).change();
     }
-    ;
-
     $('#modal-update').modal('show');
 }
 
@@ -28,7 +24,8 @@ function abrir_modal_borrar(id) {
 
 //Datatable
 var table = $('#example').DataTable({
-    language: tabla_traducida
+    'language': tabla_traducida,
+    'responsive': true
 });
 
 $('a.toggle-vis').on('click', function (e) {
@@ -59,5 +56,5 @@ $('.input_archivo').fileinput({
     showUpload: false,
     uploadUrl: '#',
     allowedFileExtensions: ['jpg', 'jpeg'],
-     maxFileSize: 3072
+    maxFileSize: 3072
 });
